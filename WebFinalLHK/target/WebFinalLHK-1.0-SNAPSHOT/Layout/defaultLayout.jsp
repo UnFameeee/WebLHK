@@ -415,21 +415,21 @@
         }
 
         .view-content{
-            padding-top: 50px;
+            padding-top: 4%;
             margin-left: 250px;
-            padding-left: 35px;
+            padding-left: 2%;
             /*height: 100%;*/
         }
 
         .view-content hr{
-            width: 1500px;
+            width: 95%;
             margin-left: 0;
         }
 
         .view-content-list-title{
             margin-top: 30px;
             border: 1px solid #DDDDDD;
-            width: 1500px;
+            width: 95%;
             height: 40px;
             background-color: #F5F5F5;
         }
@@ -444,7 +444,7 @@
             border-left: 1px solid #DDDDDD;
             border-bottom: 1px solid #DDDDDD;
             border-right: 1px solid #DDDDDD;
-            width: 1500px;
+            width: 100%;
             padding: 20px;
             text-align: left;
 
@@ -453,7 +453,7 @@
         #View-content-list {
             border: 1px solid #DDDDDD;
             border-collapse: collapse;
-            width: 1460px;
+            width:95%;
             max-height: 650px;
         }
 
