@@ -228,16 +228,16 @@
         .add-content{
             padding-top: 50px;
             margin-left: 250px;
-            padding-left: 35px;
+            padding-left: 2%;
             /*height: 100%;*/
         }
 
         .add-content .form-content hr{
-            width: 1500px;
+            width:98%;
         }
 
         .add-content .form-content .container {
-            width: 1500px;
+            width: 98%;
             margin-top: 30px;
         }
 
@@ -252,7 +252,7 @@
         .add-content .form-content .container .add-content-title{
             margin-top: 30px;
             border: 1px solid #CCCCCC;
-            width: 1500px;
+            width: 100%;
             height: 40px;
             background-color: #F5F5F5;
         }
@@ -260,7 +260,7 @@
         .add-content .form-content .container .input-content{
             border: 1px solid #CCCCCC;
             padding-left: 15px;
-            height: 730px;
+            padding-bottom: 10px;
         }
 
         .add-content .form-content .container .input-content .input-field{
@@ -272,8 +272,8 @@
         }
 
         .add-content .form-content .container .input-content .input-field input, textarea{
-            width: 80%;
-            padding: 2px 5px 2px 5px;
+            width: 95%;
+            padding: 5px 5px 5px 5px;
             border: 1px solid #CCCCCC;
             border-radius: 3px;
             margin-top: 5px;
@@ -288,7 +288,7 @@
         }
 
         .form-content .container .input-content .input-field .content {
-            height: 350px;
+            height: 250px;
         }
 
         .form-content .container .input-content .button-field input{
@@ -300,6 +300,11 @@
             height: 35px;
             width: 110px;
 
+        }
+        .form-content .container .input-content .button-field input:hover{
+            cursor: pointer;
+            color: whitesmoke;
+            background: gray;
         }
 
         /* -------------------- View Content - Thắng -------------------- */
@@ -415,21 +420,21 @@
         }
 
         .view-content{
-            padding-top: 4%;
+            padding-top: 50px;
             margin-left: 250px;
             padding-left: 2%;
             /*height: 100%;*/
         }
 
         .view-content hr{
-            width: 95%;
+            width: 98%;
             margin-left: 0;
         }
 
         .view-content-list-title{
             margin-top: 30px;
             border: 1px solid #DDDDDD;
-            width: 95%;
+            width: 98%;
             height: 40px;
             background-color: #F5F5F5;
         }
@@ -444,7 +449,7 @@
             border-left: 1px solid #DDDDDD;
             border-bottom: 1px solid #DDDDDD;
             border-right: 1px solid #DDDDDD;
-            width: 100%;
+            width: 98%;
             padding: 20px;
             text-align: left;
 
