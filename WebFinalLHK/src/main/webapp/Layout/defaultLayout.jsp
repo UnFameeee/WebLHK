@@ -440,7 +440,33 @@
             padding-top: 50px;
             margin-left: 250px;
             padding-left: 2%;
-            /*height: 100%;*/
+
+            visibility: hidden;
+            opacity: 0;
+        }
+
+        .view-content.show{
+            visibility: visible;
+            opacity: 1;
+        }
+
+        #loading{
+            /*padding-top: 50px;*/
+            margin-top: -250px;
+            margin-left: 250px;
+            padding-left: 2%;
+
+            visibility: visible;
+            opacity: 1;
+        }
+
+        #loading.hide{
+            visibility: hidden;
+            opacity: 0;
+        }
+
+        #loading p{
+            font-size: 25px;
         }
 
         .view-content hr{
@@ -475,7 +501,7 @@
         #View-content-list {
             border: 1px solid #DDDDDD;
             border-collapse: collapse;
-            width:95%;
+            width: 100%;
             max-height: 650px;
         }
 
@@ -503,6 +529,7 @@
     <tiles:insertAttribute name="header" />
     <tiles:insertAttribute name="sidebar" />
     <tiles:insertAttribute name="body" />
+  
 <%--    <script src="Add.js"></script>--%>
 <%--    <script>--%>
 <%--        // Mong  muốn của chúng ta--%>
@@ -526,5 +553,7 @@
 <%--            //   onSubmit:function(data){ console.log(data); }--%>
 <%--        });--%>
 <%--    </script>--%>
+
+<%--    <script src="../Effect/ViewContent.js">--%>
 </body>
 </html>
