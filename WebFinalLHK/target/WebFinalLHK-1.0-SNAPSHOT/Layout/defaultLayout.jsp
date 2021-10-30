@@ -306,7 +306,24 @@
             color: whitesmoke;
             background: gray;
         }
-
+        /* validation  */
+        .invalid-input{
+            border: 1px solid red !important;
+        }
+        .valid-input{
+            border: 2px solid rgb(70, 79, 206) !important;
+        }
+        .active-Visible{
+            visibility:visible !important;
+        }
+        .invalid-Message{
+            color: red;
+            position:absolute;
+            text-align: left;
+            margin-left: 3px;
+            margin-top: 1px;
+            margin-bottom: 10px;
+        }
         /* -------------------- View Content - Thắng -------------------- */
         body{
             margin: 0;
@@ -513,6 +530,31 @@
     <tiles:insertAttribute name="sidebar" />
     <tiles:insertAttribute name="body" />
 
+<%--    <script src="Add.js"></script>--%>
+<%--    <script>--%>
+<%--        // Mong  muốn của chúng ta--%>
+<%--        Validator({--%>
+<%--            form:'#addContent-form',--%>
+<%--            errorSelector:['.form-message','.warning-Message'],--%>
+<%--            rules:[--%>
+<%--                Validator.isRequired('#input_title','Vui lòng nhập title của content!'),--%>
+<%--                Validator.isRequired('#input_brief','Vui lòng nhập brief của content!'),--%>
+<%--                Validator.isRequired('#input_content','Vui lòng nhập content!'),--%>
+
+<%--                Validator.minLength('#input_title',10),--%>
+<%--                Validator.minLength('#input_brief',30),--%>
+<%--                Validator.minLength('#input_content',50),--%>
+
+<%--                Validator.maxLength('#input_title',200),--%>
+<%--                Validator.maxLength('#input_brief',150),--%>
+<%--                Validator.maxLength('#input_content',1000),--%>
+<%--            ]--%>
+<%--            ,--%>
+<%--            //   onSubmit:function(data){ console.log(data); }--%>
+<%--        });--%>
+<%--    </script>--%>
+
 <%--    <script src="../Effect/ViewContent.js">--%>
+
 </body>
 </html>
