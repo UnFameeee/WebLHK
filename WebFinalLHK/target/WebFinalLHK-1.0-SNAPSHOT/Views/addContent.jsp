@@ -38,27 +38,27 @@
             </div>
         </form>
     </div>
-    <script src="Add.js"></script>
-    <script>
-        // Mong  muốn của chúng ta
-        Validator({
-            form:'#addContent-form',
-            errorSelector:['.form-message','.warning-Message'],
-            rules:[
-                Validator.isRequired('#input_title','Vui lòng nhập title của content!'),
-                Validator.isRequired('#input_brief','Vui lòng nhập brief của content!'),
-                Validator.isRequired('#input_content','Vui lòng nhập content!'),
+<%--    <script src="Add.js"></script>--%>
+<%--    <script>--%>
+<%--        // Mong  muốn của chúng ta--%>
+<%--        Validator({--%>
+<%--            form:'#addContent-form',--%>
+<%--            errorSelector:['.form-message','.warning-Message'],--%>
+<%--            rules:[--%>
+<%--                Validator.isRequired('#input_title','Vui lòng nhập title của content!'),--%>
+<%--                Validator.isRequired('#input_brief','Vui lòng nhập brief của content!'),--%>
+<%--                Validator.isRequired('#input_content','Vui lòng nhập content!'),--%>
 
-                Validator.minLength('#input_title',10),
-                Validator.minLength('#input_brief',30),
-                Validator.minLength('#input_content',50),
+<%--                Validator.minLength('#input_title',10),--%>
+<%--                Validator.minLength('#input_brief',30),--%>
+<%--                Validator.minLength('#input_content',50),--%>
 
-                Validator.maxLength('#input_title',200),
-                Validator.maxLength('#input_brief',150),
-                Validator.maxLength('#input_content',1000),
-            ]
-            ,
-            //   onSubmit:function(data){ console.log(data); }
-        });
-    </script>
+<%--                Validator.maxLength('#input_title',200),--%>
+<%--                Validator.maxLength('#input_brief',150),--%>
+<%--                Validator.maxLength('#input_content',1000),--%>
+<%--            ]--%>
+<%--            ,--%>
+<%--            //   onSubmit:function(data){ console.log(data); }--%>
+<%--        });--%>
+<%--    </script>--%>
 </body>

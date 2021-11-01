@@ -529,7 +529,7 @@
     <tiles:insertAttribute name="header" />
     <tiles:insertAttribute name="sidebar" />
     <tiles:insertAttribute name="body" />
-
+  
 <%--    <script src="Add.js"></script>--%>
 <%--    <script>--%>
 <%--        // Mong  muốn của chúng ta--%>
@@ -555,6 +555,5 @@
 <%--    </script>--%>
 
 <%--    <script src="../Effect/ViewContent.js">--%>
-
 </body>
 </html>
