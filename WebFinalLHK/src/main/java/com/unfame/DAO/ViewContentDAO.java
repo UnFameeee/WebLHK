@@ -11,10 +11,10 @@ import java.util.List;
 
 public class ViewContentDAO {
     String driver = "com.mysql.jdbc.Driver";
-    String connectionUrl = "jdbc:mysql://localhost:3306/WebFinal";
-    String database = "";
+    String connectionUrl = "jdbc:mysql://localhost:3306/";
+    String database = "WebLHK?useSSL=false";
     String userid = "root";
-    String password = "Thang123!";
+    String password = "root";
 
 
     private static final String INSERT_CONTENT_SQL = "INSERT INTO Content" + " (Title, Brief, Content, CreateDate, UpdateTime, AuthorId) VALUES" + " (?, ? ,? ,? ,? ,? ,?);";
@@ -27,7 +27,7 @@ public class ViewContentDAO {
         Connection connection = null;
         try{
             Class.forName(driver);
-            connection = DriverManager.getConnection(connectionUrl, userid, password);
+            connection = DriverManager.getConnection(connectionUrl + database, userid, password);
 
         } catch (ClassNotFoundException | SQLException e){
             e.printStackTrace();
@@ -36,6 +36,28 @@ public class ViewContentDAO {
     }
 
     public ViewContentDAO() {}
+
+    //Select all Content
+    public List<ViewContent> selectAllContents()  {
+        List<ViewContent> content = new ArrayList<>();
+        //Step 1: Connection
+        try(Connection connection = getConnection(); PreparedStatement prepareStatement = connection.prepareStatement(SELECT_ALL_CONTENTS);){
+            System.out.println(prepareStatement);
+            ResultSet rs = prepareStatement.executeQuery();
+
+            while (rs.next()){
+                int id = rs.getInt("Id");
+                String title = rs.getString("Title");
+                String brief = rs.getString("Brief");
+                String createdDate = rs.getString("CreateDate");
+                content.add(new ViewContent(id, title, brief, createdDate));
+            }
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+        return content;
+    }
+    //Select Content By ID
 
     //Insert Content
 
@@ -62,29 +84,4 @@ public class ViewContentDAO {
         }
         return rowDeleted;
     }
-
-
-    //Select all Content
-    public List<ViewContent> selectAllContents()  {
-        List<ViewContent> content = new ArrayList<>();
-        //Step 1: Connection
-        try(Connection connection = getConnection(); PreparedStatement prepareStatement = connection.prepareStatement(SELECT_ALL_CONTENTS);){
-            System.out.println(prepareStatement);
-            ResultSet rs = prepareStatement.executeQuery();
-
-            while (rs.next()){
-                int id = rs.getInt("Id");
-                String title = rs.getString("Title");
-                String brief = rs.getString("Brief");
-                String createdDate = rs.getString("CreateDate");
-                content.add(new ViewContent(id, title, brief, createdDate));
-            }
-        }catch (SQLException e){
-            e.printStackTrace();
-        }
-        return content;
-    }
-    //Select Content By ID
-
-
 }
