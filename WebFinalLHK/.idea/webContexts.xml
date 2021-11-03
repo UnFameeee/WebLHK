@@ -4,6 +4,9 @@
     <option name="state">
       <map>
         <entry key="file://$PROJECT_DIR$/src/main/webapp/Layout/defaultLayout.jsp" value="file://$PROJECT_DIR$/src/main/webapp/Layout" />
+        <entry key="file://$PROJECT_DIR$/src/main/webapp/Views/addContent.jsp" value="file://$PROJECT_DIR$/src/main/webapp/Views" />
+        <entry key="file://$PROJECT_DIR$/src/main/webapp/Views/viewContent.jsp" value="file://$PROJECT_DIR$/src/main/webapp/Views" />
+        <entry key="file://$PROJECT_DIR$/src/main/webapp/viewContent.jsp" value="file://$PROJECT_DIR$/src/main/webapp" />
       </map>
     </option>
   </component>
