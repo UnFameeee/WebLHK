@@ -24,19 +24,24 @@
                         <th class="actions">Actions</th>
                     </thead>
                     <tbody>
-<%--                    <% List<ViewContent> ListContent = request.getAttribute(ListContent) %>--%>
-                    <c:forEach var="content" items="${ListContent}">
-                        <tr>
-                            <td><c:out value="${content.Id}"/></td>
-                            <td><c:out value="${content.Title}"/></td>
-                            <td><c:out value="${content.Brief}"/></td>
-                            <td><c:out value="${content.CreateDate}"/></td>
-                            <td>
-                                <a href="edit?Id= <c:out value='${content.id}' />">Edit</a>
-                                <a href="delete?Id= <c:out value='${content.id}' />">Delete</a>
-                            </td>
-                        </tr>
-                    </c:forEach>
+                    <% List<ViewContent> listContent = (List<ViewContent>) request.getAttribute("ListContent"); %>
+                    <% for (int i =0; i < listContent.size(); ++i) {%>
+                    <tr>
+                        <td><%= listContent.get(i).getId() %></td>
+                        <td><%= listContent.get(i).getTitle() %></td>
+                        <td><%= listContent.get(i).getBrief() %></td>
+                        <td><%= listContent.get(i).getCreatedDate() %></td>
+                        <td>
+                            <a href="edit?Id= <%= listContent.get(i).getCreatedDate() %> />">Edit</a>
+                            <a href="delete?Id= <%= listContent.get(i).getCreatedDate() %> />">Delete</a>
+                        </td>
+                        <%-- td><%= new SimpleDateFormat("dd/MM/yyyy HH:mm").format(lstContentsByPage.get(i).getCreateDate()) %></td>--%>
+                        <%-- <td>--%>
+                        <%--        <button class = "bg-success px-3"><a class = "text-decoration-none text-light" href = "editContent?id=<%=lstContentsByPage.get(i).getId()%>">Edit</a></button>--%>
+                        <%--        <button class = "bg-danger"><a class = "text-decoration-none text-light" href = "deleteContent?id=<%=lstContentsByPage.get(i).getId()%>">Delete</a></button>--%>
+                        <%-- </td>--%>
+                    </tr>
+                    <% }%>
                     </tbody>
                 </table>
             </div>

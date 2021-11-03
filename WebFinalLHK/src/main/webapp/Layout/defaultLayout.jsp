@@ -1,10 +1,12 @@
+<%@ page import="com.unfame.Model.ViewContent" %>
+<%@ page import="java.util.List" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 <html>
 <head>
-<%--    <link rel="stylesheet" type="text/css" href="style123.css">--%>
+<%--    <link rel="stylesheet" type="text/css" href="../Views/viewContent.jsp">--%>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css">
     <title>Title</title>
 
@@ -531,31 +533,6 @@
     <tiles:insertAttribute name="header" />
     <tiles:insertAttribute name="sidebar" />
     <tiles:insertAttribute name="body" />
-  
-<%--    <script src="Add.js"></script>--%>
-<%--    <script>--%>
-<%--        // Mong  muốn của chúng ta--%>
-<%--        Validator({--%>
-<%--            form:'#addContent-form',--%>
-<%--            errorSelector:['.form-message','.warning-Message'],--%>
-<%--            rules:[--%>
-<%--                Validator.isRequired('#input_title','Vui lòng nhập title của content!'),--%>
-<%--                Validator.isRequired('#input_brief','Vui lòng nhập brief của content!'),--%>
-<%--                Validator.isRequired('#input_content','Vui lòng nhập content!'),--%>
-
-<%--                Validator.minLength('#input_title',10),--%>
-<%--                Validator.minLength('#input_brief',30),--%>
-<%--                Validator.minLength('#input_content',50),--%>
-
-<%--                Validator.maxLength('#input_title',200),--%>
-<%--                Validator.maxLength('#input_brief',150),--%>
-<%--                Validator.maxLength('#input_content',1000),--%>
-<%--            ]--%>
-<%--            ,--%>
-<%--            //   onSubmit:function(data){ console.log(data); }--%>
-<%--        });--%>
-<%--    </script>--%>
-
-<%--    <script src="../Effect/ViewContent.js">--%>
+    <tiles:insertAttribute name="JS" />
 </body>
 </html>

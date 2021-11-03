@@ -22,13 +22,12 @@
     </servlet-mapping>
 
     <servlet>
-        <servlet-name>LoginCheck</servlet-name>
+        <servlet-name>ViewContentController</servlet-name>
         <servlet-class>com.unfame.Web.ViewContentController</servlet-class>
     </servlet>
 
     <servlet-mapping>
-        <servlet-name>LoginCheck</servlet-name>
-        <url-pattern>/Login</url-pattern>
+        <servlet-name>ViewContentController</servlet-name>
+        <url-pattern>/view</url-pattern>
     </servlet-mapping>
-
 </web-app>
