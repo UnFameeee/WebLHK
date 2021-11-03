@@ -16,7 +16,7 @@
             <form action="" method="post">
                 <a href="Add_Content.tiles"><i class="far fa-edit"></i><span>Form content</span></a>
             </form>
-            <form action="view" method="post">
+            <form action="<%=request.getContextPath()%>/view" method="post">
                 <input type="submit" name="submit" id="btn_test" class="button" value="TEST">
             </form>
         </div>

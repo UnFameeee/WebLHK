@@ -11,9 +11,12 @@ import java.sql.SQLException;
 import java.util.List;
 
 
-//@WebServlet("/ViewContentController")
+@WebServlet("/")
 public class ViewContentController extends HttpServlet {
     private ViewContentDAO viewContentDAO;
+
+    public void init() {viewContentDAO = new ViewContentDAO();}
+
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -58,7 +61,7 @@ public class ViewContentController extends HttpServlet {
     private void listContent (HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, SQLException {
         List<ViewContent> listContent = viewContentDAO.selectAllContents();
         request.setAttribute("ListContent", listContent);
-        RequestDispatcher dispatcher = request.getRequestDispatcher("ViewContent.tiles");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("View_Content.tiles");
         dispatcher.forward(request,response);
     }
 

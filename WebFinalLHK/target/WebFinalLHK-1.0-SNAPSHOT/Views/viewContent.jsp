@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
     <body>
         <!-- Content start -->
@@ -21,11 +22,18 @@
                         <th class="actions">Actions</th>
                     </thead>
                     <tbody>
-                        <td>a</td>
-                        <td>a</td>
-                        <td>a</td>
-                        <td>a</td>
-                        <td>a</td>
+                    <c:forEach var="content" items="${ListContent}">
+                        <tr>
+                            <td><c:out value="${content.Id}"/></td>
+                            <td><c:out value="${content.Title}"/></td>
+                            <td><c:out value="${content.Brief}"/></td>
+                            <td><c:out value="${content.CreateDate}"/></td>
+                            <td>
+                                <a href="edit?Id= <c:out value='${content.id}' />">Edit</a>
+                                <a href="delete?Id= <c:out value='${content.id}' />">Delete</a>
+                            </td>
+                        </tr>
+                    </c:forEach>
                     </tbody>
                 </table>
             </div>

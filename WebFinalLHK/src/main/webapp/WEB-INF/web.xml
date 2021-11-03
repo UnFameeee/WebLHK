@@ -21,4 +21,14 @@
         <url-pattern>*.tiles</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>LoginCheck</servlet-name>
+        <servlet-class>com.unfame.Web.ViewContentController</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>LoginCheck</servlet-name>
+        <url-pattern>/Login</url-pattern>
+    </servlet-mapping>
+
 </web-app>
