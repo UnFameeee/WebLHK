@@ -30,4 +30,14 @@
         <servlet-name>ViewContentController</servlet-name>
         <url-pattern>/view</url-pattern>
     </servlet-mapping>
+
+    <servlet>
+        <servlet-name>AddContentController</servlet-name>
+        <servlet-class>com.unfame.Web.AddContentController</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>AddContentController</servlet-name>
+        <url-pattern>/add</url-pattern>
+    </servlet-mapping>
 </web-app>
