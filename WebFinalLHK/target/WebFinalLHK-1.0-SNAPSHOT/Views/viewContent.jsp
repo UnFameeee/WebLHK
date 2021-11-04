@@ -3,6 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
     <body>
+        <div id="loading"><p>Loading...</p></div>
         <!-- Content start -->
         <div class="view-content">
             <div class="title">
@@ -32,8 +33,8 @@
                         <td><%= listContent.get(i).getBrief() %></td>
                         <td><%= listContent.get(i).getCreatedDate() %></td>
                         <td>
-                            <a href="edit?Id= <%= listContent.get(i).getId() %> />">Edit</a>
-                            <a href="delete?Id= <%= listContent.get(i).getId() %> />">Delete</a>
+                            <a href="<%=request.getContextPath()%>/edit?Id=<%=listContent.get(i).getId()%>">Edit</a>
+                            <a href="<%=request.getContextPath()%>/delete?Id=<%=listContent.get(i).getId()%>">Delete</a>
                         </td>
                         <%-- td><%= new SimpleDateFormat("dd/MM/yyyy HH:mm").format(lstContentsByPage.get(i).getCreateDate()) %></td>--%>
                         <%-- <td>--%>
@@ -48,29 +49,11 @@
         </div>
         <!-- Content end -->
 
-        <div id="loading"><p>Loading...</p></div>
 
-        <script>
-            const viewContent = document.querySelector(".view-content");
-            const loading = document.querySelector("#loading");
+        <script type="text/javascript" src="${pageContext.request.contextPath}/Views/Effect/ViewContent.js"></script>
 
-            window.addEventListener('load', function(){
-                console.log("Load complete");
-                showPopup();
-            })
-
-            function showPopup(){
-                const timeLimit = 5;
-                let i = 0;
-                const timer = setInterval(function(){
-                    i++;
-                    if(i === timeLimit){
-                        clearInterval(timer);
-                        viewContent.classList.add("show");
-                        loading.classList.add("hide");
-                    }
-                }, 1000);
-            }
-        </script>
+<%--        <script>--%>
+<%--            --%>
+<%--        </script>--%>
     </body>
 </html>

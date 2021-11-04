@@ -32,6 +32,16 @@
     </servlet-mapping>
 
     <servlet>
+        <servlet-name>ViewContentControllerDelete</servlet-name>
+        <servlet-class>com.unfame.Web.ViewContentController</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>ViewContentControllerDelete</servlet-name>
+        <url-pattern>/delete</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
         <servlet-name>AddContentController</servlet-name>
         <servlet-class>com.unfame.Web.AddContentController</servlet-class>
     </servlet>
