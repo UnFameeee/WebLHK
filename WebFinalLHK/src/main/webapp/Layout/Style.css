@@ -443,10 +443,10 @@ header{
 
 #loading{
     /*padding-top: 50px;*/
-    margin-top: -250px;
+    margin-top: 30px;
     margin-left: 250px;
+    margin-bottom: -60px;
     padding-left: 2%;
-
     visibility: visible;
     opacity: 1;
 }

@@ -11,7 +11,7 @@ import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
-@WebServlet("/")
+@WebServlet("/AddContent")
 public class AddContentController extends HttpServlet {
 
     private AddContentDAO addContentDAO;

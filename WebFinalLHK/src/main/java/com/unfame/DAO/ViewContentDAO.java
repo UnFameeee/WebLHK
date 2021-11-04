@@ -61,22 +61,6 @@ public class ViewContentDAO {
     }
     //Select Content By ID
 
-    //Insert Content
-
-
-    //Update Content
-    public boolean updateContent(ViewContent content) throws SQLException {
-        boolean rowUpdated;
-        try(Connection connection = getConnection(); PreparedStatement statement = connection.prepareStatement(UPDATE_CONTENTS_SQL);) {
-            statement.setString(1, content.getTitle());
-            statement.setString(2, content.getBrief());
-            statement.setString(3, content.getCreatedDate());
-            statement.setInt(4, content.getId());
-
-            rowUpdated = statement.executeUpdate() > 0;
-        }
-        return rowUpdated;
-    }
     //Delete Content
     public boolean deleteContent(int id) throws SQLException {
         boolean rowDeleted;
