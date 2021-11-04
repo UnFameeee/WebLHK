@@ -32,8 +32,8 @@
                         <td><%= listContent.get(i).getBrief() %></td>
                         <td><%= listContent.get(i).getCreatedDate() %></td>
                         <td>
-                            <a href="edit?Id= <%= listContent.get(i).getCreatedDate() %> />">Edit</a>
-                            <a href="delete?Id= <%= listContent.get(i).getCreatedDate() %> />">Delete</a>
+                            <a href="edit?Id= <%= listContent.get(i).getId() %> />">Edit</a>
+                            <a href="delete?Id= <%= listContent.get(i).getId() %> />">Delete</a>
                         </td>
                         <%-- td><%= new SimpleDateFormat("dd/MM/yyyy HH:mm").format(lstContentsByPage.get(i).getCreateDate()) %></td>--%>
                         <%-- <td>--%>
