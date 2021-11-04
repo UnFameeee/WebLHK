@@ -43,6 +43,19 @@ public class AddContent {
         Content = content;
     }
 
+    public AddContent(String title, String brief, String content) {
+        Title = title;
+        Brief = brief;
+        Content = content;
+    }
+
+    public AddContent(String title, String brief, String content, String createdDate) {
+        Title = title;
+        Brief = brief;
+        Content = content;
+        CreatedDate = createdDate;
+    }
+
     public int getId() {
         return id;
     }

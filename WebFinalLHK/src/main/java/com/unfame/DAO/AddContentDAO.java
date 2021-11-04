@@ -16,7 +16,8 @@ public class AddContentDAO {
     String userid = "root";
     String password = "root";
 
-    private static final String INSERT_CONTENT_SQL = "INSERT INTO Content" + " (Title, Brief, Content, CreateDate, UpdateTime, AuthorId) VALUES" + " (?, ? ,? ,? ,? ,? ,?);";
+    private static final String INSERT_CONTENT_SQL = "INSERT INTO Content" + " (Title, Brief, Content,CreateDate) VALUES" + " (? ,? ,?,?);";
+    //private static final String INSERT_CONTENT_SQL = "INSERT INTO Content" + " (Title, Brief, Content, CreateDate, UpdateTime, AuthorId) VALUES" + " (?, ? ,? ,? ,? ,?);";
     private static final String DELETE_CONTENTS_SQL = "DELETE FROM Content WHERE Id = ?";
     private static final String UPDATE_CONTENTS_SQL  = "UPDATE Content SET Title = ?, Brief = ?, Content = ?, CreateDate = ?, UpdateTime = ?, AuthorId = ? WHERE Id = ?";
     private static final String SELECT_ALL_CONTENTS = "SELECT * FROM Content";
@@ -43,8 +44,8 @@ public class AddContentDAO {
             preparedStatement.setString(2, content.getBrief());
             preparedStatement.setString(3, content.getContent());
             preparedStatement.setString(4, content.getCreatedDate());
-            preparedStatement.setString(5, content.getUpdateTime());
-            preparedStatement.setString(6, content.getAuthorId());
+//            preparedStatement.setString(5, content.getUpdateTime());
+//            preparedStatement.setString(6, content.getAuthorId());
             System.out.println(preparedStatement);
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
