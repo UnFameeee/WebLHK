@@ -11,7 +11,7 @@ import java.sql.SQLException;
 import java.util.List;
 
 
-@WebServlet("/")
+@WebServlet("/test")
 public class ViewContentController extends HttpServlet {
     private ViewContentDAO viewContentDAO;
 
@@ -71,6 +71,7 @@ public class ViewContentController extends HttpServlet {
     }
 
     private void updateContent (HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
         RequestDispatcher dispatcher = request.getRequestDispatcher("ViewContent.tiles");
         dispatcher.forward(request,response);
     }

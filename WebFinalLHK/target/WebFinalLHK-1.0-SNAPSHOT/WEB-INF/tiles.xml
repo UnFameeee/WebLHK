@@ -7,13 +7,11 @@
         <put-attribute name="header" value="/Layout/header.jsp" />
         <put-attribute name="body" value="/Layout/body.jsp" />
         <put-attribute name="sidebar" value="/Layout/sidebar.jsp" />
-        <put-attribute name="JS" value="" />
     </definition>
 
     <definition name="Add_Content" extends="defaultLayout">
         <put-attribute name="title" value="Add Content" />
         <put-attribute name="body" value="/Views/addContent.jsp" />
-        <put-attribute name="JS" value="/Views/Add.js" />
     </definition>
 
     <definition name="View_Content" extends="defaultLayout">

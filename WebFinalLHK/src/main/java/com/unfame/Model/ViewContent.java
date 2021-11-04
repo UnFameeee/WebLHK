@@ -5,6 +5,7 @@ public class ViewContent {
     private String Title;
     private String Brief;
     private String CreatedDate;
+    private String Content;
 
     public ViewContent(int id, String title, String brief, String createdDate) {
         this.id = id;

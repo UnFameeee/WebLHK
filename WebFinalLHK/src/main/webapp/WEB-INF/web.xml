@@ -40,4 +40,5 @@
         <servlet-name>AddContentController</servlet-name>
         <url-pattern>/add</url-pattern>
     </servlet-mapping>
+
 </web-app>

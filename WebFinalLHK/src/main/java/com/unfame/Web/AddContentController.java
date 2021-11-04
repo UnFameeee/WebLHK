@@ -8,8 +8,10 @@ import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import java.io.IOException;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 
-@WebServlet("/test")
+@WebServlet("/")
 public class AddContentController extends HttpServlet {
 
     private AddContentDAO addContentDAO;
@@ -46,10 +48,14 @@ public class AddContentController extends HttpServlet {
         String title =request.getParameter("title");
         String brief =request.getParameter("brief");
         String content =request.getParameter("content");
-        AddContent addContent = new AddContent(8,title,brief,content);
+        String createDate = new SimpleDateFormat("dd:MM:yyyy_HH:mm:ss").format(Calendar.getInstance().getTime());
+        System.out.println(createDate);
+
+        AddContent addContent = new AddContent(title,brief,content,createDate);
         AddContentDAO addContentDAO = new AddContentDAO();
         addContentDAO.insertContent(addContent);
 
-        response.sendRedirect("ViewContent.tiles");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("Add_Content.tiles");
+        dispatcher.forward(request,response);
     }
 }
