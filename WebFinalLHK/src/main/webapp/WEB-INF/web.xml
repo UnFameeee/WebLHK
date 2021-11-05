@@ -21,6 +21,7 @@
         <url-pattern>*.tiles</url-pattern>
     </servlet-mapping>
 
+    <!-- View Content -->
     <servlet>
         <servlet-name>ViewContentController</servlet-name>
         <servlet-class>com.unfame.Web.ViewContentController</servlet-class>
@@ -51,13 +52,14 @@
         <url-pattern>/showEdit</url-pattern>
     </servlet-mapping>
 
+    <!-- Add Content -->
     <servlet>
         <servlet-name>AddContentController</servlet-name>
         <servlet-class>com.unfame.Web.AddContentController</servlet-class>
     </servlet>
 
     <servlet-mapping>
-        <servlet-name>AddContentControllerShow</servlet-name>
+        <servlet-name>AddContentController</servlet-name>
         <url-pattern>/add</url-pattern>
     </servlet-mapping>
 
@@ -67,10 +69,11 @@
     </servlet>
 
     <servlet-mapping>
-        <servlet-name>AddContentController</servlet-name>
+        <servlet-name>AddContentControllerShow</servlet-name>
         <url-pattern>/showAdd</url-pattern>
     </servlet-mapping>
-  
+
+    <!-- Edit Profile -->
     <servlet>
         <servlet-name>EditProfileController</servlet-name>
         <servlet-class>com.unfame.Web.EditProfileController</servlet-class>
@@ -79,6 +82,16 @@
     <servlet-mapping>
         <servlet-name>EditProfileController</servlet-name>
         <url-pattern>/editProfile</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>EditProfileControllerShow</servlet-name>
+        <servlet-class>com.unfame.Web.EditProfileController</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>EditProfileControllerShow</servlet-name>
+        <url-pattern>/showEditProfile</url-pattern>
     </servlet-mapping>
 
 </web-app>
