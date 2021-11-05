@@ -184,7 +184,7 @@ function Validator(options)
 }
 
     Validator({
-    form:'#addContent-form',
+    form:['#addContent-form','#editContent-form'],
     errorSelector:['.form-message','.warning-Message'],
     rules:[
     Validator.isRequired('#input_title','Please enter the title of the content!'),
