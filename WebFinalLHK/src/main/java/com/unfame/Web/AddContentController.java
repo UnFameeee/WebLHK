@@ -19,17 +19,23 @@ public class AddContentController extends HttpServlet {
     public void init() {addContentDAO = new AddContentDAO();}
 
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         this.doGet(request,response);
     }
 
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String action = request.getServletPath();
 
         switch (action) {
-
-            case "/addContent":
+            case "/showAdd":
+                try {
+                    showAddContent(request, response);
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+                break;
+            case "/add":
                 try {
                     addContent(request, response);
                 } catch (SQLException e) {
@@ -57,5 +63,9 @@ public class AddContentController extends HttpServlet {
 
         RequestDispatcher dispatcher = request.getRequestDispatcher("Add_Content.tiles");
         dispatcher.forward(request,response);
+    }
+
+    private void showAddContent (HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, SQLException {
+        response.sendRedirect("Add_Content.tiles");
     }
 }
