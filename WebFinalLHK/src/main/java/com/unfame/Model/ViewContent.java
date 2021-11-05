@@ -15,6 +15,20 @@ public class ViewContent {
         Brief = brief;
         CreatedDate = createdDate;
     }
+    public ViewContent( String title, String brief,int id, String updateTime) {
+        this.id = id;
+        Title = title;
+        Brief = brief;
+        UpdateTime = updateTime;
+    }
+
+
+    public ViewContent( String title, String brief, String content, int id) {
+        this.id = id;
+        Title = title;
+        Brief = brief;
+        Content = content;
+    }
 
     public ViewContent(String title, String brief, String createdDate) {
         Title = title;

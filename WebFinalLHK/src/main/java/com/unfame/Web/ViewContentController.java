@@ -8,6 +8,8 @@ import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import java.io.IOException;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.List;
 
 
@@ -50,7 +52,11 @@ public class ViewContentController extends HttpServlet {
                 }
                 break;
             case "/update":
-
+                try {
+                    updateContent(request,response);
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
                 break;
             default:
                 break;
@@ -77,7 +83,20 @@ public class ViewContentController extends HttpServlet {
         int Id = Integer.parseInt(request.getParameter("Id"));
         ViewContent existingContent = viewContentDAO.selectContent(Id);
         request.setAttribute("content",existingContent);
+        request.setAttribute("Id",Id);
         RequestDispatcher dispatcher=request.getRequestDispatcher("Edit_Content.tiles");
         dispatcher.forward(request,response);
+    }
+    private void updateContent(HttpServletRequest request, HttpServletResponse response)
+            throws SQLException, IOException {
+        int id = (int)request.getAttribute("Id");
+        String title = request.getParameter("Title");
+        String brief = request.getParameter("Brief");
+        String content = request.getParameter("Content");
+        String updateTime = new SimpleDateFormat("dd:MM:yyyy_HH:mm:ss").format(Calendar.getInstance().getTime());
+
+        ViewContent existingContent = new ViewContent(title, brief, id,updateTime);
+        viewContentDAO.updateContent(existingContent);
+        response.sendRedirect("view");
     }
 }

@@ -23,6 +23,7 @@ public class ViewContentDAO {
     private static final String DELETE_CONTENTS_SQL = "DELETE FROM Content WHERE Id = ?";
     private static final String SELECT_ALL_CONTENTS = "SELECT * FROM Content";
     private static final String SELECT_CONTENT_BY_ID = "SELECT Title, Brief, Content, CreateDate, UpdateTime, AuthorId FROM Content WHERE Id = ?";
+    private static final String UPDATE_CONTENT_SQL = "UPDATE Content set Title = ?,Brief= ?, Content =? , UpdateTime =? where id = ?;";
 
     protected Connection getConnection(){
         Connection connection = null;
@@ -86,11 +87,24 @@ public class ViewContentDAO {
                 String title = rs.getString("Title");
                 String brief = rs.getString("Brief");
                 String content = rs.getString("Content");
-                viewcontent = new ViewContent(id, title, brief, content);
+                viewcontent = new ViewContent( title, brief, content, id);
             }
         } catch (SQLException e) {
             e.printStackTrace();
         }
         return viewcontent;
+    }
+    public boolean updateContent(ViewContent viewContent) throws SQLException {
+        boolean rowUpdated;
+        try (Connection connection = getConnection(); PreparedStatement statement = connection.prepareStatement(UPDATE_CONTENT_SQL);) {
+            statement.setString(1, viewContent.getTitle());
+            statement.setString(2, viewContent.getBrief());
+            statement.setString(3, viewContent.getContent());
+            statement.setString(4, viewContent.getUpdateTime());
+            statement.setInt(5, viewContent.getId());
+
+            rowUpdated = statement.executeUpdate() > 0;
+        }
+        return rowUpdated;
     }
 }
