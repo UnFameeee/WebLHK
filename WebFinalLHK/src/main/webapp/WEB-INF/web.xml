@@ -51,4 +51,14 @@
         <url-pattern>/add</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>EditProfileController</servlet-name>
+        <servlet-class>com.unfame.Web.EditProfileController</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>EditProfileController</servlet-name>
+        <url-pattern>/editProfile</url-pattern>
+    </servlet-mapping>
+
 </web-app>

@@ -18,4 +18,9 @@
         <put-attribute name="title" value="View Content" />
         <put-attribute name="body" value="/Views/viewContent.jsp" />
     </definition>
+
+    <definition name="Edit_Profile" extends="defaultLayout">
+        <put-attribute name="title" value="Edit Profile" />
+        <put-attribute name="body" value="/Views/editProfile.jsp" />
+    </definition>
 </tiles-definitions>

@@ -1,7 +1,7 @@
 
 <body>
     <div class="add-content">
-        <form  class="form-content" id="addContent-form"  action="<%=request.getContextPath()%>/addContent" method="post" >
+            <form  class="form-content" id="addContent-form"  action="<%=request.getContextPath()%>/addContent" method="post" >
             <h1>Add Content</h1>
             <hr>
 
