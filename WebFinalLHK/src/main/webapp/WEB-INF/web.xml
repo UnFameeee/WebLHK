@@ -42,15 +42,35 @@
     </servlet-mapping>
 
     <servlet>
+        <servlet-name>ViewContentControllerEdit</servlet-name>
+        <servlet-class>com.unfame.Web.ViewContentController</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>ViewContentControllerEdit</servlet-name>
+        <url-pattern>/showEdit</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
         <servlet-name>AddContentController</servlet-name>
         <servlet-class>com.unfame.Web.AddContentController</servlet-class>
     </servlet>
 
     <servlet-mapping>
-        <servlet-name>AddContentController</servlet-name>
+        <servlet-name>AddContentControllerShow</servlet-name>
         <url-pattern>/add</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>AddContentControllerShow</servlet-name>
+        <servlet-class>com.unfame.Web.AddContentController</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>AddContentController</servlet-name>
+        <url-pattern>/showAdd</url-pattern>
+    </servlet-mapping>
+  
     <servlet>
         <servlet-name>EditProfileController</servlet-name>
         <servlet-class>com.unfame.Web.EditProfileController</servlet-class>

@@ -2,6 +2,7 @@ CREATE DATABASE WebLHK;
 USE WebLHK;
 
 Drop table Member;
+Drop table Content;
 
 CREATE TABLE Member(
 	Id int PRIMARY KEY,
@@ -18,14 +19,14 @@ CREATE TABLE Member(
 
 CREATE TABLE Content(
 	Id int PRIMARY KEY,
-    Title nvarchar(50),
-    Brief nvarchar(50),
-    Content nvarchar(50),
+    Title nvarchar(2000),
+    Brief nvarchar(2000),
+    Content nvarchar(2000),
     CreateDate nvarchar(50),
     UpdateTime nvarchar(50),
-    AuthorId nvarchar(50)
+    AuthorId int
 );
 
 INSERT INTO Member VALUES(1, 'Nguyen', 'lmao', 'user',  'pass', 12345678, 'email', 'descrip', 'date', 'time');
-INSERT INTO Content VALUES(1, 'Title' 'Brief', 'Content', 'Date', 'Time', 1);
-INSERT INTO Content VALUES(2, 'Title2' 'Brief2', 'Content2', 'Date2', 'Time2', 1);
+INSERT INTO Content VALUES(1, 'Title', 'Brief', 'Content', 'Date', 'Time', 1);
+INSERT INTO Content VALUES(2, 'Title2', 'Brief2', 'Content2', 'Date2', 'Time2', 1);

@@ -6,8 +6,8 @@
         <title>Register Page</title>
     </head>
 
-    <body>
-        <form id="register-form" method="post">
+   <body>
+        <form id="register-form" method="post" action="">
             <div class="register-container">
 
                 <div class="register-header">
@@ -15,19 +15,23 @@
                 </div>
 
                 <div class="register-content">
-                    <input class="register-textbox" id="" name="username" type="username" placeholder="Username">
+                    <input class="register-textbox invalid" id="username" name="username" type="text" placeholder="Username">
+                    <span class="error-message"></span>
                 </div>
     
                 <div class="register-content">
                     <input class="register-textbox" id="email" name="email" type="text" placeholder="E-mail">
+                    <span class="error-message"></span>
                 </div>
     
                 <div class="register-content">
                     <input class="register-textbox" id="password" name="password" type="password" placeholder="Password">
+                    <span class="error-message"></span>
                 </div>
 
                 <div class="register-content">
                     <input class="register-textbox" id="repassword" name="repassword" type="password" placeholder="Re Password">
+                    <span class="error-message"></span>
                 </div>
     
                 <div class="register-content">
@@ -40,5 +44,25 @@
             </div>
         </form>        
     </body>
+
+    <script type="text/javascript" src="${pageContext.request.contextPath}/Views/Effect/Login_Register.js"> </script>
+    <script>
+        Validator({
+            form:'#register-form',
+            error: '.error-message',
+            rules: [
+                Validator.isRequired('#username'),
+                Validator.needLength('#username', 3, 30),
+                Validator.isEmail('#email'),
+                Validator.needLength('#email', 5, 50),
+                Validator.isRequired('#password'),
+                Validator.needLength('#password', 8, 30),
+                Validator.isRequired('#repassword'),
+                Validator.isConfirmed('#repassword', function(){
+                    return document.querySelector('#password').value;
+                })
+            ]
+        })
+    </script>
 
 </html>

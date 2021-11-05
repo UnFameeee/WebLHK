@@ -2,20 +2,20 @@
 #login-form{
     width: 30vw;
     height: 45vh;
-    margin-right: auto;
-    margin-left: auto;
+    margin: 0 auto;
     margin-top: 20vh;
     border: 2px solid #CCCCCC;
     border-radius: 4px;
-
+   
 }
 
-.login-container{
-    padding: 2vh 2vw;
+.login-container{ 
+    padding: 2vh 2vw; 
 }
 
 .login-content{
     margin-bottom: 3vh;
+    position: relative;
 }
 
 .login-header{
@@ -35,17 +35,27 @@
     text-indent: 15px;
 }
 
+.error-message{
+    color:red;
+    font-size: 22px;
+}
+
 .login-checkbox{
-    margin-left: 0;
+    margin-left: 0px;
     background: #DEDEDE;
+}
+
+.login-content.invalid .login-textbox{
+    border-color: red;
 }
 
 #login-button{
     width: 25.5vw;
     height: 6vh;
     color: white;
+    font-size: 20px;
     background-color: rgb(92, 184, 92);
-    border: 0;
+    border: 0px;
     border-radius: 5px;
     font-size: 22px;
     font-weight: 600;
@@ -55,15 +65,14 @@
 #register-form{
     width: 30vw;
     height: 55vh;
-    margin-left: auto;
-    margin-right: auto;
+    margin: 0 auto;
     margin-top: 15vh;
     border: 2px solid #CCCCCC;
     border-radius: 4px;
 }
 
-.register-container{
-    padding: 2vh 2vw;
+.register-container{ 
+    padding: 2vh 2vw; 
 }
 
 .register-content{
@@ -87,23 +96,25 @@
     text-indent: 15px;
 }
 
+.register-content.invalid .register-textbox{
+    border-color: red;
+}
+
 .register-checkbox{
-    margin-left: 0;
+    margin-left: 0px;
 }
 
 #register-button{
     width: 25.5vw;
     height: 6vh;
     color: white;
+    font-size: 20px;
     background-color: rgb(92, 184, 92);
-    border: 0;
+    border: 0px;
     border-radius: 5px;
     font-size: 22px;
     font-weight: 600;
 }
-
-
-
 
 /* -------------------- Edit Profile - Wibu -------------------- */
 
@@ -315,6 +326,71 @@ html {
     margin-top: 1px;
     margin-bottom: 10px;
 }
+
+/*Edit Content*/
+
+edit-content{
+    padding-top: 50px;
+    margin-left: 250px;
+    padding-left: 2%;
+    /*height: 100%;*/
+}
+
+.edit-content .form-content hr{
+    width:98%;
+}
+
+.edit-content .form-content .container {
+    width: 98%;
+    margin-top: 30px;
+}
+
+.edit-content .form-content .container h2{
+    font-size: 16px;
+    font-weight: 300;
+    position: relative;
+    left: 20px;
+    top: 10px;
+}
+
+.edit-content .form-content .container .edit-content-title{
+    margin-top: 30px;
+    border: 1px solid #CCCCCC;
+    width: 100%;
+    height: 40px;
+    background-color: #F5F5F5;
+}
+
+.edit-content .form-content .container .input-content{
+    border: 1px solid #CCCCCC;
+    padding-left: 15px;
+    padding-bottom: 10px;
+}
+
+.edit-content .form-content .container .input-content .input-field{
+    margin: 20px 50px 10px 5px;
+}
+
+.edit-content .form-content .container .input-content .input-field label{
+    font-weight: 550;
+}
+
+.edit-content .form-content .container .input-content .input-field input, textarea{
+    width: 95%;
+    padding: 5px 5px 5px 5px;
+    border: 1px solid #CCCCCC;
+    border-radius: 3px;
+    margin-top: 5px;
+}
+
+.edit-content .form-content .container .input-content .input-field .title {
+    height: 35px;
+}
+
+.edit-content .form-content .container .input-content .input-field .brief {
+    height: 150px;
+}
+
 /* -------------------- View Content - Thắng -------------------- */
 body{
     margin: 0;

@@ -1,7 +1,7 @@
 
 <body>
     <div class="add-content">
-            <form  class="form-content" id="addContent-form"  action="<%=request.getContextPath()%>/addContent" method="post" >
+        <form  class="form-content" id="addContent-form"  action="<%=request.getContextPath()%>/add" method="post" >
             <h1>Add Content</h1>
             <hr>
 
@@ -32,8 +32,8 @@
                         </div>
                     </div>
                     <div class="button-field">
-                            <input type="submit" value="Submit Button">
-                            <input type="reset" value="Reset Button">
+                        <input type="submit" value="Submit Button">
+                        <input type="reset" value="Reset Button">
                     </div>
                 </div>
             </div>

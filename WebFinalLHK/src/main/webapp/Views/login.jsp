@@ -6,8 +6,8 @@
         <title>Login Page</title>
     </head>
 
-    <body>
-        <form id="login-form" method="post">
+      <body>
+        <form id="login-form" method="post" acion="get">
             <div class="login-container">
 
                 <div class="login-header">
@@ -16,14 +16,17 @@
     
                 <div class="login-content">
                     <input class="login-textbox" id="email" name="email" type="text" placeholder="E-mail">
+                    <span class="error-message"></span>
                 </div>
     
                 <div class="login-content">
-                    <input class="login-textbox" id="password" name="password" type="password" placeholder="Password">
+                    <input class="login-textbox" id="password" name="password" type="password" placeholder="Password">                   
+                    <span class="error-message"></span>
                 </div>
     
                 <div class="login-content">
                     <input class="login-checkbox" type="checkbox" name="remember_me">
+                    <span class="error-message"></span>
                     <label>Remember me</label>
                 </div>
     
@@ -37,5 +40,19 @@
             </div>
         </form>        
     </body>
+
+    <script type="text/javascript" src="${pageContext.request.contextPath}/Views/Effect/Login_Register.js"> </script>
+    <script>
+        Validator({
+            form:'#login-form',
+            error: '.error-message',
+            rules: [
+                Validator.isEmail('#email'),
+                Validator.isRequired('#password'),
+                Validator.needLength('#email', 5, 50),
+                Validator.needLength('#password', 8, 30),
+            ]
+        })
+    </script>
 
 </html>

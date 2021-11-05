@@ -42,6 +42,16 @@ public class ViewContentController extends HttpServlet {
                     e.printStackTrace();
                 }
                 break;
+            case "/showEdit":
+                try {
+                    showEditForm(request,response);
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+                break;
+            case "/update":
+
+                break;
             default:
                 break;
         }
@@ -61,5 +71,13 @@ public class ViewContentController extends HttpServlet {
 //        RequestDispatcher dispatcher = request.getRequestDispatcher("View_Content.tiles");
 //        dispatcher.forward(request,response);
         response.sendRedirect("view");
+    }
+
+    private void showEditForm(HttpServletRequest request, HttpServletResponse response) throws SQLException, ServletException, IOException{
+        int Id = Integer.parseInt(request.getParameter("Id"));
+        ViewContent existingContent = viewContentDAO.selectContent(Id);
+        request.setAttribute("content",existingContent);
+        RequestDispatcher dispatcher=request.getRequestDispatcher("Edit_Content.tiles");
+        dispatcher.forward(request,response);
     }
 }

@@ -4,8 +4,10 @@ public class ViewContent {
     private int id;
     private String Title;
     private String Brief;
-    private String CreatedDate;
     private String Content;
+    private String CreatedDate;
+    private String UpdateTime;
+    private String AuthorId;
 
     public ViewContent(int id, String title, String brief, String createdDate) {
         this.id = id;
@@ -18,6 +20,46 @@ public class ViewContent {
         Title = title;
         Brief = brief;
         CreatedDate = createdDate;
+    }
+
+    public ViewContent(int id, String title, String brief) {
+        this.id = id;
+        Title = title;
+        Brief = brief;
+    }
+
+    public ViewContent(int id, String title, String brief, String content, String createdDate, String updateTime, String authorId) {
+        this.id = id;
+        Title = title;
+        Brief = brief;
+        Content = content;
+        CreatedDate = createdDate;
+        UpdateTime = updateTime;
+        AuthorId = authorId;
+    }
+
+    public String getContent() {
+        return Content;
+    }
+
+    public void setContent(String content) {
+        Content = content;
+    }
+
+    public String getUpdateTime() {
+        return UpdateTime;
+    }
+
+    public void setUpdateTime(String updateTime) {
+        UpdateTime = updateTime;
+    }
+
+    public String getAuthorId() {
+        return AuthorId;
+    }
+
+    public void setAuthorId(String authorId) {
+        AuthorId = authorId;
     }
 
     //get set id

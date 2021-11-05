@@ -16,7 +16,7 @@ public class AddContentDAO {
     String userid = "root";
     String password = "root";
 
-    private static final String INSERT_CONTENT_SQL = "INSERT INTO Content" + " (Title, Brief, Content,CreateDate) VALUES" + " (? ,? ,?,?);";
+    private static final String INSERT_CONTENT_SQL = "INSERT INTO Content" + " (Id, Title, Brief, Content, CreateDate, UpdateTime, AuthorId) VALUES" + " (?, ?, ?, ?, ?, ?, ?);";
     //private static final String INSERT_CONTENT_SQL = "INSERT INTO Content" + " (Title, Brief, Content, CreateDate, UpdateTime, AuthorId) VALUES" + " (?, ? ,? ,? ,? ,?);";
     private static final String DELETE_CONTENTS_SQL = "DELETE FROM Content WHERE Id = ?";
     private static final String UPDATE_CONTENTS_SQL  = "UPDATE Content SET Title = ?, Brief = ?, Content = ?, CreateDate = ?, UpdateTime = ?, AuthorId = ? WHERE Id = ?";
@@ -40,10 +40,13 @@ public class AddContentDAO {
         System.out.println(INSERT_CONTENT_SQL);
         // try-with-resource statement will auto close the connection.
         try (Connection connection = getConnection(); PreparedStatement preparedStatement = connection.prepareStatement(INSERT_CONTENT_SQL)) {
-            preparedStatement.setString(1, content.getTitle());
-            preparedStatement.setString(2, content.getBrief());
-            preparedStatement.setString(3, content.getContent());
-            preparedStatement.setString(4, content.getCreatedDate());
+            preparedStatement.setInt(1, 10);
+            preparedStatement.setString(2, content.getTitle());
+            preparedStatement.setString(3, content.getBrief());
+            preparedStatement.setString(4, content.getContent());
+            preparedStatement.setString(5, content.getCreatedDate());
+            preparedStatement.setString(6, "Test");
+            preparedStatement.setInt(7, 1);
 //            preparedStatement.setString(5, content.getUpdateTime());
 //            preparedStatement.setString(6, content.getAuthorId());
             System.out.println(preparedStatement);

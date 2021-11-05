@@ -19,11 +19,10 @@ public class ViewContentDAO {
     String password = "root";
 
 
-    private static final String INSERT_CONTENT_SQL = "INSERT INTO Content" + " (Title, Brief, Content, CreateDate, UpdateTime, AuthorId) VALUES" + " (?, ? ,? ,? ,? ,? ,?);";
+//    private static final String INSERT_CONTENT_SQL = "INSERT INTO Content" + " (Title, Brief, Content, CreateDate, UpdateTime, AuthorId) VALUES" + " (?, ? ,? ,? ,? ,? ,?);";
     private static final String DELETE_CONTENTS_SQL = "DELETE FROM Content WHERE Id = ?";
-    private static final String UPDATE_CONTENTS_SQL  = "UPDATE Content SET Title = ?, Brief = ?, Content = ?, CreateDate = ?, UpdateTime = ?, AuthorId = ? WHERE Id = ?";
     private static final String SELECT_ALL_CONTENTS = "SELECT * FROM Content";
-    private static final String SELECT_CONTENT_BY_ID = "SELECT Title, Brief, Content, CreateDate, UpdateTime, AuthorId FROM Content WHERE AuthorId = ?";
+    private static final String SELECT_CONTENT_BY_ID = "SELECT Title, Brief, Content, CreateDate, UpdateTime, AuthorId FROM Content WHERE Id = ?";
 
     protected Connection getConnection(){
         Connection connection = null;
@@ -69,5 +68,29 @@ public class ViewContentDAO {
             rowDeleted = statement.executeUpdate() > 0;
         }
         return rowDeleted;
+    }
+
+    public ViewContent selectContent(int id){
+        ViewContent viewcontent = null;
+        // Step 1: Establishing a Connection
+        try (Connection connection = getConnection();
+             // Step 2:Create a statement using connection object
+             PreparedStatement preparedStatement = connection.prepareStatement(SELECT_CONTENT_BY_ID);) {
+            preparedStatement.setInt(1, id);
+            System.out.println(preparedStatement);
+            // Step 3: Execute the query or update query
+            ResultSet rs = preparedStatement.executeQuery();
+
+            // Step 4: Process the ResultSet object.
+            while (rs.next()) {
+                String title = rs.getString("Title");
+                String brief = rs.getString("Brief");
+                String content = rs.getString("Content");
+                viewcontent = new ViewContent(id, title, brief, content);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return viewcontent;
     }
 }
