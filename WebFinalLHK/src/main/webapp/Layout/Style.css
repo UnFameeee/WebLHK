@@ -416,10 +416,10 @@ header{
 }
 
 .logout_btn{
+    position: relative;
     padding: 5px;
     /* background: #337AB7; */
     color: #337AB7;
-    text-decoration: none;
     float: right;
     margin-top: -30px;
     margin-right: 0;
@@ -427,8 +427,46 @@ header{
     font-size: 15px;
     transition-property: background;
 }
+.logout_btn>a {
+    text-decoration: none;
+    color: #337AB7;
+}
 .logout_btn:hover{
     color: #49a1ee;
+}
+
+.logout_btn:hover .subnav{
+    display: inline-block;
+}
+
+.logout_btn .subnav {
+    display: none;
+    position: absolute;
+    top: calc(100%);
+    right: 0;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    list-style-type: none;
+    text-decoration: none;
+    min-width: 120px;
+}
+.logout_btn .subnav li {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    list-style-type: none;
+    color: #000;
+    height: 25px;
+    font-size: 12px;
+}
+
+.logout_btn .subnav li:hover {
+    opacity: 0.8;
+}
+
+.logout_btn .subnav li a {
+    color: #000;
+    text-decoration: none;
 }
 
 .sidebar{
