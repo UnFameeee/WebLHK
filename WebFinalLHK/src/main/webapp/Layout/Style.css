@@ -2,20 +2,20 @@
 #login-form{
     width: 30vw;
     height: 45vh;
-    margin-right: auto;
-    margin-left: auto;
+    margin: 0 auto;
     margin-top: 20vh;
     border: 2px solid #CCCCCC;
     border-radius: 4px;
-
+   
 }
 
-.login-container{
-    padding: 2vh 2vw;
+.login-container{ 
+    padding: 2vh 2vw; 
 }
 
 .login-content{
     margin-bottom: 3vh;
+    position: relative;
 }
 
 .login-header{
@@ -35,17 +35,27 @@
     text-indent: 15px;
 }
 
+.error-message{
+    color:red;
+    font-size: 22px;
+}
+
 .login-checkbox{
-    margin-left: 0;
+    margin-left: 0px;
     background: #DEDEDE;
+}
+
+.login-content.invalid .login-textbox{
+    border-color: red;
 }
 
 #login-button{
     width: 25.5vw;
     height: 6vh;
     color: white;
+    font-size: 20px;
     background-color: rgb(92, 184, 92);
-    border: 0;
+    border: 0px;
     border-radius: 5px;
     font-size: 22px;
     font-weight: 600;
@@ -55,15 +65,14 @@
 #register-form{
     width: 30vw;
     height: 55vh;
-    margin-left: auto;
-    margin-right: auto;
+    margin: 0 auto;
     margin-top: 15vh;
     border: 2px solid #CCCCCC;
     border-radius: 4px;
 }
 
-.register-container{
-    padding: 2vh 2vw;
+.register-container{ 
+    padding: 2vh 2vw; 
 }
 
 .register-content{
@@ -87,23 +96,25 @@
     text-indent: 15px;
 }
 
+.register-content.invalid .register-textbox{
+    border-color: red;
+}
+
 .register-checkbox{
-    margin-left: 0;
+    margin-left: 0px;
 }
 
 #register-button{
     width: 25.5vw;
     height: 6vh;
     color: white;
+    font-size: 20px;
     background-color: rgb(92, 184, 92);
-    border: 0;
+    border: 0px;
     border-radius: 5px;
     font-size: 22px;
     font-weight: 600;
 }
-
-
-
 
 /* -------------------- Edit Profile - Wibu -------------------- */
 
