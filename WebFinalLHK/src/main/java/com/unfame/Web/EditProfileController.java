@@ -11,7 +11,7 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
 
-@WebServlet(name = "EditProfileController", value = "/EditProfileController")
+@WebServlet("/EditProfile")
 public class EditProfileController extends HttpServlet {
     private EditProfileDAO editProfileDAO;
 
@@ -27,14 +27,14 @@ public class EditProfileController extends HttpServlet {
         String action = request.getServletPath();
 
         switch (action){
-            case "/getProfile":
+            case "/showEditProfile":
                 try {
                     getProfile(request, response);
                 } catch (SQLException e) {
                     e.printStackTrace();
                 }
                 break;
-            case "/updateProfile":
+            case "/editProfile":
                 try {
                     updateProfile(request, response);
                 } catch (SQLException e) {
@@ -42,11 +42,6 @@ public class EditProfileController extends HttpServlet {
                 }
                 break;
             default:
-                try {
-                    getProfile(request, response);
-                } catch (SQLException e) {
-                    e.printStackTrace();
-                }
                 break;
         }
     }
