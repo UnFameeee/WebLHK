@@ -33,7 +33,7 @@
                         <td><%= listContent.get(i).getBrief() %></td>
                         <td><%= listContent.get(i).getCreatedDate() %></td>
                         <td>
-                            <a href="<%=request.getContextPath()%>/edit?Id=<%=listContent.get(i).getId()%>">Edit</a>
+                            <a href="<%=request.getContextPath()%>/showEdit?Id=<%=listContent.get(i).getId()%>">Edit</a>
                             <a href="<%=request.getContextPath()%>/delete?Id=<%=listContent.get(i).getId()%>">Delete</a>
                         </td>
                         <%-- td><%= new SimpleDateFormat("dd/MM/yyyy HH:mm").format(lstContentsByPage.get(i).getCreateDate()) %></td>--%>

@@ -42,7 +42,7 @@ public class ViewContentController extends HttpServlet {
                     e.printStackTrace();
                 }
                 break;
-            case "/edit":
+            case "/showEdit":
                 try {
                     showEditForm(request,response);
                 } catch (SQLException e) {
@@ -76,8 +76,8 @@ public class ViewContentController extends HttpServlet {
     private void showEditForm(HttpServletRequest request, HttpServletResponse response) throws SQLException, ServletException, IOException{
         int Id = Integer.parseInt(request.getParameter("Id"));
         ViewContent existingContent = viewContentDAO.selectContent(Id);
-        RequestDispatcher dispatcher=request.getRequestDispatcher("Edit_Content.tiles");
         request.setAttribute("content",existingContent);
+        RequestDispatcher dispatcher=request.getRequestDispatcher("Edit_Content.tiles");
         dispatcher.forward(request,response);
     }
 }
