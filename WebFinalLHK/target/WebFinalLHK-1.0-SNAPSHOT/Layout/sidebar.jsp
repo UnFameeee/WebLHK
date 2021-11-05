@@ -14,7 +14,7 @@
                 <a href="<%=request.getContextPath()%>/view"><i class="far fa-calendar-alt"></i><span> View contents</span></a>
             </form>
             <form action="" method="post">
-                <a href="Add_Content.tiles"><i class="far fa-edit"></i><span>Form content</span></a>
+                <a href="<%=request.getContextPath()%>/showAdd"><i class="far fa-edit"></i><span>Form content</span></a>
             </form>
         </div>
     </div>
