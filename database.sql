@@ -18,10 +18,10 @@ CREATE TABLE Member(
 );
 
 CREATE TABLE Content(
-	Id int PRIMARY KEY,
-    Title nvarchar(2000),
-    Brief nvarchar(2000),
-    Content nvarchar(2000),
+	Id int PRIMARY KEY auto_increment,
+    Title nvarchar(200),
+    Brief nvarchar(150),
+    Content nvarchar(1000),
     CreateDate nvarchar(50),
     UpdateTime nvarchar(50),
     AuthorId int

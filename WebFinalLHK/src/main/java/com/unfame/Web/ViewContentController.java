@@ -88,13 +88,14 @@ public class ViewContentController extends HttpServlet {
         dispatcher.forward(request,response);
     }
     private void updateContent(HttpServletRequest request, HttpServletResponse response)
-            throws SQLException, IOException {
-        int id = (int)request.getAttribute("Id");
-        String title = request.getParameter("Title");
-        String brief = request.getParameter("Brief");
-        String content = request.getParameter("Content");
-        String updateTime = new SimpleDateFormat("dd:MM:yyyy_HH:mm:ss").format(Calendar.getInstance().getTime());
+            throws ServletException, SQLException, IOException {
+        System.out.println("update was here");
 
+        int id = Integer.parseInt((request.getParameter("Id")));
+        String title = request.getParameter("title");
+        String brief = request.getParameter("brief");
+        String content = request.getParameter("content");
+        String updateTime = new SimpleDateFormat("dd:MM:yyyy_HH:mm:ss").format(Calendar.getInstance().getTime());
         ViewContent existingContent = new ViewContent(title, brief, id,updateTime);
         viewContentDAO.updateContent(existingContent);
         response.sendRedirect("view");
