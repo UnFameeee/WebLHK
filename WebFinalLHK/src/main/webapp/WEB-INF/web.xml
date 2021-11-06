@@ -54,6 +54,16 @@
 
     <!-- Add Content -->
     <servlet>
+        <servlet-name>ViewContentControllerUpdate</servlet-name>
+        <servlet-class>com.unfame.Web.ViewContentController</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>ViewContentControllerUpdate</servlet-name>
+        <url-pattern>/update</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
         <servlet-name>AddContentController</servlet-name>
         <servlet-class>com.unfame.Web.AddContentController</servlet-class>
     </servlet>

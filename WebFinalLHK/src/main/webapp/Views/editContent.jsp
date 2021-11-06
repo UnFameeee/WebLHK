@@ -1,6 +1,7 @@
 <%@ page import="java.util.List" %>
 <%@ page import="com.unfame.Model.ViewContent" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <body>
 <div class="edit-content">
     <form  class="form-content" id="editContent-form"  action="<%=request.getContextPath()%>/update" method="post" >
@@ -14,6 +15,7 @@
             <%
 
                 ViewContent existingContent = (ViewContent)request.getAttribute("content");
+                int Id = (int) request.getAttribute("Id");
             %>
             <div class="input-content">
                 <div class="input-field">
@@ -27,7 +29,7 @@
                 <div class="input-field">
                     <label for="">Brief<br></label>
                     <textarea id ="input_brief" class="brief" name="brief" rows="4" cols="50"
-                              value="<%= existingContent.getBrief()%>"> </textarea>
+                             > <%= existingContent.getBrief()%></textarea>
                     <div class="invalid-Message">
                         <span class="form-message"></span>
                     </div>
@@ -35,15 +37,18 @@
                 <div class="input-field">
                     <label for="">Content<br></label>
                     <textarea id="input_content" class="content" name="content" rows="4" cols="50"
-                              value="<%= existingContent.getContent()%>"> </textarea>
+                              > <%= existingContent.getContent()%></textarea>
                     <div class="invalid-Message">
                         <span class="form-message"></span>
                     </div>
                 </div>
                 <div class="button-field">
-                    <input type="submit" value="Submit Button">
+                    <input type="submit" name="submit" value="Submit Button">
                     <input type="reset" value="Reset Button">
                 </div>
+                <c:if test="${param.submit !=null}">
+                    <% request.setAttribute("Id",Id); %>
+                </c:if>
             </div>
         </div>
     </form>
