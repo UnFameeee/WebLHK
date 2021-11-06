@@ -18,7 +18,7 @@ CREATE TABLE Member(
 );
 
 CREATE TABLE Content(
-	Id int PRIMARY KEY,
+	Id int PRIMARY KEY auto_increment,
     Title nvarchar(200),
     Brief nvarchar(150),
     Content nvarchar(1000),
