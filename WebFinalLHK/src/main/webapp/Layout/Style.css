@@ -442,7 +442,7 @@ header{
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
     list-style-type: none;
     text-decoration: none;
-    min-width: 120px;
+    min-width: 160px;
 }
 .logout_btn .subnav li {
     display: flex;
@@ -450,8 +450,17 @@ header{
     align-items: center;
     list-style-type: none;
     color: #000;
-    height: 25px;
-    font-size: 12px;
+    height: 40px;
+    font-size: 15px;
+}
+
+.logout_btn .subnav li.subnav-top{
+    border-top: 1px solid #CCCCCC;
+    border-left: 1px solid #CCCCCC;
+    border-right: 1px solid #CCCCCC;
+}
+.logout_btn .subnav li.subnav-bottom{
+    border: 1px solid #CCCCCC;
 }
 
 .logout_btn .subnav li:hover {
@@ -482,9 +491,17 @@ header{
     text-decoration: none;
     padding-left: 15px;
     box-sizing: border-box;
-    border: 1px solid #CCCCCC;
     transition: 0.5s;
     transition-property: background;
+}
+
+.sidebar a.sidebar-top {
+    border-top: 1px solid #CCCCCC;
+}
+
+.sidebar a.sidebar-bottom {
+    border-top: 1px solid #CCCCCC;
+    border-bottom: 1px solid #CCCCCC;
 }
 
 .sidebar a:hover{
@@ -608,7 +625,6 @@ header{
 }
 
 #View-content-list thead th{
-    padding-left: 10px;
     border: 1px solid #DDDDDD;
 }
 
@@ -617,6 +633,42 @@ header{
 }
 
 #View-content-list tbody td{
-    padding-left: 10px;
     border: 1px solid #DDDDDD;
+    padding-left: 1.2%;
+}
+
+.view-content-list-container #View-content-list th.id {
+    width: 20px;
+}
+.view-content-list-container #View-content-list th.title {
+    width: 120px;
+}
+.view-content-list-container #View-content-list th.brief {
+    width: 400px;
+}
+.view-content-list-container #View-content-list th.created-date {
+    width: 60px;
+}
+.view-content-list-container #View-content-list th.actions {
+    width: 70px;
+}
+
+.view-content-list-container .btn-field{
+    display: flex;
+    flex-direction: row;
+}
+.view-content-list-container .btn-field a {
+    margin-top: 18px;
+    margin-left: 10px;
+    margin-right: 10px;
+    font-size: 15px;
+}
+.view-content-list-container .btn-field input{
+    margin-top: 10px;
+    background: #FFFFFF;
+    border: 1px solid #CCCCCC;
+    border-radius: 4px;
+    height: 30px;
+    width: 80px;
+    font-size: 12px;
 }

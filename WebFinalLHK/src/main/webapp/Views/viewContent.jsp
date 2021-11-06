@@ -18,7 +18,7 @@
             <div class="view-content-list-container">
                 <table id="View-content-list" class="table" border="1">
                     <thead>
-                        <th class="#">#</th>
+                        <th class="id">#</th>
                         <th class="title">Title</th>
                         <th class="brief">Brief</th>
                         <th class="created-date">Created Date</th>
@@ -45,6 +45,11 @@
                     <% }%>
                     </tbody>
                 </table>
+                <div class="btn-field">
+                    <input type="submit" value="Previous">
+                    <a href="">1</a>
+                    <input type="submit" value="Next">
+                </div>
             </div>
         </div>
         <!-- Content end -->
