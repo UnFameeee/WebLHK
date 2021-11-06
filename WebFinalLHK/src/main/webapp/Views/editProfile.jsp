@@ -1,4 +1,5 @@
 <%@ page import="com.unfame.Model.EditProfile" %>
+
 <%
     EditProfile profile = (EditProfile)request.getAttribute("profile");
 %>
@@ -11,7 +12,8 @@
             <div class="heading-form-profile">
                 <h5 class="text-heading">Profile Form Elements</h5>
             </div>
-            <form action="<%=request.getContextPath()%>/editProfile?Id=<%=profile.getId()%>" class="form-profile">
+            <form class="form-profile" action="<%=request.getContextPath()%>/editProfile?Id=<%=profile.getId()%>" method="POST">
+
                 <div class="row">
                     <label for="profile-first-name" class="profile-label">First Name</label>
                     <input id="profile-first-name" type="text" class="profile-input" placeholder="Enter the first name" value="<%= profile.getFirstName() %>">
@@ -34,7 +36,6 @@
                 </div>
                 <input type="submit" value="Submit button" class="btn submit-btn">
                 <input type="button" value="Reset button" class="btn reset-btn">
-                <a href="<%=request.getContextPath()%>/editProfile?Id=<%=profile.getId()%>">TestHref</a>
             </form>
         </div>
     </div>
