@@ -1,10 +1,12 @@
 <%@ page import="java.util.List" %>
 <%@ page import="com.unfame.Model.ViewContent" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
+<%
+    ViewContent existingContent = (ViewContent)request.getAttribute("content");
+%>
 <body>
 <div class="edit-content">
-    <form  class="form-content" id="editContent-form"  action="<%=request.getContextPath()%>/update" method="post" >
+    <form  class="form-content" id="editContent-form"  action="<%=request.getContextPath()%>/update?Id=<%=existingContent.getId()%>" method="post" >
         <h1>Edit Content</h1>
         <hr>
 
@@ -12,11 +14,7 @@
             <div class="edit-content-title">
                 <h2>Content Form Elements</h2>
             </div>
-            <%
 
-                ViewContent existingContent = (ViewContent)request.getAttribute("content");
-                int Id = (int) request.getAttribute("Id");
-            %>
             <div class="input-content">
                 <div class="input-field">
                     <label for="">Title<br></label>
@@ -46,9 +44,9 @@
                     <input type="submit" name="submit" value="Submit Button">
                     <input type="reset" value="Reset Button">
                 </div>
-                <c:if test="${param.submit !=null}">
-                    <% request.setAttribute("Id",Id); %>
-                </c:if>
+<%--                <c:if test="${param.submit !=null}">--%>
+<%--                    <% request.setAttribute("Id",Id); %>--%>
+<%--                </c:if>--%>
             </div>
         </div>
     </form>
