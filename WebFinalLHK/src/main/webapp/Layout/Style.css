@@ -129,27 +129,21 @@ html {
 } */
 
 #content {
-    height: 900px;
-    width: 1535px;
-    /* float: right; */
+    padding-top: 40px;
     margin-left: 250px;
+    padding-left: 2%;
 }
 
 #content .heading {
-    border-bottom: 2px solid #CCCCCC;
-    margin-left: 35px;
-    padding-top: 50px;
+    border-bottom: 1px solid #000;
+    width:98%;
 }
-
 
 #content .form-content {
     border: 1px solid #CCCCCC;
-    margin-top: 30px;
-    margin-left: 35px;
-}
-
-#content .form-content {
     background-color: #FFFFFF;
+    margin-top: 30px;
+    width:98%;
 }
 
 #content .form-content .heading-form-profile {
@@ -167,7 +161,7 @@ html {
 }
 
 #content .form-profile {
-    width: 80%;
+    width: 90%;
     margin: 4px;
     background-color: #FFFFFF;
     padding-left: 15px;
@@ -176,7 +170,6 @@ html {
 #content .form-profile {
     margin: 20px 50px 10px 0;
 }
-
 
 #content .form-profile .profile-label {
     margin: 4px;
@@ -193,7 +186,7 @@ html {
 }
 
 #content .form-profile #profile-description.profile-input {
-    height: 350px;
+    height: 120px;
 }
 
 #profile-email {
@@ -228,7 +221,7 @@ html {
 }
 
 .add-content{
-    padding-top: 50px;
+    padding-top: 40px;
     margin-left: 250px;
     padding-left: 2%;
     /*height: 100%;*/
@@ -330,7 +323,7 @@ html {
 /*Edit Content*/
 
 .edit-content{
-    padding-top: 50px;
+    padding-top: 40px;
     margin-left: 250px;
     padding-left: 2%;
     /*height: 100%;*/
@@ -399,6 +392,7 @@ body{
 }
 
 header{
+    position: fixed;
     background-color: #F8F8F8;
     padding: 20px;
     width: 100%;
@@ -471,7 +465,7 @@ header{
 
 .sidebar{
     background-color: #F8F8F8;
-    margin-top: 0;
+    margin-top: 60px;
     padding-top: 30px;
     position: fixed;
     left: 0;
@@ -542,7 +536,7 @@ header{
 }
 
 .view-content{
-    padding-top: 50px;
+    padding-top: 40px;
     margin-left: 250px;
     padding-left: 2%;
 
@@ -556,7 +550,7 @@ header{
 }
 
 #loading{
-    /*padding-top: 50px;*/
+    /*padding-top: 40px;*/
     margin-top: 30px;
     margin-left: 250px;
     margin-bottom: -60px;

@@ -16,11 +16,11 @@
 
                 <div class="row">
                     <label for="profile-first-name" class="profile-label">First Name</label>
-                    <input id="profile-first-name" type="text" class="profile-input" placeholder="Enter the first name" value="<%= profile.getFirstName() %>">
+                    <input name="Firstname" id="profile-first-name" type="text" class="profile-input" placeholder="Enter the first name" value="<%= profile.getFirstName() %>">
                 </div>
                 <div class="row">
                     <label for="profile-last-name" class="profile-label">Last Name</label>
-                    <input id="profile-last-name" type="text" class="profile-input" placeholder="Enter the last name" value="<%= profile.getLastName() %>">
+                    <input name="Lastname" id="profile-last-name" type="text" class="profile-input" placeholder="Enter the last name" value="<%= profile.getLastName() %>">
                 </div>
                 <div class="row">
                     <label for="profile-email" class="profile-label">Email</label>
@@ -28,11 +28,11 @@
                 </div>
                 <div class="row">
                     <label for="profile-phone" class="profile-label">Phone</label>
-                    <input id="profile-phone" type="text" class="profile-input" placeholder="Enter the phone number" value="<%= profile.getPhoneNumber() %>">
+                    <input name="Phone" id="profile-phone" type="text" class="profile-input" placeholder="Enter the phone number" value="<%= profile.getPhoneNumber() %>">
                 </div>
                 <div class="row">
                     <label for="profile-description" class="profile-label">Description</label>
-                    <textarea id="profile-description" rows="4" cols="50" class="profile-input"><%= profile.getDescription() %></textarea>
+                    <textarea name="Description" id="profile-description" rows="4" cols="50" class="profile-input"><%= profile.getDescription() %></textarea>
                 </div>
                 <input type="submit" value="Submit button" class="btn submit-btn">
                 <input type="button" value="Reset button" class="btn reset-btn">
