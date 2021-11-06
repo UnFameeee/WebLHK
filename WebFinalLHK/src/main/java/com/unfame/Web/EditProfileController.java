@@ -66,7 +66,6 @@ public class EditProfileController extends HttpServlet {
 
         EditProfile profile = new EditProfile(id, firstname, lastname, email, phone, description);
         editProfileDAO.updateProfile(profile);
-        response.sendRedirect("Profile");
+        response.sendRedirect("showEditProfile");
     }
-
 }
