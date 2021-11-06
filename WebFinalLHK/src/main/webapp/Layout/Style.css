@@ -129,7 +129,7 @@ html {
 } */
 
 #content {
-    padding-top: 40px;
+    padding-top: 100px;
     margin-left: 250px;
     padding-left: 2%;
 }
@@ -221,7 +221,7 @@ html {
 }
 
 .add-content{
-    padding-top: 40px;
+    padding-top: 100px;
     margin-left: 250px;
     padding-left: 2%;
     /*height: 100%;*/
@@ -323,7 +323,7 @@ html {
 /*Edit Content*/
 
 .edit-content{
-    padding-top: 40px;
+    padding-top: 100px;
     margin-left: 250px;
     padding-left: 2%;
     /*height: 100%;*/
@@ -536,7 +536,7 @@ header{
 }
 
 .view-content{
-    padding-top: 40px;
+    padding-top: 100px;
     margin-left: 250px;
     padding-left: 2%;
 
@@ -550,18 +550,17 @@ header{
 }
 
 #loading{
-    /*padding-top: 40px;*/
-    margin-top: 30px;
+    padding-top: 100px;
     margin-left: 250px;
-    margin-bottom: -60px;
     padding-left: 2%;
     visibility: visible;
     opacity: 1;
 }
 
 #loading.hide{
-    visibility: hidden;
-    opacity: 0;
+    display: none;
+    /*visibility: hidden;*/
+    /*opacity: 0;*/
 }
 
 #loading p{
