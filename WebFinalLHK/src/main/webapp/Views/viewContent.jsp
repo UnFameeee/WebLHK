@@ -1,6 +1,7 @@
 <%@ page import="com.unfame.Model.ViewContent" %>
 <%@ page import="java.util.List" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <html>
     <body>
         <div id="loading"><p>Loading...</p></div>
@@ -31,7 +32,8 @@
                         <td><%= listContent.get(i).getId() %></td>
                         <td><%= listContent.get(i).getTitle() %></td>
                         <td><%= listContent.get(i).getBrief() %></td>
-                        <td><%= listContent.get(i).getCreatedDate() %></td>
+<%--                        <td><%= listContent.get(i).getCreatedDate() %></td>--%>
+                        <td><%= listContent.get(i).getDate(listContent.get(i).getCreatedDate()) %> <br> <%= listContent.get(i).getTime(listContent.get(i).getCreatedDate()) %></td>
                         <td>
                             <a href="<%=request.getContextPath()%>/showEdit?Id=<%=listContent.get(i).getId()%>">Edit</a>
                             <a href="<%=request.getContextPath()%>/delete?Id=<%=listContent.get(i).getId()%>">Delete</a>
@@ -53,12 +55,7 @@
             </div>
         </div>
         <!-- Content end -->
-
-
         <script type="text/javascript" src="${pageContext.request.contextPath}/Views/Effect/ViewContent.js"></script>
 
-<%--        <script>--%>
-<%--            --%>
-<%--        </script>--%>
     </body>
 </html>

@@ -644,10 +644,10 @@ header{
     width: 120px;
 }
 .view-content-list-container #View-content-list th.brief {
-    width: 400px;
+    width: 430px;
 }
 .view-content-list-container #View-content-list th.created-date {
-    width: 60px;
+    width: 30px;
 }
 .view-content-list-container #View-content-list th.actions {
     width: 70px;
@@ -662,6 +662,7 @@ header{
     margin-left: 10px;
     margin-right: 10px;
     font-size: 15px;
+    text-decoration: none;
 }
 .view-content-list-container .btn-field input{
     margin-top: 10px;
@@ -671,4 +672,10 @@ header{
     height: 30px;
     width: 80px;
     font-size: 12px;
+}
+
+.view-content-list-container .btn-field input:hover{
+    cursor: pointer;
+    color: whitesmoke;
+    background: gray;
 }

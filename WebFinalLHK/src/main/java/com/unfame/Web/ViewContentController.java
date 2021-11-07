@@ -96,7 +96,7 @@ public class ViewContentController extends HttpServlet {
         String brief = request.getParameter("brief");
         String content = request.getParameter("content");
         String updateTime = new SimpleDateFormat("dd:MM:yyyy_HH:mm:ss").format(Calendar.getInstance().getTime());
-        ViewContent existingContent = new ViewContent(title, brief, id,updateTime);
+        ViewContent existingContent = new ViewContent(title, brief, content, id,updateTime);
         viewContentDAO.updateContent(existingContent);
         response.sendRedirect("view");
     }
