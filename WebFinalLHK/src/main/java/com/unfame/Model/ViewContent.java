@@ -15,10 +15,11 @@ public class ViewContent {
         Brief = brief;
         CreatedDate = createdDate;
     }
-    public ViewContent( String title, String brief,int id, String updateTime) {
+    public ViewContent( String title, String brief, String content, int id, String updateTime) {
         this.id = id;
         Title = title;
         Brief = brief;
+        Content = content;
         UpdateTime = updateTime;
     }
 
@@ -110,5 +111,18 @@ public class ViewContent {
 
     public void setCreatedDate(String createdDate) {
         CreatedDate = createdDate;
+    }
+
+    //Method
+    public String getDate(String time){
+        String result = "";
+        for(int i = 0; i < 11; ++i) { result += time.charAt(i); }
+        return result;
+    }
+
+    public String getTime(String time){
+        String result = "";
+        for(int i = 11; i < time.length(); ++i) { result += time.charAt(i); }
+        return result;
     }
 }
