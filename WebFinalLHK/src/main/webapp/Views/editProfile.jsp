@@ -39,4 +39,22 @@
             </form>
         </div>
     </div>
+    <script>
+        const btnReset = document.querySelector('.reset-btn');
+        const firstname = document.querySelector('#profile-first-name');
+        const firstnameValue = firstname.value;
+        const lastname = document.querySelector('#profile-last-name');
+        const lastnameValue = lastname.value;
+        const phone = document.querySelector('#profile-phone');
+        const phoneValue = phone.value;
+        const description = document.querySelector('#profile-description');
+        const descriptionValue = description.value;
+
+        btnReset.onclick = (e) => {
+            firstname.value = firstnameValue;
+            lastname.value = lastnameValue;
+            phone.value = phoneValue;
+            description.value = descriptionValue;
+        };
+    </script>
 </body>
