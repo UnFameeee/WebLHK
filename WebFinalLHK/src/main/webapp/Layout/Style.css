@@ -420,16 +420,20 @@ header{
     border-radius: 2px;
     font-size: 15px;
     transition-property: background;
+    cursor: pointer;
 }
 .logout_btn>a {
     text-decoration: none;
     color: #337AB7;
 }
+.logout_btn>a i:first-child {
+    margin-right: 1px;
+}
 .logout_btn:hover{
     color: #49a1ee;
 }
 
-.logout_btn:hover .subnav{
+.logout_btn .subnav.active{
     display: inline-block;
 }
 

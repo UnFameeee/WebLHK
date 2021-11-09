@@ -4,8 +4,8 @@
     </div>
     <div class="right-area">
         <div class="logout_btn">
-            <a  href="#" >
-                <i class="fas fa-user"></i> <i class="fas fa-caret-down"></i>
+            <a>
+                <i class="fas fa-user"></i><i class="fas fa-caret-down"></i>
             </a>
             <ul class="subnav">
                 <li class="subnav-top"><a href="<%=request.getContextPath()%>/showEditProfile"><i class="fas fa-user"></i> User Profile</a></li>
@@ -13,4 +13,11 @@
             </ul>
         </div>
     </div>
+    <script>
+        const btnLogout = document.querySelector('.logout_btn');
+        const subnav = document.querySelector('.subnav');
+        btnLogout.onclick = () => {
+            subnav.classList.toggle('active');
+        }
+    </script>
 </header>
