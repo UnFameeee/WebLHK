@@ -49,7 +49,8 @@ function Validator(options)
     {
         //chặn chế độ submit mặc định
         formElement.onsubmit =function(e){
-        //e.preventDefault();
+            console.log("hello")
+
 
         var isFormValid = true;
 
@@ -61,30 +62,32 @@ function Validator(options)
     {
         // chỉ cần một input invalid thì cả form sẽ invalid
         isFormValid=false;
+
     }
     });
 
-        // if(isFormValid){
-        //     if(typeof options.onSubmit === 'function')
-        //     {
-        //         var enableInputs=formElement.querySelectorAll('[name]:not([disable])')
-        //         var formValues = Array.from(enableInputs).reduce(function(values,input){
-        //             return (values[input.name]=input.value) && values;
-        //         },{});
-        //         console.log(formValues)
-        //
-        //         options.onSubmit(formValues);
-        //     }
-        //
-        //     // options.rules.forEach(function(rule){
-        //     // var inputElement=formElement.querySelector(rule.selector);
-        //     // inputElement.classList.remove('valid-input');
-        //     // });
-        //     // displayDetails();
-        //
-        // }
+        if(!isFormValid){
+            e.preventDefault();
+            // if(typeof options.onSubmit === 'function')
+            // {
+            //     var enableInputs=formElement.querySelectorAll('[name]:not([disable])')
+            //     var formValues = Array.from(enableInputs).reduce(function(values,input){
+            //         return (values[input.name]=input.value) && values;
+            //     },{});
+            //     console.log(formValues)
+            //
+            //     options.onSubmit(formValues);
+            // }
+
+            // options.rules.forEach(function(rule){
+            // var inputElement=formElement.querySelector(rule.selector);
+            // inputElement.classList.remove('valid-input');
+            // });
+            // displayDetails();
+
+        }
         // else{
-        //     // headMessage.classList.add('active-Visible');
+        //
         // }
 
     }
