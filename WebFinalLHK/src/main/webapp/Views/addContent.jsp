@@ -12,21 +12,21 @@
                 <div class="input-content">
                     <div class="input-field">
                         <label for="">Title<br></label>
-                        <input type="text" class="title" name="title" id="input_title" placeholder="Enter the title">
+                        <input type="text" class="title" name="title" id="input_title" placeholder="Enter the title" >
                         <div class="invalid-Message">
                             <span class="form-message"></span>
                         </div>
                     </div>
                     <div class="input-field">
                         <label for="">Brief<br></label>
-                        <textarea id ="input_brief" class="brief" name="brief" rows="4" cols="50"> </textarea>
+                        <textarea id ="input_brief" class="brief" name="brief" rows="4" cols="50" > </textarea>
                         <div class="invalid-Message">
                             <span class="form-message"></span>
                         </div>
                     </div>
                     <div class="input-field">
                         <label for="">Content<br></label>
-                        <textarea id="input_content" class="content" name="content" rows="4" cols="50"> </textarea>
+                        <textarea id="input_content" class="content" name="content" rows="4" cols="50" > </textarea>
                         <div class="invalid-Message">
                             <span class="form-message"></span>
                         </div>
