@@ -35,8 +35,14 @@
 <%--                        <td><%= listContent.get(i).getCreatedDate() %></td>--%>
                         <td><%= listContent.get(i).getDate(listContent.get(i).getCreatedDate()) %> <br> <%= listContent.get(i).getTime(listContent.get(i).getCreatedDate()) %></td>
                         <td>
-                            <a href="<%=request.getContextPath()%>/showEdit?Id=<%=listContent.get(i).getId()%>">Edit</a>
-                            <a href="<%=request.getContextPath()%>/delete?Id=<%=listContent.get(i).getId()%>">Delete</a>
+                            <div class="view-content-btn-container">
+                                <form action="<%=request.getContextPath()%>/showEdit?Id=<%=listContent.get(i).getId()%>" method="post">
+                                    <input type="submit" class="view-content-btn-edit" value="Edit">
+                                </form>
+                                <form action="<%=request.getContextPath()%>/delete?Id=<%=listContent.get(i).getId()%>" method="post">
+                                    <input type="submit" class="view-content-btn-delete" value="Delete">
+                                </form>
+                            </div>
                         </td>
                         <%-- td><%= new SimpleDateFormat("dd/MM/yyyy HH:mm").format(lstContentsByPage.get(i).getCreateDate()) %></td>--%>
                         <%-- <td>--%>
