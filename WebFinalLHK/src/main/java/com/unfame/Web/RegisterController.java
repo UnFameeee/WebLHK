@@ -28,7 +28,7 @@ public class RegisterController extends HttpServlet {
 		String repassword = request.getParameter("repassword");
 		
 		Account account = new Account();
-		ConnectMySql active = new ConnectMySql();
+//		ConnectMySql active = new ConnectMySql();
 		
 		account.setUsername(username);
 		account.setEmail(email);
