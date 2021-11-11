@@ -6,7 +6,7 @@
         <title>Login Page</title>
     </head>
 
-      <body>
+     <body>
         <form id="login-form" method="post" acion="get">
             <div class="login-container">
 
@@ -16,17 +16,20 @@
     
                 <div class="login-content">
                     <input class="login-textbox" id="email" name="email" type="text" placeholder="E-mail">
-                    <span class="error-message"></span>
+                    <div class="error">
+                        <span class="error-message"></span>
+                    </div>
                 </div>
     
                 <div class="login-content">
                     <input class="login-textbox" id="password" name="password" type="password" placeholder="Password">                   
-                    <span class="error-message"></span>
+                    <div class="error">
+                        <span class="error-message"></span>
+                    </div>
                 </div>
     
                 <div class="login-content">
                     <input class="login-checkbox" type="checkbox" name="remember_me">
-                    <span class="error-message"></span>
                     <label>Remember me</label>
                 </div>
     
@@ -34,7 +37,7 @@
                     <input id="login-button" type="submit" value="Login">
                 </div>
                 
-                <a>
+                <a href="${pageContext.request.contextPath}/Views/register.jsp" target="_blank">
                     <span style="color: blue;">Click here to Register</span>
                 </a>            
             </div>
@@ -51,7 +54,10 @@
                 Validator.isRequired('#password'),
                 Validator.needLength('#email', 5, 50),
                 Validator.needLength('#password', 8, 30),
-            ]
+            ],
+            onSubmit: function (data) {
+                console.log(data);
+            }
         })
     </script>
 

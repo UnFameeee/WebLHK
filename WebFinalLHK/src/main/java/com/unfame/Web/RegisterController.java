@@ -22,21 +22,22 @@ public class RegisterController extends HttpServlet {
 	}
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String username = request.getParameter("username");
-		String email = request.getParameter("email");
-		String password = request.getParameter("password");
-		String repassword = request.getParameter("repassword");
-		
-		Account account = new Account();
+
+//		String username = request.getParameter("username");
+//		String email = request.getParameter("email");
+//		String password = request.getParameter("password");
+//		
+//		Account account = new Account();
 //		ConnectMySql active = new ConnectMySql();
-		
-		account.setUsername(username);
-		account.setEmail(email);
-		account.setPassword(password);
-		
-		
-		
-		doGet(request, response);
+//		
+//		account.setUsername(username);
+//		account.setEmail(email);
+//		account.setPassword(password);
+//		
+//		
+//		
+//		doGet(request, response);
+
 	}
 
 }

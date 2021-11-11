@@ -16,36 +16,44 @@
 
                 <div class="register-content">
                     <input class="register-textbox invalid" id="username" name="username" type="text" placeholder="Username">
-                    <span class="error-message"></span>
+                     <div class="error">
+                        <span class="error-message"></span>
+                    </div>
                 </div>
     
                 <div class="register-content">
                     <input class="register-textbox" id="email" name="email" type="text" placeholder="E-mail">
-                    <span class="error-message"></span>
+                     <div class="error">
+                        <span class="error-message"></span>
+                    </div>
                 </div>
     
                 <div class="register-content">
                     <input class="register-textbox" id="password" name="password" type="password" placeholder="Password">
-                    <span class="error-message"></span>
+                     <div class="error">
+                        <span class="error-message"></span>
+                    </div>
                 </div>
 
                 <div class="register-content">
                     <input class="register-textbox" id="repassword" name="repassword" type="password" placeholder="Re Password">
-                    <span class="error-message"></span>
+                     <div class="error">
+                        <span class="error-message"></span>
+                    </div>
                 </div>
     
                 <div class="register-content">
                     <input id="register-button" type="submit" value="Register">
                 </div>
                 
-                <a>
+                <a href="${pageContext.request.contextPath}/Views/Effect/login.jsp" target="_blank">
                     <span style="color: blue;">Click here to Login</span>
                 </a>            
             </div>
         </form>        
     </body>
 
-    <script type="text/javascript" src="${pageContext.request.contextPath}/Views/Effect/Login_Register.js"> </script>
+    <script type="text/javascript" src="${pageContext.request.contextPath}/Views/Login_Register.js"> </script>
     <script>
         Validator({
             form:'#register-form',
