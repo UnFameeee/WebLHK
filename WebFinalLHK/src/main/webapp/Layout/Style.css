@@ -1,7 +1,7 @@
 /* -------------------- Login - 2Du -------------------- */
 #login-form{
-    width: 30vw;
-    height: 45vh;
+    width: 40vw;
+    height: 60vh;
     margin: 0 auto;
     margin-top: 20vh;
     border: 2px solid #CCCCCC;
@@ -14,8 +14,7 @@
 }
 
 .login-content{
-    margin-bottom: 3vh;
-    position: relative;
+    margin-bottom: 4vh;
 }
 
 .login-header{
@@ -28,16 +27,20 @@
 }
 
 .login-textbox{
-    width: 25.5vw;
-    height: 5vh;
+    width: 35.5vw;
+    height: 7vh;
     border: 2px solid #CCCCCC;
     border-radius: 5px;
     text-indent: 15px;
 }
 
+.error{  
+    position: absolute;
+}
+
 .error-message{
     color:red;
-    font-size: 22px;
+    font-size: 12px;
 }
 
 .login-checkbox{
@@ -50,8 +53,8 @@
 }
 
 #login-button{
-    width: 25.5vw;
-    height: 6vh;
+    width: 35.5vw;
+    height: 7vh;
     color: white;
     font-size: 20px;
     background-color: rgb(92, 184, 92);
@@ -63,8 +66,8 @@
 
 /* -------------------- Register - 2Du -------------------- */
 #register-form{
-    width: 30vw;
-    height: 55vh;
+    width: 40vw;
+    height: 74vh;
     margin: 0 auto;
     margin-top: 15vh;
     border: 2px solid #CCCCCC;
@@ -76,7 +79,7 @@
 }
 
 .register-content{
-    margin-bottom: 3vh;
+    margin-bottom: 4vh;
 }
 
 .register-header{
@@ -89,8 +92,8 @@
 }
 
 .register-textbox{
-    width: 25.5vw;
-    height: 5vh;
+    width: 35.5vw;
+    height: 7vh;
     border: 2px solid #CCCCCC;
     border-radius: 4px;
     text-indent: 15px;
@@ -100,13 +103,9 @@
     border-color: red;
 }
 
-.register-checkbox{
-    margin-left: 0px;
-}
-
 #register-button{
-    width: 25.5vw;
-    height: 6vh;
+    width: 35.5vw;
+    height: 7vh;
     color: white;
     font-size: 20px;
     background-color: rgb(92, 184, 92);
