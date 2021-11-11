@@ -419,16 +419,20 @@ header{
     border-radius: 2px;
     font-size: 15px;
     transition-property: background;
+    cursor: pointer;
 }
 .logout_btn>a {
     text-decoration: none;
     color: #337AB7;
 }
+.logout_btn>a i:first-child {
+    margin-right: 1px;
+}
 .logout_btn:hover{
     color: #49a1ee;
 }
 
-.logout_btn:hover .subnav{
+.logout_btn .subnav.active{
     display: inline-block;
 }
 
@@ -628,7 +632,7 @@ header{
 }
 
 #View-content-list tbody{
-    height: 50px;
+    height: 100px;
 }
 
 #View-content-list tbody td{
@@ -636,20 +640,56 @@ header{
     padding-left: 1.2%;
 }
 
+#View-content-list tbody td .view-content-btn-container{
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+}
+
+#View-content-list tbody td input{
+    border: 1px solid;
+    color: white;
+    height: 30px;
+    width: 61px;
+    font-size: 15px;
+    font-weight: 600;
+}
+
+#View-content-list tbody td input.view-content-btn-edit{
+    background: #5BC0DE;
+}
+
+#View-content-list tbody td input.view-content-btn-edit:hover{
+    background: #69d8fa;
+}
+
+#View-content-list tbody td input.view-content-btn-delete{
+    margin-left: 15%;
+    background: #cd4040;
+}
+
+#View-content-list tbody td input.view-content-btn-delete:hover{
+    background: #f82323;
+}
+
+
+
+
+
 .view-content-list-container #View-content-list th.id {
-    width: 20px;
+    width: 3%;
 }
 .view-content-list-container #View-content-list th.title {
-    width: 120px;
+    width: 12%;
 }
 .view-content-list-container #View-content-list th.brief {
-    width: 430px;
+    width: 65%
 }
 .view-content-list-container #View-content-list th.created-date {
-    width: 30px;
+    width: 9%
 }
 .view-content-list-container #View-content-list th.actions {
-    width: 70px;
+    width: 11%;
 }
 
 .view-content-list-container .btn-field{

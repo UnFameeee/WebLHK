@@ -22,6 +22,7 @@ public class RegisterController extends HttpServlet {
 	}
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
 //		String username = request.getParameter("username");
 //		String email = request.getParameter("email");
 //		String password = request.getParameter("password");
@@ -36,6 +37,7 @@ public class RegisterController extends HttpServlet {
 //		
 //		
 //		doGet(request, response);
+
 	}
 
 }

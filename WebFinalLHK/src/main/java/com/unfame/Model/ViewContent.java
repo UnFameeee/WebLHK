@@ -116,13 +116,13 @@ public class ViewContent {
     //Method
     public String getDate(String time){
         String result = "";
-        for(int i = 0; i < 11; ++i) { result += time.charAt(i); }
+        for(int i = 0; i < 10; ++i) { result += time.charAt(i); }
         return result;
     }
 
     public String getTime(String time){
         String result = "";
-        for(int i = 11; i < time.length(); ++i) { result += time.charAt(i); }
+        for(int i = 12; i < time.length(); ++i) { result += time.charAt(i); }
         return result;
     }
 }
