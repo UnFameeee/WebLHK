@@ -18,7 +18,6 @@ public class ViewContentDAO {
     String userid = "root";
     String password = "root";
 
-
 //    private static final String INSERT_CONTENT_SQL = "INSERT INTO Content" + " (Title, Brief, Content, CreateDate, UpdateTime, AuthorId) VALUES" + " (?, ? ,? ,? ,? ,? ,?);";
     private static final String DELETE_CONTENTS_SQL = "DELETE FROM Content WHERE Id = ?";
     private static final String SELECT_ALL_CONTENTS = "SELECT * FROM Content";
@@ -35,6 +34,20 @@ public class ViewContentDAO {
             e.printStackTrace();
         }
         return connection;
+    }
+
+    public String toUTF8(String isoString)
+    {
+        String utf8String = null;
+        try
+        {
+            byte[] stringBytesISO = isoString.getBytes("ISO-8859-1");
+            utf8String = new String(stringBytesISO, "UTF-8");
+        }catch(Exception e) {
+            System.out.println("UnsupportedEncodingException is: " + e.getMessage());
+            utf8String = isoString;
+        }
+        return utf8String;
     }
 
     public ViewContentDAO() {}

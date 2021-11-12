@@ -13,6 +13,7 @@
             </ul>
         </div>
     </div>
+
     <script>
         const btnLogout = document.querySelector('.logout_btn');
         const subnav = document.querySelector('.subnav');
