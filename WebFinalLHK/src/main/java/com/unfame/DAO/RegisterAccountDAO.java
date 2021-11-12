@@ -17,6 +17,7 @@ public class RegisterAccountDAO {
 	 String password = "root";
 	 
 	 private static final String INSERT_ACCOUNT_SQL = "insert into Member(Username, Email, Password) values (?,?,?)";
+	 private static final String CHECK_EXIST_ACC = "select * from Member where Email = ?";
 	 
 	 protected Connection getConnection(){
 		 Connection connection = null;
@@ -42,9 +43,26 @@ public class RegisterAccountDAO {
 			ppstm.setString(3, acc.getPassword());
 			ppstm.executeUpdate();
 		} 
-		catch (Exception e) {
-				System.out.print("insert failed");
+		catch (Exception e) {				
+			e.printStackTrace();
 		}
 	}	 
+	 
+	public boolean checkEmailExist(Account acc) {
+		boolean check = false;
+		
+		try {
+			Connection con = getConnection();
+			PreparedStatement ppstm = con.prepareStatement(CHECK_EXIST_ACC);
+			ppstm.setString(1, acc.getEmail());
+			ppstm.executeUpdate();
+			check = ppstm.executeUpdate() > 0;
+		}
+		catch (Exception e){
+			e.printStackTrace();
+		}
+		
+		return check;
+	}
 	 
 }

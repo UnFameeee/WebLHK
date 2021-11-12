@@ -1,12 +1,11 @@
 /* -------------------- Login - 2Du -------------------- */
 #login-form{
-    width: 40vw;
-    height: 60vh;
+    width: 32vw;
+    height: 57vh;
     margin: 0 auto;
     margin-top: 20vh;
     border: 2px solid #CCCCCC;
     border-radius: 4px;
-   
 }
 
 .login-container{ 
@@ -27,11 +26,12 @@
 }
 
 .login-textbox{
-    width: 35.5vw;
-    height: 7vh;
+    width: 27.5vw;
+    height: 6vh;
     border: 2px solid #CCCCCC;
     border-radius: 5px;
     text-indent: 15px;
+    font-size: 15px;
 }
 
 .error{  
@@ -53,7 +53,7 @@
 }
 
 #login-button{
-    width: 35.5vw;
+    width: 27.5vw;
     height: 7vh;
     color: white;
     font-size: 20px;
@@ -66,8 +66,8 @@
 
 /* -------------------- Register - 2Du -------------------- */
 #register-form{
-    width: 40vw;
-    height: 74vh;
+    width: 35vw;
+    height: 70vh;
     margin: 0 auto;
     margin-top: 15vh;
     border: 2px solid #CCCCCC;
@@ -92,11 +92,12 @@
 }
 
 .register-textbox{
-    width: 35.5vw;
-    height: 7vh;
+    width: 30.5vw;
+    height: 6vh;
     border: 2px solid #CCCCCC;
     border-radius: 4px;
     text-indent: 15px;
+    font-size: 15px;
 }
 
 .register-content.invalid .register-textbox{
@@ -104,7 +105,7 @@
 }
 
 #register-button{
-    width: 35.5vw;
+    width: 30.5vw;
     height: 7vh;
     color: white;
     font-size: 20px;
@@ -170,12 +171,14 @@ html {
 #content .form-profile {
     margin: 20px 50px 10px 0;
 }
+
 #content .form-profile .row {
     margin-top: 20px;
 }
 #content .form-profile .row:last-child {
     margin-bottom: 10px;
 }
+
 #content .form-profile .profile-label {
     margin: 4px;
     font-weight: 550;
@@ -329,12 +332,15 @@ html {
 .invalid-input{
     border: 1px solid red !important;
 }
+
 .valid-input{
     border: 2px solid rgb(70, 79, 206) !important;
 }
+
 .active-Visible{
     visibility:visible !important;
 }
+
 .invalid-Message{
     color: red;
     /*position:absolute;*/
@@ -668,6 +674,7 @@ header{
     border: 1px solid #DDDDDD;
     text-align: start;
     padding-left: 1%;
+
 }
 
 #View-content-list tbody{

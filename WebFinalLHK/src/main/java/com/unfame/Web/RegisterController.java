@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.unfame.DAO.RegisterAccountDAO;
 import com.unfame.Model.Account;
 
 @WebServlet("/RegisterController")
@@ -22,22 +23,29 @@ public class RegisterController extends HttpServlet {
 	}
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-//		String username = request.getParameter("username");
-//		String email = request.getParameter("email");
-//		String password = request.getParameter("password");
-//		
-//		Account account = new Account();
-//		ConnectMySql active = new ConnectMySql();
-//		
-//		account.setUsername(username);
-//		account.setEmail(email);
-//		account.setPassword(password);
-//		
-//		
-//		
-//		doGet(request, response);
-
+		
+		//get information from user
+		String username = request.getParameter("username");
+		String email = request.getParameter("email");
+		String password = request.getParameter("password");		
+		
+		Account account = new Account();
+		RegisterAccountDAO registerDAO = new RegisterAccountDAO();
+		
+		//set information to account
+		account.setUsername(username);
+		account.setEmail(email);
+		account.setPassword(password);
+		
+		//check email
+		if(registerDAO.checkEmailExist(account)) {
+			registerDAO.insertUser(account);
+			response.sendRedirect(request.getContextPath()+"/View/login.jsp");
+		}
+		else {
+			request.setAttribute("Message", "Email already is existed!!!");
+			request.getRequestDispatcher("/View/register.jsp").forward(request, response);
+		}	
 	}
 
 }

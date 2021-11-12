@@ -46,7 +46,7 @@
                     <input id="register-button" type="submit" value="Register">
                 </div>
                 
-                <a href="${pageContext.request.contextPath}/Views/Effect/login.jsp" target="_blank">
+                <a href="${pageContext.request.contextPath}/Views/login.jsp" target="_blank">
                     <span style="color: blue;">Click here to Login</span>
                 </a>            
             </div>
