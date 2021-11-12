@@ -1,7 +1,7 @@
 /* -------------------- Login - 2Du -------------------- */
 #login-form{
-    width: 40vw;
-    height: 60vh;
+    width: 32vw;
+    height: 57vh;
     margin: 0 auto;
     margin-top: 20vh;
     border: 2px solid #CCCCCC;
@@ -27,11 +27,12 @@
 }
 
 .login-textbox{
-    width: 35.5vw;
-    height: 7vh;
+    width: 27.5vw;
+    height: 6vh;
     border: 2px solid #CCCCCC;
     border-radius: 5px;
     text-indent: 15px;
+    font-size: 15px;
 }
 
 .error{  
@@ -53,7 +54,7 @@
 }
 
 #login-button{
-    width: 35.5vw;
+    width: 27.5vw;
     height: 7vh;
     color: white;
     font-size: 20px;
@@ -66,8 +67,8 @@
 
 /* -------------------- Register - 2Du -------------------- */
 #register-form{
-    width: 40vw;
-    height: 74vh;
+    width: 35vw;
+    height: 70vh;
     margin: 0 auto;
     margin-top: 15vh;
     border: 2px solid #CCCCCC;
@@ -92,11 +93,12 @@
 }
 
 .register-textbox{
-    width: 35.5vw;
-    height: 7vh;
+    width: 30.5vw;
+    height: 6vh;
     border: 2px solid #CCCCCC;
     border-radius: 4px;
     text-indent: 15px;
+    font-size: 15px;
 }
 
 .register-content.invalid .register-textbox{
@@ -104,7 +106,7 @@
 }
 
 #register-button{
-    width: 35.5vw;
+    width: 30.5vw;
     height: 7vh;
     color: white;
     font-size: 20px;
