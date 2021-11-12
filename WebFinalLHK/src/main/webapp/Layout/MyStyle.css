@@ -6,7 +6,6 @@
     margin-top: 20vh;
     border: 2px solid #CCCCCC;
     border-radius: 4px;
-   
 }
 
 .login-container{ 
@@ -136,7 +135,7 @@ html {
 }
 
 #content .heading {
-    border-bottom: 1px solid #000;
+    border-bottom: 1px solid #333;
     width:98%;
 }
 
@@ -144,6 +143,7 @@ html {
     border: 1px solid #CCCCCC;
     background-color: #FFFFFF;
     margin-top: 30px;
+    margin-bottom: 10px;
     width:98%;
 }
 
@@ -172,6 +172,13 @@ html {
     margin: 20px 50px 10px 0;
 }
 
+#content .form-profile .row {
+    margin-top: 20px;
+}
+#content .form-profile .row:last-child {
+    margin-bottom: 10px;
+}
+
 #content .form-profile .profile-label {
     margin: 4px;
     font-weight: 550;
@@ -179,7 +186,7 @@ html {
 
 #content .form-profile .profile-input {
     width: 100%;
-    margin: 8px 4px 12px;
+    margin: 8px 4px 0px;
     padding: 4px 8px;
     height: 35px;
     border: 1px solid #CCCCCC;
@@ -187,7 +194,14 @@ html {
 }
 
 #content .form-profile #profile-description.profile-input {
-    height: 120px;
+    height: 100px;
+    margin-bottom: 10px;
+}
+
+#content .form-profile .btn:hover {
+    cursor: pointer;
+    color: whitesmoke;
+    background: gray;
 }
 
 #profile-email {
@@ -197,9 +211,21 @@ html {
 }
 
 #profile-description {
-    height: 64px;
-    word-break: break-all;
-    white-space: nowrap;
+    height: 60px;
+}
+
+#content .form-profile .error-message {
+    margin-left: 6px;
+}
+
+#content .form-profile .row.invalid>input {
+    border: 1px solid red;
+}
+
+#content .form-profile .row.invalid>.error-message {
+    color: red;
+    font-size: 16px;
+    margin-bottom: 10px;
 }
 
 .btn {
@@ -306,12 +332,15 @@ html {
 .invalid-input{
     border: 1px solid red !important;
 }
+
 .valid-input{
     border: 2px solid rgb(70, 79, 206) !important;
 }
+
 .active-Visible{
     visibility:visible !important;
 }
+
 .invalid-Message{
     color: red;
     /*position:absolute;*/
@@ -399,6 +428,7 @@ header{
     width: 100%;
     height: 60px;
     border-bottom: 1px solid #CCCCCC;
+    z-index: 99;
 }
 
 .left-area h3{
@@ -447,7 +477,7 @@ header{
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
     list-style-type: none;
     text-decoration: none;
-    min-width: 160px;
+    min-width: 165px;
 }
 .logout_btn .subnav li {
     display: flex;
@@ -455,8 +485,8 @@ header{
     align-items: center;
     list-style-type: none;
     color: #000;
-    height: 40px;
-    font-size: 15px;
+    height: 45px;
+    font-size: 16px;
 }
 
 .logout_btn .subnav li.subnav-top{
@@ -469,7 +499,7 @@ header{
 }
 
 .logout_btn .subnav li:hover {
-    opacity: 0.8;
+    background: #ececec;
 }
 
 .logout_btn .subnav li a {
@@ -486,6 +516,7 @@ header{
     height: 100%;
     width: 250px;
     border-right: 1px solid #CCCCCC;
+    z-index: 99;
 }
 
 .sidebar a{
@@ -518,31 +549,37 @@ header{
     display: flex;
     align-items: center;
     flex-direction: row;
-    margin-top: -5px;
-    margin-left: 25px;
-    margin-bottom: 25px;
-    /* border-bottom: 2px solid rgb(200, 200, 200); */
+    /*margin-top: -5px;*/
+    /*margin-left: 15px;*/
+    /*margin-bottom: 20px;*/
+    /*margin-right: 15px;*/
+    margin: -5px 15px 20px 15px;
 }
 
 
-.sidebar .form-search .search-input {
+.sidebar .sidebar-container .form-search .search-input {
     padding: 2px;
     border: 2px solid #CCCCCC;
-    height: 35px;
+    height: 40px;
     border-top-left-radius: 4px;
     border-bottom-left-radius: 4px;
     text-indent: 10px;
+    width: 180px;
 }
 
-.sidebar .form-search .search-btn {
+.sidebar .sidebar-container .form-search .search-btn {
     /* background-color: #ccc; */
     border-top: 2px solid #CCCCCC;
     border-right: 2px solid #CCCCCC;
     border-bottom: 2px solid #CCCCCC;
     border-top-right-radius: 4px;
     border-bottom-right-radius: 4px;
-    height: 35px;
-    width: 35px;
+    height: 40px;
+    width: 40px;
+    padding-right: 18px;
+}
+
+.sidebar .form-search .search-btn:hover {
 
 }
 
@@ -625,12 +662,19 @@ header{
     max-height: 650px;
 }
 
+#View-content-list tr:nth-child(odd) td {
+    background: #f5f5f5;
+}
+
 #View-content-list thead{
     height: 30px;
 }
 
 #View-content-list thead th{
     border: 1px solid #DDDDDD;
+    text-align: start;
+    padding-left: 1%;
+
 }
 
 #View-content-list tbody{
@@ -639,7 +683,11 @@ header{
 
 #View-content-list tbody td{
     border: 1px solid #DDDDDD;
-    padding-left: 1.2%;
+    /*padding-left: 1%;*/
+    /*padding-right: 1%;*/
+    padding: 5px 1% 5px 1%;
+    word-wrap: break-word;
+    height: 60px;
 }
 
 #View-content-list tbody td .view-content-btn-container{
@@ -650,6 +698,7 @@ header{
 
 #View-content-list tbody td input{
     border: 1px solid;
+    border-radius: 4px;
     color: white;
     height: 30px;
     width: 61px;
@@ -658,43 +707,60 @@ header{
 }
 
 #View-content-list tbody td input.view-content-btn-edit{
-    background: #5BC0DE;
+    background: #2bcb2b;
 }
 
 #View-content-list tbody td input.view-content-btn-edit:hover{
-    background: #69d8fa;
+    background: #1de11d;
+    cursor: pointer;
 }
 
 #View-content-list tbody td input.view-content-btn-delete{
-    margin-left: 15%;
-    background: #cd4040;
+    margin-left: 16%;
+    background: #2bcb2b;
 }
 
 #View-content-list tbody td input.view-content-btn-delete:hover{
-    background: #f82323;
+    background: #1de11d;
+    cursor: pointer;
 }
-
-
-
 
 
 .view-content-list-container #View-content-list th.id {
-    width: 3%;
+    width: 45px;
 }
 .view-content-list-container #View-content-list th.title {
-    width: 12%;
+    width: 200px;
 }
 .view-content-list-container #View-content-list th.brief {
-    width: 65%
+    width: 960px;
 }
 .view-content-list-container #View-content-list th.created-date {
-    width: 9%
+    width: 140px;
 }
 .view-content-list-container #View-content-list th.actions {
-    width: 11%;
+    width: 165px;
 }
 
+.view-content-list-container #View-content-list td.id {
+    max-width: 45px;
+}
+.view-content-list-container #View-content-list td.title {
+    max-width: 200px;
+}
+.view-content-list-container #View-content-list td.brief {
+    max-width: 960px;
+}
+.view-content-list-container #View-content-list td.created-date {
+    max-width: 140px;
+}
+.view-content-list-container #View-content-list td.actions {
+    max-width: 165px;
+}
+
+
 .view-content-list-container .btn-field{
+    margin-top: 10px;
     display: flex;
     flex-direction: row;
 }
@@ -707,16 +773,18 @@ header{
 }
 .view-content-list-container .btn-field input{
     margin-top: 10px;
-    background: #FFFFFF;
-    border: 1px solid #CCCCCC;
+    background: #2bcb2b;
+    border: 0 solid #CCCCCC;
     border-radius: 4px;
     height: 30px;
     width: 80px;
-    font-size: 12px;
+    font-weight: 500;
+    font-size: 15px;
+    color: white;
 }
 
 .view-content-list-container .btn-field input:hover{
     cursor: pointer;
     color: whitesmoke;
-    background: gray;
+    background: #1de11d;
 }

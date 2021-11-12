@@ -24,7 +24,7 @@ public class ViewContent {
     }
 
 
-    public ViewContent( String title, String brief, String content, int id) {
+    public ViewContent(String title, String brief, String content, int id) {
         this.id = id;
         Title = title;
         Brief = brief;
