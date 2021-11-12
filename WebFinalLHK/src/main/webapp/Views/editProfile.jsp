@@ -13,14 +13,15 @@
                 <h5 class="text-heading">Profile Form Elements</h5>
             </div>
             <form class="form-profile" action="<%=request.getContextPath()%>/editProfile?Id=<%=profile.getId()%>" method="POST">
-
                 <div class="row">
                     <label for="profile-first-name" class="profile-label">First Name</label>
                     <input name="Firstname" id="profile-first-name" type="text" class="profile-input" placeholder="Enter the first name" value="<%= profile.getFirstName() %>">
+                    <span class="error-message"></span>
                 </div>
                 <div class="row">
                     <label for="profile-last-name" class="profile-label">Last Name</label>
                     <input name="Lastname" id="profile-last-name" type="text" class="profile-input" placeholder="Enter the last name" value="<%= profile.getLastName() %>">
+                    <span class="error-message"></span>
                 </div>
                 <div class="row">
                     <label for="profile-email" class="profile-label">Email</label>
@@ -29,32 +30,17 @@
                 <div class="row">
                     <label for="profile-phone" class="profile-label">Phone</label>
                     <input name="Phone" id="profile-phone" type="text" class="profile-input" placeholder="Enter the phone number" value="<%= profile.getPhoneNumber() %>">
+                    <span class="error-message"></span>
                 </div>
                 <div class="row">
                     <label for="profile-description" class="profile-label">Description</label>
                     <textarea name="Description" id="profile-description" rows="4" cols="50" class="profile-input"><%= profile.getDescription() %></textarea>
+                    <span class="error-message"></span>
                 </div>
                 <input type="submit" value="Submit button" class="btn submit-btn">
                 <input type="button" value="Reset button" class="btn reset-btn">
             </form>
         </div>
     </div>
-    <script>
-        const btnReset = document.querySelector('.reset-btn');
-        const firstname = document.querySelector('#profile-first-name');
-        const firstnameValue = firstname.value;
-        const lastname = document.querySelector('#profile-last-name');
-        const lastnameValue = lastname.value;
-        const phone = document.querySelector('#profile-phone');
-        const phoneValue = phone.value;
-        const description = document.querySelector('#profile-description');
-        const descriptionValue = description.value;
-
-        btnReset.onclick = (e) => {
-            firstname.value = firstnameValue;
-            lastname.value = lastnameValue;
-            phone.value = phoneValue;
-            description.value = descriptionValue;
-        };
-    </script>
+    <script type="text/javascript" src="${pageContext.request.contextPath}/Views/Effect/EditProfile.js"></script>
 </body>
