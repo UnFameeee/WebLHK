@@ -22,11 +22,17 @@ public class ViewContentController extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        request.setCharacterEncoding("UTF-8");
+        response.setCharacterEncoding("UTF-8");
+
         this.doGet(request, response);
     }
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        request.setCharacterEncoding("UTF-8");
+        response.setCharacterEncoding("UTF-8");
+
         String action = request.getServletPath();
 
         switch (action) {
@@ -68,14 +74,20 @@ public class ViewContentController extends HttpServlet {
         List<ViewContent> listContent = viewContentDAO.selectAllContents();
         request.setAttribute("ListContent", listContent);
         RequestDispatcher dispatcher = request.getRequestDispatcher("View_Content.tiles");
+
+        request.setCharacterEncoding("UTF-8");
+        response.setCharacterEncoding("UTF-8");
+
         dispatcher.forward(request,response);
     }
 
     private void deleteContent (HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, SQLException {
         int Id = Integer.parseInt((request.getParameter("Id")));
         viewContentDAO.deleteContent(Id);
-//        RequestDispatcher dispatcher = request.getRequestDispatcher("View_Content.tiles");
-//        dispatcher.forward(request,response);
+
+        request.setCharacterEncoding("UTF-8");
+        response.setCharacterEncoding("UTF-8");
+
         response.sendRedirect("view");
     }
 
@@ -85,6 +97,10 @@ public class ViewContentController extends HttpServlet {
         request.setAttribute("content",existingContent);
         request.setAttribute("Id",Id);
         RequestDispatcher dispatcher=request.getRequestDispatcher("Edit_Content.tiles");
+
+        request.setCharacterEncoding("UTF-8");
+        response.setCharacterEncoding("UTF-8");
+
         dispatcher.forward(request,response);
     }
     private void updateContent(HttpServletRequest request, HttpServletResponse response)
@@ -98,6 +114,10 @@ public class ViewContentController extends HttpServlet {
         String updateTime = new SimpleDateFormat("dd:MM:yyyy_HH:mm:ss").format(Calendar.getInstance().getTime());
         ViewContent existingContent = new ViewContent(title, brief, content, id,updateTime);
         viewContentDAO.updateContent(existingContent);
+
+        request.setCharacterEncoding("UTF-8");
+        response.setCharacterEncoding("UTF-8");
+
         response.sendRedirect("view");
     }
 }

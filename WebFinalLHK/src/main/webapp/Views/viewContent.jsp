@@ -1,4 +1,5 @@
 <%@ page import="com.unfame.Model.ViewContent" %>
+<%@ page import="com.unfame.Global.Variable" %>
 <%@ page import="java.util.List" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
@@ -27,14 +28,14 @@
                     </thead>
                     <tbody>
                     <% List<ViewContent> listContent = (List<ViewContent>) request.getAttribute("ListContent"); %>
-                    <% for (int i =0; i < listContent.size(); ++i) {%>
+                    <% for (int i = listContent.size() - 1; i >= 0; --i) {%>
                     <tr>
-                        <td><%= listContent.get(i).getId() %></td>
-                        <td><%= listContent.get(i).getTitle() %></td>
-                        <td><%= listContent.get(i).getBrief() %></td>
+                        <td class="id"><%= listContent.get(i).getId() %></td>
+                        <td class="title"><%= listContent.get(i).getTitle() %></td>
+                        <td class="brief"><%= listContent.get(i).getBrief() %></td>
 <%--                        <td><%= listContent.get(i).getCreatedDate() %></td>--%>
-                        <td><%= listContent.get(i).getDate(listContent.get(i).getCreatedDate()) %> <br> <%= listContent.get(i).getTime(listContent.get(i).getCreatedDate()) %></td>
-                        <td>
+                        <td class="created-date"><%= listContent.get(i).getDate(listContent.get(i).getCreatedDate()) %> <br> <%= listContent.get(i).getTime(listContent.get(i).getCreatedDate()) %></td>
+                        <td class="actions">
                             <div class="view-content-btn-container">
                                 <form action="<%=request.getContextPath()%>/showEdit?Id=<%=listContent.get(i).getId()%>" method="post">
                                     <input type="submit" class="view-content-btn-edit" value="Edit">
@@ -44,19 +45,17 @@
                                 </form>
                             </div>
                         </td>
-                        <%-- td><%= new SimpleDateFormat("dd/MM/yyyy HH:mm").format(lstContentsByPage.get(i).getCreateDate()) %></td>--%>
-                        <%-- <td>--%>
-                        <%--        <button class = "bg-success px-3"><a class = "text-decoration-none text-light" href = "editContent?id=<%=lstContentsByPage.get(i).getId()%>">Edit</a></button>--%>
-                        <%--        <button class = "bg-danger"><a class = "text-decoration-none text-light" href = "deleteContent?id=<%=lstContentsByPage.get(i).getId()%>">Delete</a></button>--%>
-                        <%-- </td>--%>
                     </tr>
                     <% }%>
                     </tbody>
                 </table>
                 <div class="btn-field">
-                    <input type="submit" value="Previous">
-                    <a href="">1</a>
-                    <input type="submit" value="Next">
+                    <% Variable variable = Variable.getInstance(); %>
+                    <form >
+                        <input type="submit" value="Previous">
+                        <a><%= variable.getPageIndex() %></a>
+                        <input type="submit" value="Next">
+                    </form>
                 </div>
             </div>
         </div>

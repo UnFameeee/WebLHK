@@ -30,5 +30,3 @@ CREATE TABLE Content(
 DELETE FROM `weblhk`.`member` WHERE (`Id` = '1');
 INSERT INTO Member VALUES(1, 'Nguyen', 'lmao', 'user',  'pass', 12345678, 'email', 'descrip', 'date', 'time');
 INSERT INTO Member VALUES(2, 'Nguyen2', 'lmao2', 'user2',  'pass2', 123456782, 'email2', 'descrip2', 'date2', 'time2');
-INSERT INTO Content VALUES(1, 'Title', 'Brief', 'Content', 'Date', 'Time', 1);
-INSERT INTO Content VALUES(2, 'Title2', 'Brief2', 'Content2', 'Date2', 'Time2', 1);
