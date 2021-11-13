@@ -198,10 +198,18 @@ html {
     margin-bottom: 10px;
 }
 
+#content .form-profile .btn {
+    border: 0 solid;
+    border-radius: 4px;
+    color: white;
+    background: #2bcb2b;
+    font-weight: 500;
+    font-size: 15px;
+}
+
 #content .form-profile .btn:hover {
     cursor: pointer;
-    color: whitesmoke;
-    background: gray;
+    background: #1de11d;
 }
 
 #profile-email {
@@ -316,17 +324,19 @@ html {
 .form-content .container .input-content .button-field input{
     margin-left: 5px;
     padding: 5px 5px 5px 5px;
-    background: #FFFFFF;
-    border: 1px solid #CCCCCC;
-    border-radius: 4px;
+    background: #2bcb2b;
+    border: 0 solid;
     height: 35px;
     width: 110px;
 
+    border-radius: 4px;
+    color: white;
+    font-weight: 500;
+    font-size: 15px;
 }
 .form-content .container .input-content .button-field input:hover{
     cursor: pointer;
-    color: whitesmoke;
-    background: gray;
+    background: #1de11d;
 }
 /* validation  */
 .invalid-input{
