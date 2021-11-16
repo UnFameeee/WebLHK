@@ -41,7 +41,7 @@ public class RegisterAccountDAO {
 			ppstm.setString(1, acc.getUsername());
 			ppstm.setString(2, acc.getEmail());
 			ppstm.setString(3, acc.getPassword());
-			ppstm.executeUpdate();
+			ppstm.executeQuery();
 		} 
 		catch (Exception e) {				
 			e.printStackTrace();
@@ -53,10 +53,13 @@ public class RegisterAccountDAO {
 		
 		try {
 			Connection con = getConnection();
-			PreparedStatement ppstm = con.prepareStatement(CHECK_EXIST_ACC);
+			
+			PreparedStatement ppstm = con.prepareStatement(CHECK_EXIST_ACC);			
 			ppstm.setString(1, acc.getEmail());
-			ppstm.executeUpdate();
-			check = ppstm.executeUpdate() > 0;
+			
+			ResultSet rs = ppstm.executeQuery();
+			check = rs.next();
+			
 		}
 		catch (Exception e){
 			e.printStackTrace();
