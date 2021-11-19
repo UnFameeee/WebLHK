@@ -17,8 +17,10 @@ function showPopup(){
             loading.classList.add("hide");
         }
     }, 1000);
-    // setTimeout(function (){
-    //     viewContent.classList.add("show");
-    //     loading.classList.add("hide");
-    // }, 1000)
 }
+
+//Dynamic ViewContent Table
+
+// var state = {
+//     'querySet':
+// }

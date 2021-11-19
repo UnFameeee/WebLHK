@@ -46,8 +46,26 @@ public class RegisterAccountDAO {
 		catch (Exception e) {				
 			e.printStackTrace();
 		}
-	}	 
-	 
+	}
+
+//	public boolean checkAccountExist (Account acc){
+//		boolean check = false;
+//
+//		try {
+//			Connection con = getConnection();
+//
+//			PreparedStatement statement = con.prepareStatement(CHECK_ACC);
+//			statement.setString(1, acc.getEmail());
+//			statement.setString(2, acc.getPassword());
+//			ResultSet rs = statement.executeQuery();
+//			check = rs.next();
+//		}
+//		catch (Exception e) {
+//			e.printStackTrace();
+//		}
+//		return check;
+//	}
+
 	public boolean checkEmailExist(Account acc) {
 		boolean check = false;
 		
