@@ -1,3 +1,14 @@
+const briefValue =document.querySelector('.brief').innerHTML;
+const titleValue =document.querySelector('.title').value;
+const contentValue =document.querySelector('.content').innerHTML;
+const resetBtn = document.querySelector('#reset-btn');
+
+resetBtn.addEventListener("click",(e)=>{
+    e.preventDefault();
+      document.querySelector('.brief').value=briefValue;
+      document.querySelector('.title').value=titleValue;
+      document.querySelector('.content').value=contentValue;
+})
 function Validator(options)
     {
         // lưu lại các rules của selector
@@ -41,7 +52,7 @@ function Validator(options)
         return !errorMessage;
     }
 
-        var headMessage=document.querySelector(options.errorSelector[1])//('.message')
+        //var headMessage=document.querySelector(options.errorSelector[1])//('.message')
 
         //lấy elements của form cần validate
         var formElement= document.querySelector(options.form);
@@ -56,15 +67,15 @@ function Validator(options)
 
         //Thực hiện lặp qua từng rule và validate thẳng luôn khi người dùng bấm submit
         options.rules.forEach(function(rule){
-        var inputElement=formElement.querySelector(rule.selector);
-        var isValid=validate(inputElement,rule);
-        if(!isValid)
-    {
-        // chỉ cần một input invalid thì cả form sẽ invalid
-        isFormValid=false;
+            var inputElement=formElement.querySelector(rule.selector);
+            var isValid=validate(inputElement,rule);
+            if(!isValid)
+            {
+                // chỉ cần một input invalid thì cả form sẽ invalid
+                isFormValid=false;
 
-    }
-    });
+            }
+        });
 
         if(!isFormValid){
             e.preventDefault();

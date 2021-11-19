@@ -95,7 +95,7 @@ public class ViewContentController extends HttpServlet {
         ViewContent existingContent = viewContentDAO.selectContent(Id);
         request.setAttribute("content",existingContent);
         request.setAttribute("Id",Id);
-        RequestDispatcher dispatcher=request.getRequestDispatcher("Edit_Content.tiles");
+        RequestDispatcher dispatcher=request.getRequestDispatcher("Add_Content.tiles");
 
         request.setCharacterEncoding("UTF-8");
         response.setCharacterEncoding("UTF-8");
