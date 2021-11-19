@@ -61,6 +61,16 @@
         </div>
         <!-- Content end -->
         <script type="text/javascript" src="${pageContext.request.contextPath}/Views/Effect/ViewContent.js"></script>
+        <script>
+            <%-- Dynamic ViewContent Table --%>
+            var tableData = <%= listContent %>;
 
+            var state = {
+                'querySet': tableData
+            }
+
+
+            console.log(tableData);
+        </script>
     </body>
 </html>

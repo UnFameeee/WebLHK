@@ -4,8 +4,8 @@
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
          version="4.0">
     <welcome-file-list>
+        <welcome-file>startingPage.jsp</welcome-file>
         <welcome-file>homePage.jsp</welcome-file>
-<!--        <welcome-file>loginPage.jsp</welcome-file>-->
     </welcome-file-list>
 
     <listener>
@@ -24,6 +24,46 @@
 
 
     <!-- Login -->
+    <servlet>
+        <servlet-name>LoginControllerShowLogin</servlet-name>
+        <servlet-class>com.unfame.Web.LoginController</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>LoginControllerShowLogin</servlet-name>
+        <url-pattern>/login</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>LoginControllerShowRegister</servlet-name>
+        <servlet-class>com.unfame.Web.LoginController</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>LoginControllerShowRegister</servlet-name>
+        <url-pattern>/register</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>LoginControllerLogin</servlet-name>
+        <servlet-class>com.unfame.Web.LoginController</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>LoginControllerLogin</servlet-name>
+        <url-pattern>/loginAccount</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>LoginControllerRegister</servlet-name>
+        <servlet-class>com.unfame.Web.LoginController</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>LoginControllerRegister</servlet-name>
+        <url-pattern>/registerAccount</url-pattern>
+    </servlet-mapping>
+
 
 
 

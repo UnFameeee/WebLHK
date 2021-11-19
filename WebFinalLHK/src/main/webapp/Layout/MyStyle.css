@@ -44,7 +44,7 @@
 }
 
 .login-checkbox{
-    margin-left: 0px;
+    margin-left: 0;
     background: #DEDEDE;
 }
 
@@ -56,13 +56,19 @@
     width: 27.5vw;
     height: 7vh;
     color: white;
-    font-size: 20px;
     background-color: rgb(92, 184, 92);
-    border: 0px;
+    border: 0;
     border-radius: 5px;
     font-size: 22px;
     font-weight: 600;
 }
+
+#login-button:hover{
+    cursor: pointer;
+    color: whitesmoke;
+    background: #1de11d;
+}
+
 
 /* -------------------- Register - 2Du -------------------- */
 #register-form{

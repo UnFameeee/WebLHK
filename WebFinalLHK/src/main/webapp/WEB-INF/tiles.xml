@@ -3,29 +3,47 @@
 <tiles-definitions>
 
     <definition name="defaultLayout" template="/Layout/defaultLayout.jsp">
-        <put-attribute name="title" value="index" />
-        <put-attribute name="header" value="/Layout/header.jsp" />
-        <put-attribute name="body" value="/Layout/body.jsp" />
-        <put-attribute name="sidebar" value="/Layout/sidebar.jsp" />
+        <put-attribute name="title" value="" />
+        <put-attribute name="header" value="" />
+        <put-attribute name="sidebar" value="" />
+        <put-attribute name="body" value="" />
+    </definition>
+
+    <definition name="Login_Page" extends="defaultLayout">
+        <put-attribute name="title" value="Login Page" />
+        <put-attribute name="body" value="/Views/loginPage.jsp" />
+    </definition>
+
+    <definition name="Register_Page" extends="defaultLayout">
+        <put-attribute name="title" value="Register Page" />
+        <put-attribute name="body" value="/Views/registerPage.jsp" />
     </definition>
 
     <definition name="Add_Content" extends="defaultLayout">
         <put-attribute name="title" value="Add Content" />
         <put-attribute name="body" value="/Views/addContent.jsp" />
+        <put-attribute name="header" value="/Layout/header.jsp" />
+        <put-attribute name="sidebar" value="/Layout/sidebar.jsp" />
     </definition>
 
     <definition name="Edit_Content" extends="defaultLayout">
         <put-attribute name="title" value="Edit Content" />
         <put-attribute name="body" value="/Views/editContent.jsp" />
+        <put-attribute name="header" value="/Layout/header.jsp" />
+        <put-attribute name="sidebar" value="/Layout/sidebar.jsp" />
     </definition>
 
     <definition name="View_Content" extends="defaultLayout">
         <put-attribute name="title" value="View Content" />
         <put-attribute name="body" value="/Views/viewContent.jsp" />
+        <put-attribute name="header" value="/Layout/header.jsp" />
+        <put-attribute name="sidebar" value="/Layout/sidebar.jsp" />
     </definition>
 
     <definition name="Edit_Profile" extends="defaultLayout">
         <put-attribute name="title" value="Edit Profile" />
         <put-attribute name="body" value="/Views/editProfile.jsp" />
+        <put-attribute name="header" value="/Layout/header.jsp" />
+        <put-attribute name="sidebar" value="/Layout/sidebar.jsp" />
     </definition>
 </tiles-definitions>

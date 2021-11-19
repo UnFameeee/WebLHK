@@ -11,28 +11,32 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.unfame.DAO.LoginDAO;
+import com.unfame.DAO.RegisterAccountDAO;
 import com.unfame.DAO.ViewContentDAO;
 import com.unfame.Model.Account;
 import com.unfame.Model.ViewContent;
 
 
-@WebServlet("/LoginController")
+@WebServlet("/Login")
 public class LoginController extends HttpServlet {
 	private LoginDAO loginDAO;
+	private RegisterAccountDAO registerDAO;
 
-	public void init() {loginDAO = new LoginDAO();}
-
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-		request.setCharacterEncoding("UTF-8");
-		response.setCharacterEncoding("UTF-8");
-
-		this.doGet(request, response);
-
+	public void init() {
+		loginDAO = new LoginDAO();
+		registerDAO = new RegisterAccountDAO();
 	}
 
+	@Override
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		request.setCharacterEncoding("UTF-8");
+		response.setCharacterEncoding("UTF-8");
+		this.doGet(request, response);
+	}
+
+	@Override
+
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-//		response.getWriter().append("Served at: ").append(request.getContextPath());
 
 		request.setCharacterEncoding("UTF-8");
 		response.setCharacterEncoding("UTF-8");
@@ -40,53 +44,88 @@ public class LoginController extends HttpServlet {
 		String action = request.getServletPath();
 
 		switch (action) {
+			case "/register":
+				try {
+					showRegister(request, response);
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+				break;
 			case "/login":
 				try {
-					login(request, response);
+					showLogin(request, response);
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+				break;
+			case "/registerAccount":
+				try {
+					registerAccount(request, response);
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+				break;
+			case "/loginAccount":
+				try {
+					loginAccount(request, response);
 				} catch (SQLException e) {
 					e.printStackTrace();
 				}
 				break;
 			default:
+				break;
 		}
-		//get account
-		String email = request.getParameter("email");
-		String password = request.getParameter("password");
+	}
 
-		Account account = new Account();
-		LoginDAO loginDAO = new LoginDAO();
+	private void showLogin(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, SQLException{
+		RequestDispatcher dispatcher = request.getRequestDispatcher("Login_Page.tiles");
+		dispatcher.forward(request, response);
+	}
 
-		//set information to account
-		account.setEmail(email);
-		account.setPassword(password);
-
-		//check account
-		if (loginDAO.checkAccount(account)) {
-
-		} else {
-			request.setAttribute("Message", "Email or password doesn't exist!!!");
-			request.getRequestDispatcher("/View/login.jsp").forward(request, response);
-		}
+	private void showRegister(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, SQLException{
+		RequestDispatcher dispatcher = request.getRequestDispatcher("Register_Page.tiles");
+		dispatcher.forward(request, response);
 
 	}
 
-	private void login (HttpServletRequest request, HttpServletResponse response) throws
+	private void loginAccount(HttpServletRequest request, HttpServletResponse response) throws
 			ServletException, IOException, SQLException {
 		String email = request.getParameter("email");
 		String pass = request.getParameter("password");
 		Account account = new Account(email, pass);
 
-		if(loginDAO.checkAccount(account)){
+		if (loginDAO.checkAccount(account)) {
+			RequestDispatcher dispatcher = request.getRequestDispatcher("/view");
 
-		}else{
+			request.setCharacterEncoding("UTF-8");
+			response.setCharacterEncoding("UTF-8");
 
+			dispatcher.forward(request, response);
+		} else {
+			System.out.println("Wrong Email or password!!!");
 		}
 
-		RequestDispatcher dispatcher = request.getRequestDispatcher("View_Content.tiles");
+	}
 
-		request.setCharacterEncoding("UTF-8");
-		response.setCharacterEncoding("UTF-8");
+	private void registerAccount (HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, SQLException{
+		String username = request.getParameter("username");
+		String email = request.getParameter("email");
+		String pass = request.getParameter("password");
 
-		dispatcher.forward(request, response);
+		Account account = new Account(username, email, pass);
+
+		//check email
+		if(registerDAO.checkEmailExist(account)) {
+			registerDAO.insertUser(account);
+
+			request.setCharacterEncoding("UTF-8");
+			response.setCharacterEncoding("UTF-8");
+
+			RequestDispatcher dispatcher = request.getRequestDispatcher("/login");
+			dispatcher.forward(request, response);
+		}
+		else {
+			System.out.println("Wrong");
+		}
 	}
 }
