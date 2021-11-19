@@ -44,9 +44,7 @@
                     <input type="submit" name="submit" value="Submit Button">
                     <input type="reset" value="Reset Button">
                 </div>
-<%--                <c:if test="${param.submit !=null}">--%>
-<%--                    <% request.setAttribute("Id",Id); %>--%>
-<%--                </c:if>--%>
+
             </div>
         </div>
     </form>
