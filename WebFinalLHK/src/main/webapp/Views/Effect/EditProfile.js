@@ -8,12 +8,16 @@ const phoneValue = phone.value;
 const description = document.querySelector('#profile-description');
 const descriptionValue = description.value;
 
-btnReset.onclick = (e) => {
-    firstname.value = firstnameValue;
-    lastname.value = lastnameValue;
-    phone.value = phoneValue;
-    description.value = descriptionValue;
-};
+function ResetForm(options) {
+    const formElement = document.querySelector(options.form);
+    const inputElements = formElement.querySelectorAll('input[type=text]');
+    inputElements.forEach(inputElement => {
+        const errorElement = inputElement.parentElement.querySelector(options.errorMessage);
+        errorElement.innerHTML = '';
+        inputElement.parentElement.classList.remove('invalid');
+    })
+
+}
 
 function Validator(options) {
 
@@ -137,25 +141,14 @@ Validator({
     ]
 });
 
+
 btnReset.onclick = (e) => {
     firstname.value = firstnameValue;
     lastname.value = lastnameValue;
     phone.value = phoneValue;
     description.value = descriptionValue;
-    Validator({
+    ResetForm({
         form: '.form-profile',
         errorMessage: '.error-message',
-        rules: [
-            Validator.isRequired('#profile-first-name'),
-            Validator.isMinLength('#profile-first-name', 3),
-            Validator.isMaxLength('#profile-first-name', 30),
-            Validator.isRequired('#profile-last-name'),
-            Validator.isMinLength('#profile-last-name', 3),
-            Validator.isMaxLength('#profile-last-name', 30),
-            Validator.isPhone('#profile-phone'),
-            Validator.isMinLength('#profile-phone', 9),
-            Validator.isMaxLength('#profile-phone', 13),
-            Validator.isMaxLength('#profile-description', 200)
-        ]
-    });
+    })
 };

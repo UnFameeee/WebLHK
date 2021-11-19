@@ -10,7 +10,7 @@ CREATE TABLE Member(
     Lastname nvarchar(50),
     Username nvarchar(50),
     Password nvarchar(50),
-    Phone int,
+    Phone nvarchar(20),
     Email nvarchar(50),
     Description nvarchar(50),
     CreatedDate nvarchar(50),

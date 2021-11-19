@@ -49,7 +49,7 @@ public class EditProfileController extends HttpServlet {
     private void getProfile(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, SQLException {
 //        int id = Integer.parseInt(request.getParameter("IdUser"));
 
-        EditProfile profile = editProfileDAO.getProfileById(1);
+        EditProfile profile = editProfileDAO.getProfileById(2);
         request.setAttribute("profile", profile);
 
         RequestDispatcher dispatcher = request.getRequestDispatcher("Edit_Profile.tiles");
