@@ -19,7 +19,6 @@ public class ViewContentController extends HttpServlet {
 
     public void init() {viewContentDAO = new ViewContentDAO();}
 
-
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setCharacterEncoding("UTF-8");

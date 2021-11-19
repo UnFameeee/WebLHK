@@ -7,7 +7,7 @@
     </head>
 
      <body>
-        <form id="login-form" method="post" acion="get">
+        <form id="login-form" method="post" action="<%=request.getContextPath()%>">
             <div class="login-container">
 
                 <div class="login-header">
@@ -37,7 +37,7 @@
                     <input id="login-button" type="submit" value="Login">
                 </div>
                 
-                <a href="${pageContext.request.contextPath}/Views/register.jsp" target="_blank">
+                <a href="${pageContext.request.contextPath}/Views/registerPage.jsp" target="_blank">
                     <span style="color: blue;">Click here to Register</span>
                 </a>            
             </div>

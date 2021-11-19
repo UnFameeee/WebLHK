@@ -36,20 +36,6 @@ public class ViewContentDAO {
         return connection;
     }
 
-    public String toUTF8(String isoString)
-    {
-        String utf8String = null;
-        try
-        {
-            byte[] stringBytesISO = isoString.getBytes("ISO-8859-1");
-            utf8String = new String(stringBytesISO, "UTF-8");
-        }catch(Exception e) {
-            System.out.println("UnsupportedEncodingException is: " + e.getMessage());
-            utf8String = isoString;
-        }
-        return utf8String;
-    }
-
     public ViewContentDAO() {}
 
     //Select all Content
