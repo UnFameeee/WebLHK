@@ -30,24 +30,25 @@ public class LoginDAO {
 	     
 	     return connection;
 	 }
-	 
+
 	 public boolean checkAccount (Account acc){
 		 boolean check = false;
 		 
-		 try {
-			Connection con = getConnection();
-				
-			PreparedStatement ppstm = con.prepareStatement(CHECK_ACC);			
-			ppstm.setString(1, acc.getEmail());
-			ppstm.setString(2, acc.getPassword());
-				
-			ResultSet rs = ppstm.executeQuery();
-			check = rs.next();
-				
-		 }
-		 catch (Exception e){
-			 e.printStackTrace();
-		 }
+			 try {
+				  Connection con = getConnection();
+
+				  PreparedStatement statement = con.prepareStatement(CHECK_ACC);
+				  statement.setString(1, acc.getEmail());
+				  statement.setString(2, acc.getPassword());
+//				  check = statement.executeQuery();
+
+	//
+	//			check = rs.next();
+
+			 }
+			 catch (Exception e){
+				 e.printStackTrace();
+			 }
 		 
 		 return check;
 	 }

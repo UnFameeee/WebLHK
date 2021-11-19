@@ -14,7 +14,11 @@ public class Account {
 		this.email = email;
 		this.password = password;
 	}
-	
+
+	public Account(String email, String password) {
+		this.email = email;
+		this.password = password;
+	}
 	public String getUsername() {
 		return username;
 	}
