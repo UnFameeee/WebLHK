@@ -13,7 +13,8 @@ public class LoginDAO {
 	 String connectionUrl = "jdbc:mysql://localhost:3306/";
 	 String database = "WebLHK?useSSL=false";
 	 String userid = "root";
-	 String password = "root";
+     //String password = "root";
+	 String password = "123456";
 	 
 	 private static final String CHECK_ACC = "select * from Member where Email = ? and Password = ?";
 	 

@@ -5,7 +5,7 @@ Drop table Member;
 Drop table Content;
 
 CREATE TABLE Member(
-	Id int PRIMARY KEY,
+	Id int PRIMARY KEY AUTO_INCREMENT,
     Firstname nvarchar(50),
     Lastname nvarchar(50),
     Username nvarchar(50),

@@ -115,7 +115,7 @@ public class LoginController extends HttpServlet {
 		Account account = new Account(username, email, pass);
 
 		//check email
-		if(registerDAO.checkEmailExist(account)) {
+		if(!registerDAO.checkEmailExist(account)) {
 			registerDAO.insertUser(account);
 
 			request.setCharacterEncoding("UTF-8");
