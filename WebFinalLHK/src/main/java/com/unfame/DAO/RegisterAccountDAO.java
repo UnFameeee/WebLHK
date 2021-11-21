@@ -14,9 +14,10 @@ public class RegisterAccountDAO {
 	 String connectionUrl = "jdbc:mysql://localhost:3306/";
 	 String database = "WebLHK?useSSL=false";
 	 String userid = "root";
-	 String password = "root";
+	 //String password = "root";
+	 String password = "123456";
 	 
-	 private static final String INSERT_ACCOUNT_SQL = "insert into Member(Username, Email, Password) values (?,?,?)";
+	 private static final String INSERT_ACCOUNT_SQL = "insert into Member(Username, Password, Email) values (?,?,?)";
 	 private static final String CHECK_EXIST_ACC = "select * from Member where Email = ?";
 	 
 	 protected Connection getConnection(){
@@ -36,12 +37,13 @@ public class RegisterAccountDAO {
 	 
 	 public void insertUser(Account acc) {
 		try {
+		
 			Connection con = getConnection();
 			PreparedStatement ppstm = con.prepareStatement(INSERT_ACCOUNT_SQL);
 			ppstm.setString(1, acc.getUsername());
-			ppstm.setString(2, acc.getEmail());
-			ppstm.setString(3, acc.getPassword());
-			ppstm.executeQuery();
+			ppstm.setString(2, acc.getPassword());
+			ppstm.setString(3, acc.getEmail());
+			ppstm.executeUpdate();
 		} 
 		catch (Exception e) {				
 			e.printStackTrace();
@@ -72,12 +74,13 @@ public class RegisterAccountDAO {
 		try {
 			Connection con = getConnection();
 			
-			PreparedStatement ppstm = con.prepareStatement(CHECK_EXIST_ACC);			
+			PreparedStatement ppstm = con.prepareStatement(CHECK_EXIST_ACC);
 			ppstm.setString(1, acc.getEmail());
+			ppstm.executeQuery();
 			
-			ResultSet rs = ppstm.executeQuery();
-			check = rs.next();
+			ResultSet rs = ppstm.executeQuery();	
 			
+			check = rs.next();			
 		}
 		catch (Exception e){
 			e.printStackTrace();
