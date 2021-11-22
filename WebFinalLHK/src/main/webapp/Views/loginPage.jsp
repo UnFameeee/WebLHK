@@ -39,19 +39,16 @@
     </form>
 </body>
 
-<%--<script type="text/javascript" src="${pageContext.request.contextPath}/Views/Effect/Login_Register.js"> </script>--%>
-<%--<script>--%>
-<%--    Validator({--%>
-<%--        form:'#login-form',--%>
-<%--        error: '.error-message',--%>
-<%--        rules: [--%>
-<%--            Validator.isEmail('#email'),--%>
-<%--            Validator.isRequired('#password'),--%>
-<%--            Validator.needLength('#email', 5, 50),--%>
-<%--            Validator.needLength('#password', 8, 30),--%>
-<%--        ],--%>
-<%--        onSubmit: function (data) {--%>
-<%--            console.log(data);--%>
-<%--        }--%>
-<%--    })--%>
-<%--</script>--%>
+<script type="text/javascript" src="${pageContext.request.contextPath}/Views/Effect/Login_Register.js"> </script>
+<script>
+    Validator({
+        form:'#login-form',
+        error: '.error-message',
+        rules: [
+            Validator.isEmail('#email'),
+            Validator.isRequired('#password'),
+            Validator.needLength('#email', 5, 50),
+            Validator.needLength('#password', 8, 30),
+        ]
+    })
+</script>
