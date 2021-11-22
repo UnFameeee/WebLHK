@@ -6,6 +6,7 @@ import java.util.List;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -92,9 +93,19 @@ public class LoginController extends HttpServlet {
 			ServletException, IOException, SQLException {
 		String email = request.getParameter("email");
 		String pass = request.getParameter("password");
-		Account account = new Account(email, pass);
-
+		Account account = new Account(pass, email);
+		
+		String remember = request.getParameter("remember_me");
+		
+		
 		if (loginDAO.checkAccount(account)) {
+		
+			if(remember != null) {
+				Cookie c = new Cookie("check", "OK");
+	            c.setMaxAge(3600);
+	            response.addCookie(c);
+			}
+            
 			RequestDispatcher dispatcher = request.getRequestDispatcher("/view");
 
 			request.setCharacterEncoding("UTF-8");
@@ -112,7 +123,7 @@ public class LoginController extends HttpServlet {
 		String email = request.getParameter("email");
 		String pass = request.getParameter("password");
 
-		Account account = new Account(username, email, pass);
+		Account account = new Account(username, pass, email);
 
 		//check email
 		if(!registerDAO.checkEmailExist(account)) {

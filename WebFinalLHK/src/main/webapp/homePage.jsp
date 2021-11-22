@@ -7,7 +7,16 @@
 <body>
     <tiles:insertDefinition name="defaultLayout"/>
     <%
-        RequestDispatcher dispatcher=request.getRequestDispatcher("Login_Page.tiles");
+    	Cookie[] cookies = request.getCookies();
+    
+    	for(Cookie c: cookies){
+    		if(c.getName().equals("check")){
+    			 RequestDispatcher dispatcher = request.getRequestDispatcher("/view");
+    		     dispatcher.forward(request,response);	
+    		}    			
+    	}
+    	
+        RequestDispatcher dispatcher = request.getRequestDispatcher("Login_Page.tiles");
         dispatcher.forward(request,response);
     %>
 </body>

@@ -10,6 +10,7 @@ public class EditProfile {
     public  EditProfile() {
         
     }
+    
     public EditProfile(int id, String firstName, String lastName, String email, String phoneNumber, String description) {
         this.id = id;
         this.firstName = firstName;
@@ -17,7 +18,8 @@ public class EditProfile {
         this.email = email;
         this.phoneNumber = phoneNumber;
         this.description = description;
-    }
+    }   
+    
 
     public int getId() {
         return id;

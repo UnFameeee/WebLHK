@@ -19,6 +19,7 @@ public class EditProfileDAO {
     //String password = "root";
     String password = "123456";
 
+    private static final String GET_ID_BY_EMAIL = "SELECT Id from Member where Email = ?";
     private static final String SELECT_PROFILE_BY_ID = "SELECT Firstname, Lastname, Email, Phone, Description FROM Member WHERE Id = ?";
     private static final String UPDATE_PROFILE_BY_ID = "UPDATE Member SET Firstname = ?, Lastname = ?, Phone = ?, Description = ? WHERE Id = ?";
 
@@ -68,5 +69,28 @@ public class EditProfileDAO {
             updateCheck = statement.executeUpdate() > 0;
         }
         return updateCheck;
+    }
+    
+    //Select id by Email
+    public EditProfile getIdbyEmail(String email) {
+    	EditProfile profile = new EditProfile();
+    	
+    	try {
+    		Connection connection = getConnection(); 
+        	PreparedStatement prepareStatement = connection.prepareStatement(GET_ID_BY_EMAIL);
+        	prepareStatement.setString(1, email);
+        	ResultSet rs = prepareStatement.executeQuery();
+        	
+        	while (rs.next()){
+                int id = Integer.parseInt(rs.getString(1));
+                profile.setId(id);
+            }
+        	
+    	}
+	    catch (SQLException e){
+	        e.printStackTrace();
+	    }    	
+    	
+    	return profile;  	
     }
 }

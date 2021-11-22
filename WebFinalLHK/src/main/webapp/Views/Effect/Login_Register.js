@@ -38,7 +38,7 @@ function Validator(options) {
     if (formElement) {
 
         formElement.onsubmit = function (e) {
-            e.preventDefault();
+           
             var isFormValid = true;
 
             //Lặp qua từng rule và validate
@@ -51,7 +51,9 @@ function Validator(options) {
                 }
             });
 
-            // if(!isFormValid)
+            if (!isFormValid) {
+                e.preventDefault();
+            }
 
         }
 
