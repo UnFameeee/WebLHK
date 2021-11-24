@@ -16,8 +16,7 @@ public class ViewContentDAO {
     String connectionUrl = "jdbc:mysql://localhost:3306/";
     String database = "WebLHK?useSSL=false";
     String userid = "root";
-    //String password = "root";
-    String password = "123456";
+    String password = "root";
 
 //    private static final String INSERT_CONTENT_SQL = "INSERT INTO Content" + " (Title, Brief, Content, CreateDate, UpdateTime, AuthorId) VALUES" + " (?, ? ,? ,? ,? ,? ,?);";
     private static final String DELETE_CONTENTS_SQL = "DELETE FROM Content WHERE Id = ?";
