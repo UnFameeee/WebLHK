@@ -717,7 +717,7 @@ header{
     border-radius: 4px;
     color: white;
     height: 30px;
-    width: 61px;
+    width: 60px;
     font-size: 15px;
     font-weight: 600;
 }
@@ -732,7 +732,7 @@ header{
 }
 
 #View-content-list tbody td input.view-content-btn-delete{
-    margin-left: 16%;
+    margin-left: 12%;
     background: #2bcb2b;
 }
 
@@ -743,7 +743,7 @@ header{
 
 
 .view-content-list-container #View-content-list th.id {
-    width: 45px;
+    width: 70px;
 }
 .view-content-list-container #View-content-list th.title {
     width: 200px;

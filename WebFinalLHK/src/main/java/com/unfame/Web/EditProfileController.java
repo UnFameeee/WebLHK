@@ -1,17 +1,14 @@
 package com.unfame.Web;
 
-import com.unfame.Global.UserIdGlobal;
+import com.unfame.Global.IdGlobal;
 import com.unfame.Model.EditProfile;
 import com.unfame.DAO.EditProfileDAO;
-import com.unfame.Model.ViewContent;
-import com.unfame.Web.LoginController;
 
 import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import java.io.IOException;
 import java.sql.SQLException;
-import java.util.List;
 
 @WebServlet("/EditProfile")
 public class EditProfileController extends HttpServlet {
@@ -51,7 +48,7 @@ public class EditProfileController extends HttpServlet {
     private void getProfile(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, SQLException {
 //        int id = Integer.parseInt(request.getParameter("IdUser"));
 
-        EditProfile profile = editProfileDAO.getProfileById(UserIdGlobal.UserId);
+        EditProfile profile = editProfileDAO.getProfileById(IdGlobal.UserId);
         request.setAttribute("profile", profile);
 
         RequestDispatcher dispatcher = request.getRequestDispatcher("Edit_Profile.tiles");

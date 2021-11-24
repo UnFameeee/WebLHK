@@ -70,7 +70,17 @@ public class ViewContentController extends HttpServlet {
     }
 
     private void listContent (HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, SQLException {
-        List<ViewContent> listContent = viewContentDAO.selectAllContents();
+        String command = "";
+        if(request.getParameter("next") != null)
+        {
+            command = request.getParameter("next");
+        }
+        else if (request.getParameter("previous") != null){
+            command = request.getParameter("previous");
+        }
+
+        List<ViewContent> listContent = viewContentDAO.selectAllContents(command);
+
         request.setAttribute("ListContent", listContent);
         RequestDispatcher dispatcher = request.getRequestDispatcher("View_Content.tiles");
 

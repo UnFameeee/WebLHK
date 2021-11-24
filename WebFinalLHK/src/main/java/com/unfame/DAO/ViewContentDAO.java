@@ -1,4 +1,5 @@
 package com.unfame.DAO;
+import com.unfame.Global.IdGlobal;
 import com.unfame.Model.ViewContent;
 
 
@@ -10,6 +11,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
+import java.util.Objects;
 
 public class ViewContentDAO {
     String driver = "com.mysql.jdbc.Driver";
@@ -21,6 +23,7 @@ public class ViewContentDAO {
 //    private static final String INSERT_CONTENT_SQL = "INSERT INTO Content" + " (Title, Brief, Content, CreateDate, UpdateTime, AuthorId) VALUES" + " (?, ? ,? ,? ,? ,? ,?);";
     private static final String DELETE_CONTENTS_SQL = "DELETE FROM Content WHERE Id = ?";
     private static final String SELECT_ALL_CONTENTS = "SELECT * FROM Content";
+    private static final String SELECT_TOTAL_NUMBER_CONTENTS = "SELECT COUNT(Id) AS max FROM Content";
     private static final String SELECT_CONTENT_BY_ID = "SELECT Title, Brief, Content, CreateDate, UpdateTime, AuthorId FROM Content WHERE Id = ?";
     private static final String UPDATE_CONTENT_SQL = "UPDATE Content set Title = ?,Brief= ?, Content =? , UpdateTime =? where id = ?;";
 
@@ -39,18 +42,38 @@ public class ViewContentDAO {
     public ViewContentDAO() {}
 
     //Select all Content
-    public List<ViewContent> selectAllContents()  {
+    public List<ViewContent> selectAllContents(String command)  {
         List<ViewContent> content = new ArrayList<>();
         //Step 1: Connection
-        try(Connection connection = getConnection(); PreparedStatement prepareStatement = connection.prepareStatement(SELECT_ALL_CONTENTS);){
-            System.out.println(prepareStatement);
-            ResultSet rs = prepareStatement.executeQuery();
 
-            while (rs.next()){
-                int id = rs.getInt("Id");
-                String title = rs.getString("Title");
-                String brief = rs.getString("Brief");
-                String createdDate = rs.getString("CreateDate");
+        try(Connection connection = getConnection(); ){
+            PreparedStatement prepareStatement ;
+            prepareStatement = connection.prepareStatement(SELECT_TOTAL_NUMBER_CONTENTS);
+            System.out.println(prepareStatement);
+            ResultSet rs1 = prepareStatement.executeQuery();
+            int maxRow = 0;
+            if (rs1.next()) { maxRow = rs1.getInt("max"); }
+
+            //check max page min page
+            if(Objects.equals(command, "Next")){
+                if(IdGlobal.PageLIMIT < (maxRow/10)*10){
+                    IdGlobal.PageLIMIT+=10;
+                }
+            }else if(Objects.equals(command, "Previous")){
+                if(IdGlobal.PageLIMIT > 0){
+                    IdGlobal.PageLIMIT-=10;
+                }
+            }
+
+            String SELECT_SOME_CONTENTS = "SELECT * FROM Content LIMIT " + IdGlobal.PageLIMIT + ", 10";
+            prepareStatement = connection.prepareStatement(SELECT_SOME_CONTENTS);
+            System.out.println(prepareStatement);
+            ResultSet rs2 = prepareStatement.executeQuery();
+            while (rs2.next()){
+                int id = rs2.getInt("Id");
+                String title = rs2.getString("Title");
+                String brief = rs2.getString("Brief");
+                String createdDate = rs2.getString("CreateDate");
                 content.add(new ViewContent(id, title, brief, createdDate));
             }
         }catch (SQLException e){
