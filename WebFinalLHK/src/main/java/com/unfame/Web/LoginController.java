@@ -89,8 +89,7 @@ public class LoginController extends HttpServlet {
 
 	}
 
-	private void loginAccount(HttpServletRequest request, HttpServletResponse response) throws
-			ServletException, IOException, SQLException {
+	private void loginAccount(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, SQLException {
 		String email = request.getParameter("email");
 		String pass = request.getParameter("password");
 		Account account = new Account(pass, email);

@@ -8,17 +8,18 @@ public class Account {
 	public Account() {
 		
 	}
-	
+
+	public Account(String password, String email) {
+		this.email = email;
+		this.password = password;
+	}
+
 	public Account(String username, String password, String email) {
 		this.username = username;
 		this.email = email;
 		this.password = password;
 	}
 
-	public Account(String password, String email) {
-		this.email = email;
-		this.password = password;
-	}
 	public String getUsername() {
 		return username;
 	}

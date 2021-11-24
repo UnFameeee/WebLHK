@@ -14,8 +14,7 @@ public class RegisterAccountDAO {
 	 String connectionUrl = "jdbc:mysql://localhost:3306/";
 	 String database = "WebLHK?useSSL=false";
 	 String userid = "root";
-	 //String password = "root";
-	 String password = "123456";
+	 String password = "root";
 	 
 	 private static final String INSERT_ACCOUNT_SQL = "insert into Member(Username, Password, Email) values (?,?,?)";
 	 private static final String CHECK_EXIST_ACC = "select * from Member where Email = ?";
