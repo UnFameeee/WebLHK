@@ -16,7 +16,7 @@ public class LoginDAO {
 	 String userid = "root";
      String password = "root";
 	 
-	 private static final String CHECK_ACC = "select * from Member where Email = ? and Password = ?";
+	 private static final String CHECK_ACC = "select * from member where Email = ? and Password = ?";
 	 
 	 protected Connection getConnection(){
 		 Connection connection = null;
@@ -44,8 +44,9 @@ public class LoginDAO {
 				  statement.executeQuery();
 				  
 				  ResultSet rs = statement.executeQuery();
-				  UserIdGlobal.UserId = rs.getInt("Id");				  
 				  check = rs.next();
+				  UserIdGlobal.UserId = rs.getInt("Id");				  
+				  
 			 }
 			 catch (Exception e) {
 				 e.printStackTrace();

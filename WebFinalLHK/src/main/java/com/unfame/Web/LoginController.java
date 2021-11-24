@@ -98,8 +98,7 @@ public class LoginController extends HttpServlet {
 		String remember = request.getParameter("remember_me");
 		
 		
-		if (!loginDAO.checkAccount(account)) {
-			System.out.println(UserIdGlobal.UserId);
+		if (loginDAO.checkAccount(account)) {
 			if(remember != null) {
 				Cookie c = new Cookie("check", "OK");
 	            c.setMaxAge(3600);
