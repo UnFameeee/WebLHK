@@ -42,13 +42,16 @@ public class LoginDAO {
 				  PreparedStatement statement = con.prepareStatement(CHECK_ACC);
 				  statement.setString(1, acc.getEmail());
 				  statement.setString(2, acc.getPassword());
+				  statement.executeQuery();
+				  
 				  ResultSet rs = statement.executeQuery();
-				  UserIdGlobal.UserId = Integer.parseInt(rs.getString(1));
+				  UserIdGlobal.UserId = rs.getInt("Id");				  
 				  check = rs.next();
 			 }
 			 catch (Exception e) {
 				 e.printStackTrace();
 			 }
+			 
 		 return check;
 	 }
 }

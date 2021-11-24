@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.unfame.DAO.LoginDAO;
 import com.unfame.DAO.RegisterAccountDAO;
 import com.unfame.DAO.ViewContentDAO;
+import com.unfame.Global.UserIdGlobal;
 import com.unfame.Model.Account;
 import com.unfame.Model.ViewContent;
 
@@ -98,8 +99,8 @@ public class LoginController extends HttpServlet {
 		String remember = request.getParameter("remember_me");
 		
 		
-		if (loginDAO.checkAccount(account)) {
-		
+		if (!loginDAO.checkAccount(account)) {
+			System.out.println(UserIdGlobal.UserId);
 			if(remember != null) {
 				Cookie c = new Cookie("check", "OK");
 	            c.setMaxAge(3600);
