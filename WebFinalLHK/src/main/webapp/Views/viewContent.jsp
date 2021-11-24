@@ -1,6 +1,6 @@
 <%@ page import="com.unfame.Model.ViewContent" %>
-<%@ page import="com.unfame.Global.Variable" %>
 <%@ page import="java.util.List" %>
+<%@ page import="com.unfame.Global.IdGlobal" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <html>
@@ -50,27 +50,17 @@
                     </tbody>
                 </table>
                 <div class="btn-field">
-                    <% Variable variable = Variable.getInstance(); %>
-                    <form >
-                        <input type="submit" value="Previous">
-                        <a><%= variable.getPageIndex() %></a>
-                        <input type="submit" value="Next">
+                    <form action="<%=request.getContextPath()%>/view?<% request.getParameter("previous"); %>">
+                        <input type="submit" name="previous" value="Previous">
+                    </form>
+                        <a><%= (IdGlobal.PageLIMIT/10 + 1) %></a>
+                    <form action="<%=request.getContextPath()%>/view?<% request.getParameter("next"); %>">
+                        <input type="submit" name="next" value="Next">
                     </form>
                 </div>
             </div>
         </div>
         <!-- Content end -->
         <script type="text/javascript" src="${pageContext.request.contextPath}/Views/Effect/ViewContent.js"></script>
-        <script>
-            <%-- Dynamic ViewContent Table --%>
-            var tableData = <%= listContent %>;
-
-            var state = {
-                'querySet': tableData
-            }
-
-
-            console.log(tableData);
-        </script>
     </body>
 </html>

@@ -1,3 +1,6 @@
+CREATE DATABASE training;
+
+
 CREATE DATABASE WebLHK;
 USE WebLHK;
 
@@ -32,3 +35,27 @@ INSERT INTO Member VALUES(1, 'Nguyen', 'lmao', 'user',  'pass', 12345678, 'email
 INSERT INTO Member VALUES(2, 'Nguyen2', 'lmao2', 'user2',  'pass2', 123456782, 'email2', 'descrip2', 'date2', 'time2');
 INSERT INTO Member VALUES(3, 'Nguyen', 'lmao', 'user',  'pass', 12345678, 'email@gmail.com', 'descrip', 'date', 'time');
 INSERT INTO Member VALUES(4, 'Nguyenwa', 'lmaowa', 'user',  'password123', 12345678, 'email@gmail.com', 'descrip', 'date', 'time');
+
+INSERT INTO Member VALUES(5, 'Nguyen2', 'lmao2', 'user2',  'pass2', 123456782, 'email2', 'descrip2', 'date2', 'time2');
+INSERT INTO Member VALUES(6, 'Nguyen', 'lmao', 'user',  'pass', 12345678, 'email@gmail.com', 'descrip', 'date', 'time');
+INSERT INTO Member VALUES(7, 'Nguyenwa', 'lmaowa', 'user',  'password123', 12345678, 'email@gmail.com', 'descrip', 'date', 'time');
+
+INSERT INTO Member VALUES(8, 'Nguyen2', 'lmao2', 'user2',  'pass2', 123456782, 'email2', 'descrip2', 'date2', 'time2');
+INSERT INTO Member VALUES(9, 'Nguyen', 'lmao', 'user',  'pass', 12345678, 'email@gmail.com', 'descrip', 'date', 'time');
+INSERT INTO Member VALUES(10, 'Nguyenwa', 'lmaowa', 'user',  'password123', 12345678, 'email@gmail.com', 'descrip', 'date', 'time');
+
+INSERT INTO Member VALUES(11, 'Nguyen2', 'lmao2', 'user2',  'pass2', 123456782, 'email2', 'descrip2', 'date2', 'time2');
+INSERT INTO Member VALUES(12, 'Nguyen', 'lmao', 'user',  'pass', 12345678, 'email@gmail.com', 'descrip', 'date', 'time');
+INSERT INTO Member VALUES(13, 'Nguyenwa', 'lmaowa', 'user',  'password123', 12345678, 'email@gmail.com', 'descrip', 'date', 'time');
+
+INSERT INTO Member VALUES(14, 'Nguyen2', 'lmao2', 'user2',  'pass2', 123456782, 'email2', 'descrip2', 'date2', 'time2');
+INSERT INTO Member VALUES(15, 'Nguyen', 'lmao', 'user',  'pass', 12345678, 'email@gmail.com', 'descrip', 'date', 'time');
+INSERT INTO Member VALUES(16, 'Nguyenwa', 'lmaowa', 'user',  'password123', 12345678, 'email@gmail.com', 'descrip', 'date', 'time');
+
+INSERT INTO Member VALUES(17, 'Nguyen2', 'lmao2', 'user2',  'pass2', 123456782, 'email2', 'descrip2', 'date2', 'time2');
+INSERT INTO Member VALUES(18, 'Nguyen', 'lmao', 'user',  'pass', 12345678, 'email@gmail.com', 'descrip', 'date', 'time');
+INSERT INTO Member VALUES(19, 'Nguyenwa', 'lmaowa', 'user',  'password123', 12345678, 'email@gmail.com', 'descrip', 'date', 'time');
+
+INSERT INTO Member VALUES(20, 'Nguyen2', 'lmao2', 'user2',  'pass2', 123456782, 'email2', 'descrip2', 'date2', 'time2');
+INSERT INTO Member VALUES(21, 'Nguyen', 'lmao', 'user',  'pass', 12345678, 'email@gmail.com', 'descrip', 'date', 'time');
+INSERT INTO Member VALUES(22, 'Nguyenwa', 'lmaowa', 'user',  'password123', 12345678, 'email@gmail.com', 'descrip', 'date', 'time');
