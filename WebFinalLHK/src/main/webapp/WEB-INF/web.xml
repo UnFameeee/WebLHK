@@ -62,10 +62,18 @@
     <servlet-mapping>
         <servlet-name>LoginControllerRegister</servlet-name>
         <url-pattern>/registerAccount</url-pattern>
-    </servlet-mapping>
+    </servlet-mapping>	
+	
+	<servlet>
+        <servlet-name>LoginControllerLogout</servlet-name>
+        <servlet-class>com.unfame.Web.LoginController</servlet-class>
+    </servlet>
 
-
-
+    <servlet-mapping>
+        <servlet-name>LoginControllerLogout</servlet-name>
+        <url-pattern>/logoutAccount</url-pattern>
+    </servlet-mapping>	
+	
 
     <!-- View Content -->
     <servlet>

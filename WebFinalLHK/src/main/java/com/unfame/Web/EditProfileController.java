@@ -4,6 +4,7 @@ import com.unfame.Global.UserIdGlobal;
 import com.unfame.Model.EditProfile;
 import com.unfame.DAO.EditProfileDAO;
 import com.unfame.Model.ViewContent;
+import com.unfame.Web.LoginController;
 
 import javax.servlet.*;
 import javax.servlet.http.*;

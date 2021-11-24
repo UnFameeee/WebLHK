@@ -109,7 +109,7 @@ Validator.isEmail = function (selector, message) {
         selector: selector,
         test: function (value) {
             var regex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
-            return regex.test(value) ? undefined : message || 'Please enter a valid Email address, ex: \"abc@gmail.com\"\n'
+            return regex.test(value) ? undefined : message || 'Please enter a valid Email address'
         }
     };
 }
