@@ -74,6 +74,12 @@ public class LoginController extends HttpServlet {
 					e.printStackTrace();
 				}
 				break;
+			case "/logoutAccount":
+				try {
+					logoutAccount(request, response);
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
 			default:
 				break;
 		}
@@ -100,6 +106,7 @@ public class LoginController extends HttpServlet {
 		
 		
 		if (loginDAO.checkAccount(account)) {
+			//Tạo cookie
 			if(remember != null) {
 				Cookie c = new Cookie("check", "OK");
 	            c.setMaxAge(3600);
@@ -138,5 +145,19 @@ public class LoginController extends HttpServlet {
 		else {
 			System.out.println("Wrong");
 		}
+	}
+	
+	private void logoutAccount (HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, SQLException {
+		Cookie[] cookies = request.getCookies();
+	        
+	    for(Cookie c: cookies){
+	    	if(c.getName().equals("check")){    			
+	    		c.setMaxAge(0);  
+	    		response.addCookie(c);
+	    	}    			
+	    }
+	        
+	    RequestDispatcher dispatcher = request.getRequestDispatcher("/login");
+		dispatcher.forward(request, response);
 	}
 }
