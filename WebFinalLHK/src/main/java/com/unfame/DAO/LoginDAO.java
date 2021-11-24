@@ -6,6 +6,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import com.unfame.Global.UserIdGlobal;
 import com.unfame.Model.Account;
 
 public class LoginDAO {
@@ -42,6 +43,7 @@ public class LoginDAO {
 				  statement.setString(1, acc.getEmail());
 				  statement.setString(2, acc.getPassword());
 				  ResultSet rs = statement.executeQuery();
+				  UserIdGlobal.UserId = Integer.parseInt(rs.getString(1));
 				  check = rs.next();
 			 }
 			 catch (Exception e) {

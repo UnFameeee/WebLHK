@@ -17,4 +17,6 @@ public class Variable {
     public void setPageIndex(int pageIndex) {
         PageIndex = pageIndex;
     }
+
+
 }
