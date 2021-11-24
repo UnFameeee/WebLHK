@@ -16,8 +16,7 @@ public class EditProfileDAO {
     String connectionUrl = "jdbc:mysql://localhost:3306/";
     String database = "WebLHK?useSSL=false";
     String userid = "root";
-    //String password = "root";
-    String password = "123456";
+    String password = "root";
 
     private static final String GET_ID_BY_EMAIL = "SELECT Id from Member where Email = ?";
     private static final String SELECT_PROFILE_BY_ID = "SELECT Firstname, Lastname, Email, Phone, Description FROM Member WHERE Id = ?";

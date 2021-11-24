@@ -14,10 +14,9 @@ public class LoginDAO {
 	 String connectionUrl = "jdbc:mysql://localhost:3306/";
 	 String database = "WebLHK?useSSL=false";
 	 String userid = "root";
-     //String password = "root";
-	 String password = "123456";
+     String password = "root";
 	 
-	 private static final String CHECK_ACC = "select * from Member where Email = ? and Password = ?";
+	 private static final String CHECK_ACC = "select * from member where Email = ? and Password = ?";
 	 
 	 protected Connection getConnection(){
 		 Connection connection = null;
@@ -45,8 +44,9 @@ public class LoginDAO {
 				  statement.executeQuery();
 				  
 				  ResultSet rs = statement.executeQuery();
-				  UserIdGlobal.UserId = rs.getInt("Id");				  
 				  check = rs.next();
+				  UserIdGlobal.UserId = rs.getInt("Id");				  
+				  
 			 }
 			 catch (Exception e) {
 				 e.printStackTrace();
