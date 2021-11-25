@@ -509,9 +509,6 @@ header{
     height: 45px;
     font-size: 16px;
 
-    padding: 0 24px;
-    border-left: none;
-    border-right: none;
 }
 
 .logout_btn .subnav li.subnav-top{
@@ -530,6 +527,12 @@ header{
 .logout_btn .subnav li a {
     color: #000;
     text-decoration: none;
+    line-height: 45px;
+
+    padding: 0 24px;
+    border-left: none;
+    border-right: none;
+    width: 100%;
 }
 
 .sidebar{
