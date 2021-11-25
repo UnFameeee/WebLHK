@@ -18,6 +18,7 @@
         const btnLogout = document.querySelector('.logout_btn');
         const subnav = document.querySelector('.subnav');
         btnLogout.onclick = () => {
+            btnLogout.classList.toggle('active')
             subnav.classList.toggle('active');
         }
     </script>

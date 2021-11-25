@@ -35,6 +35,13 @@ public class EditProfileDAO {
         }
         return connection;
     }
+
+    private String CheckNullAndSet(String par) {
+        if (par == null)
+            return "";
+        return par;
+    }
+
     //Select profile by id
     public EditProfile getProfileById(int id)  {
         EditProfile profile = new EditProfile();
@@ -42,14 +49,17 @@ public class EditProfileDAO {
             prepareStatement.setString(1, String.valueOf(id));
             ResultSet rs = prepareStatement.executeQuery();
 
-            while (rs.next()){
-                String firstName = rs.getString("Firstname");
-                String lastName = rs.getString("Lastname");
-                String email = rs.getString("Email");
-                String phone = rs.getString("Phone");
-                String description = rs.getString("Description");
+            if (rs.next()){
+                String firstName = CheckNullAndSet(rs.getString("Firstname"));
+                String lastName = CheckNullAndSet(rs.getString("Lastname"));
+                String email = CheckNullAndSet(rs.getString("Email"));
+                String phone = CheckNullAndSet(rs.getString("Phone"));
+                String description = CheckNullAndSet(rs.getString("Description"));
+
                 profile = new EditProfile(id, firstName, lastName, email, phone, description);
             }
+            else
+                profile = new EditProfile(id, "", "", "", "", "");
         }catch (SQLException e){
             e.printStackTrace();
         }

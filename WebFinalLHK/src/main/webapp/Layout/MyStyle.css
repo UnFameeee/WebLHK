@@ -468,6 +468,13 @@ header{
     font-size: 15px;
     transition-property: background;
     cursor: pointer;
+    height: 33px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.logout_btn.active {
+    background: #c6c6c6;
 }
 .logout_btn>a {
     text-decoration: none;
@@ -490,19 +497,21 @@ header{
     top: calc(100%);
     right: 0;
     background-color: #fff;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
     list-style-type: none;
     text-decoration: none;
     min-width: 165px;
 }
 .logout_btn .subnav li {
     display: flex;
-    justify-content: center;
     align-items: center;
     list-style-type: none;
     color: #000;
     height: 45px;
     font-size: 16px;
+
+    padding: 0 24px;
+    border-left: none;
+    border-right: none;
 }
 
 .logout_btn .subnav li.subnav-top{
@@ -514,7 +523,7 @@ header{
     border: 1px solid #CCCCCC;
 }
 
-.logout_btn .subnav li:hover {
+.logout_btn .subnav li:hover{
     background: #ececec;
 }
 
