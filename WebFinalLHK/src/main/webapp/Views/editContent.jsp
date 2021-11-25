@@ -1,5 +1,5 @@
 <%@ page import="java.util.List" %>
-<%@ page import="com.unfame.Model.ViewContent" %>
+<%@ page import="com.unfame.model.ViewContent" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%
     ViewContent existingContent = (ViewContent)request.getAttribute("content");

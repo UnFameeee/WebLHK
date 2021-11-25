@@ -26,7 +26,7 @@
     <!-- Login -->
     <servlet>
         <servlet-name>LoginControllerShowLogin</servlet-name>
-        <servlet-class>com.unfame.Web.LoginController</servlet-class>
+        <servlet-class>com.unfame.controller.LoginController</servlet-class>
     </servlet>
 
     <servlet-mapping>
@@ -36,7 +36,7 @@
 
     <servlet>
         <servlet-name>LoginControllerShowRegister</servlet-name>
-        <servlet-class>com.unfame.Web.LoginController</servlet-class>
+        <servlet-class>com.unfame.controller.LoginController</servlet-class>
     </servlet>
 
     <servlet-mapping>
@@ -46,7 +46,7 @@
 
     <servlet>
         <servlet-name>LoginControllerLogin</servlet-name>
-        <servlet-class>com.unfame.Web.LoginController</servlet-class>
+        <servlet-class>com.unfame.controller.LoginController</servlet-class>
     </servlet>
 
     <servlet-mapping>
@@ -56,7 +56,7 @@
 
     <servlet>
         <servlet-name>LoginControllerRegister</servlet-name>
-        <servlet-class>com.unfame.Web.LoginController</servlet-class>
+        <servlet-class>com.unfame.controller.LoginController</servlet-class>
     </servlet>
 
     <servlet-mapping>
@@ -66,7 +66,7 @@
 	
 	<servlet>
         <servlet-name>LoginControllerLogout</servlet-name>
-        <servlet-class>com.unfame.Web.LoginController</servlet-class>
+        <servlet-class>com.unfame.controller.LoginController</servlet-class>
     </servlet>
 
     <servlet-mapping>
@@ -78,7 +78,7 @@
     <!-- View Content -->
     <servlet>
         <servlet-name>ViewContentController</servlet-name>
-        <servlet-class>com.unfame.Web.ViewContentController</servlet-class>
+        <servlet-class>com.unfame.controller.ViewContentController</servlet-class>
     </servlet>
 
     <servlet-mapping>
@@ -88,7 +88,7 @@
 
     <servlet>
         <servlet-name>ViewContentControllerDelete</servlet-name>
-        <servlet-class>com.unfame.Web.ViewContentController</servlet-class>
+        <servlet-class>com.unfame.controller.ViewContentController</servlet-class>
     </servlet>
 
     <servlet-mapping>
@@ -98,7 +98,7 @@
 
     <servlet>
         <servlet-name>ViewContentControllerEdit</servlet-name>
-        <servlet-class>com.unfame.Web.ViewContentController</servlet-class>
+        <servlet-class>com.unfame.controller.ViewContentController</servlet-class>
     </servlet>
 
     <servlet-mapping>
@@ -109,7 +109,7 @@
     <!-- Add Content -->
     <servlet>
         <servlet-name>ViewContentControllerUpdate</servlet-name>
-        <servlet-class>com.unfame.Web.ViewContentController</servlet-class>
+        <servlet-class>com.unfame.controller.ViewContentController</servlet-class>
     </servlet>
 
     <servlet-mapping>
@@ -119,7 +119,7 @@
 
     <servlet>
         <servlet-name>AddContentController</servlet-name>
-        <servlet-class>com.unfame.Web.AddContentController</servlet-class>
+        <servlet-class>com.unfame.controller.AddContentController</servlet-class>
     </servlet>
 
     <servlet-mapping>
@@ -129,7 +129,7 @@
 
     <servlet>
         <servlet-name>AddContentControllerShow</servlet-name>
-        <servlet-class>com.unfame.Web.AddContentController</servlet-class>
+        <servlet-class>com.unfame.controller.AddContentController</servlet-class>
     </servlet>
 
     <servlet-mapping>
@@ -140,7 +140,7 @@
     <!-- Edit Profile -->
     <servlet>
         <servlet-name>EditProfileController</servlet-name>
-        <servlet-class>com.unfame.Web.EditProfileController</servlet-class>
+        <servlet-class>com.unfame.controller.EditProfileController</servlet-class>
     </servlet>
 
     <servlet-mapping>
@@ -150,7 +150,7 @@
 
     <servlet>
         <servlet-name>EditProfileControllerShow</servlet-name>
-        <servlet-class>com.unfame.Web.EditProfileController</servlet-class>
+        <servlet-class>com.unfame.controller.EditProfileController</servlet-class>
     </servlet>
 
     <servlet-mapping>

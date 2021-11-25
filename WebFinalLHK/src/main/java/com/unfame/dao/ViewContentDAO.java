@@ -1,15 +1,13 @@
-package com.unfame.DAO;
-import com.unfame.Global.IdGlobal;
-import com.unfame.Model.ViewContent;
+package com.unfame.dao;
+import com.unfame.global.IdGlobal;
+import com.unfame.model.ViewContent;
 
 
 import java.sql.*;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.List;
 import java.util.Objects;
 

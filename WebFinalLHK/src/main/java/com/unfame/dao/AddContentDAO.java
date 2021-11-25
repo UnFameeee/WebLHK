@@ -1,13 +1,11 @@
-package com.unfame.DAO;
+package com.unfame.dao;
 
-import com.unfame.Model.AddContent;
+import com.unfame.model.AddContent;
 
 import java.sql.*;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
 
 public class AddContentDAO {
     String driver = "com.mysql.jdbc.Driver";

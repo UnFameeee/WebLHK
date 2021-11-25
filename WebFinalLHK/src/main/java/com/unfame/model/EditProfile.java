@@ -1,4 +1,4 @@
-package com.unfame.Model;
+package com.unfame.model;
 
 public class EditProfile {
     private int id;

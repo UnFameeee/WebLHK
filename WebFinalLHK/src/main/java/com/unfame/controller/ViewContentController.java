@@ -1,7 +1,7 @@
-package com.unfame.Web;
+package com.unfame.controller;
 
-import com.unfame.DAO.ViewContentDAO;
-import com.unfame.Model.ViewContent;
+import com.unfame.dao.ViewContentDAO;
+import com.unfame.model.ViewContent;
 
 import javax.servlet.*;
 import javax.servlet.http.*;
