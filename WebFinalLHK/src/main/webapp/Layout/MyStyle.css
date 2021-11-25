@@ -69,6 +69,10 @@
     background: #1de11d;
 }
 
+.link-register{
+	text-decoration: none;
+}
+
 
 /* -------------------- Register - 2Du -------------------- */
 #register-form{
@@ -120,6 +124,10 @@
     border-radius: 5px;
     font-size: 22px;
     font-weight: 600;
+}
+
+.link-login{
+	text-decoration: none;
 }
 
 /* -------------------- Edit Profile - Wibu -------------------- */

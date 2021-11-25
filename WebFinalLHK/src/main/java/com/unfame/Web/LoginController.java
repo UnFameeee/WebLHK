@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.unfame.DAO.LoginDAO;
 import com.unfame.DAO.RegisterAccountDAO;
+import com.unfame.Global.IdGlobal;
 import com.unfame.Model.Account;
 
 
@@ -114,8 +115,10 @@ public class LoginController extends HttpServlet {
 			response.setCharacterEncoding("UTF-8");
 
 			dispatcher.forward(request, response);
-		} else {
-			System.out.println("Wrong Email or password!!!");
+		} 
+		else {
+			request.setAttribute("Message", "Wrong Email or password!!!");
+			request.getRequestDispatcher("/login").forward(request, response);
 		}
 
 	}
@@ -151,6 +154,8 @@ public class LoginController extends HttpServlet {
 	    		response.addCookie(c);
 	    	}    			
 	    }
+	    
+	    IdGlobal.UserId = -1;
 	        
 	    RequestDispatcher dispatcher = request.getRequestDispatcher("/login");
 		dispatcher.forward(request, response);

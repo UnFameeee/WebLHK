@@ -4,6 +4,11 @@
     <form id="login-form" action="<%=request.getContextPath()%>/loginAccount" method="post">
         <div class="login-container">
 
+			<%
+				//System.out.println(request.getAttribute("Message"));
+				
+			%>
+			<span><%=request.getAttribute("Message")%></span>
             <div class="login-header">
                 <label>Please Sign In</label>
             </div>
@@ -32,9 +37,9 @@
             </div>
 
             <a href="<%=request.getContextPath()%>/register">
-                <span style="color: blue;">Click here to Register</span>
+                <span class="link-register" style="color: blue;">Click here to Register</span>
             </a>
-
+			
         </div>
     </form>
 </body>

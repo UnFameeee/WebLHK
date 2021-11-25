@@ -39,7 +39,7 @@
             </div>
 
             <a href="<%=request.getContextPath()%>/login">
-                <span style="color: blue;">Click here to Login</span>
+                <span class="link-login" style="color: blue;">Click here to Login</span>
             </a>
         </div>
     </form>
