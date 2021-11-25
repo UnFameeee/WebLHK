@@ -1,6 +1,6 @@
-<%@ page import="com.unfame.Model.ViewContent" %>
+<%@ page import="com.unfame.model.ViewContent" %>
 <%@ page import="java.util.List" %>
-<%@ page import="com.unfame.Global.IdGlobal" %>
+<%@ page import="com.unfame.global.IdGlobal" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <html>
@@ -51,16 +51,17 @@
                 </table>
                 <div class="btn-field">
                     <form action="<%=request.getContextPath()%>/view?<% request.getParameter("previous"); %>">
-                        <input type="submit" name="previous" value="Previous">
+                        <input type="submit" name="previous" value="Previous" id="previous">
                     </form>
                         <a><%= (IdGlobal.PageLIMIT/10 + 1) %></a>
                     <form action="<%=request.getContextPath()%>/view?<% request.getParameter("next"); %>">
-                        <input type="submit" name="next" value="Next">
+                        <input type="submit" name="next" value="Next" id="next">
                     </form>
                 </div>
             </div>
         </div>
         <!-- Content end -->
+
         <script type="text/javascript" src="${pageContext.request.contextPath}/Views/Effect/ViewContent.js"></script>
     </body>
 </html>

@@ -1,4 +1,4 @@
-package com.unfame.Global;
+package com.unfame.global;
 
 public class IdGlobal {
     public static int UserId = -1;

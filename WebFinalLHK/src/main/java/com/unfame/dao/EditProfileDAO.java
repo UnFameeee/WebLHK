@@ -1,15 +1,11 @@
-package com.unfame.DAO;
+package com.unfame.dao;
 
-import com.unfame.Model.EditProfile;
+import com.unfame.model.EditProfile;
 
 import java.sql.*;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.List;
 
 public class EditProfileDAO {
     String driver = "com.mysql.jdbc.Driver";

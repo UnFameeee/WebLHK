@@ -1,13 +1,11 @@
-package com.unfame.DAO;
+package com.unfame.dao;
 
 import java.sql.*;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
 
-import com.unfame.Model.Account;
+import com.unfame.model.Account;
 
 public class RegisterAccountDAO {
 	 String driver = "com.mysql.jdbc.Driver";

@@ -1,4 +1,4 @@
-package com.unfame.DAO;
+package com.unfame.dao;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -6,8 +6,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import com.unfame.Global.IdGlobal;
-import com.unfame.Model.Account;
+import com.unfame.global.IdGlobal;
+import com.unfame.model.Account;
 
 public class LoginDAO {
 	 String driver = "com.mysql.jdbc.Driver";

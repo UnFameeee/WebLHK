@@ -1,4 +1,4 @@
-package com.unfame.Web;
+package com.unfame.controller;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -10,10 +10,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.unfame.DAO.LoginDAO;
-import com.unfame.DAO.RegisterAccountDAO;
-import com.unfame.Global.IdGlobal;
-import com.unfame.Model.Account;
+import com.unfame.dao.LoginDAO;
+import com.unfame.dao.RegisterAccountDAO;
+import com.unfame.global.IdGlobal;
+import com.unfame.model.Account;
 
 
 @WebServlet("/Login")

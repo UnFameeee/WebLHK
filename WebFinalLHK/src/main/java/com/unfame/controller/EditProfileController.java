@@ -1,8 +1,8 @@
-package com.unfame.Web;
+package com.unfame.controller;
 
-import com.unfame.Global.IdGlobal;
-import com.unfame.Model.EditProfile;
-import com.unfame.DAO.EditProfileDAO;
+import com.unfame.global.IdGlobal;
+import com.unfame.model.EditProfile;
+import com.unfame.dao.EditProfileDAO;
 
 import javax.servlet.*;
 import javax.servlet.http.*;

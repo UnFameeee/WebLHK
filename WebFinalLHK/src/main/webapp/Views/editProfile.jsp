@@ -1,4 +1,4 @@
-<%@ page import="com.unfame.Model.EditProfile" %>
+<%@ page import="com.unfame.model.EditProfile" %>
 
 <%
     EditProfile profile = (EditProfile)request.getAttribute("profile");
