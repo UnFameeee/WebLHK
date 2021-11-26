@@ -10,21 +10,21 @@ import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 
 public class CharsetFilter implements Filter{
-    public void init(FilterConfig filterConfig) throws ServletException {
 
+    //FilterConfig object
+    private FilterConfig filterConfig = null;
+
+    public void init(FilterConfig filterConfig) throws ServletException {
+        this.filterConfig = filterConfig;
     }
 
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
-        if(null == request.getCharacterEncoding()){
-            request.setCharacterEncoding("UTF-8");
-        }
-        response.setContentType("text/html; charset=UTF-8");
-        response.setCharacterEncoding("UTF-8");
-
+        response.setContentType("text/html;charset=ISO-8859-1");
+        request.setCharacterEncoding("ISO-8859-1");
         chain.doFilter(request, response);
     }
 
     public void destroy() {
-
+        this.filterConfig = null;
     }
 }

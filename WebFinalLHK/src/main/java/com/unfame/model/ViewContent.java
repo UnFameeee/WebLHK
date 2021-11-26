@@ -5,6 +5,7 @@ public class ViewContent {
     private String Title;
     private String Brief;
     private String Content;
+    private String Username;
     private String CreatedDate;
     private String UpdateTime;
     private String AuthorId;
@@ -15,6 +16,15 @@ public class ViewContent {
         Brief = brief;
         CreatedDate = createdDate;
     }
+
+    public ViewContent(int id, String title, String brief, String username, String createdDate) {
+        this.id = id;
+        Title = title;
+        Brief = brief;
+        Username = username;
+        CreatedDate = createdDate;
+    }
+
     public ViewContent( String title, String brief, String content, int id, String updateTime) {
         this.id = id;
         Title = title;
@@ -112,6 +122,12 @@ public class ViewContent {
     public void setCreatedDate(String createdDate) {
         CreatedDate = createdDate;
     }
+
+    //get set username
+    public String getUsername() {return Username;}
+
+    public void setUsername(String username) {Username = username;}
+
 
     //Method
     public String getDate(String time){
