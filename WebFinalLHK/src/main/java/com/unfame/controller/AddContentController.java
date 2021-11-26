@@ -1,6 +1,7 @@
 package com.unfame.controller;
 
 import com.unfame.dao.AddContentDAO;
+import com.unfame.global.IdGlobal;
 import com.unfame.model.AddContent;
 
 import javax.servlet.*;
@@ -65,6 +66,7 @@ public class AddContentController extends HttpServlet {
     }
 
     private void showAddContent (HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, SQLException {
+        IdGlobal.searchValue = "";
         response.sendRedirect("Add_Content.tiles");
     }
 }

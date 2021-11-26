@@ -5,4 +5,5 @@ public class IdGlobal {
     public static int PageLIMIT = 0;
     public static boolean maxPage = false;
     public static boolean minPage = false;
+    public static String searchValue = "";
 }

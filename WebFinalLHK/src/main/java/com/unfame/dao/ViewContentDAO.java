@@ -24,7 +24,8 @@ public class ViewContentDAO {
     private static final String SELECT_TOTAL_NUMBER_CONTENTS = "SELECT COUNT(Id) AS max FROM Content";
     private static final String SELECT_CONTENT_BY_ID = "SELECT Title, Brief, Content, CreateDate, UpdateTime, AuthorId FROM Content WHERE Id = ?";
     private static final String UPDATE_CONTENT_SQL = "UPDATE Content set Title = ?,Brief= ?, Content =? , UpdateTime =? where id = ?;";
-//    private static final String SEARCH_TOTAL_NUMBER_CONTENTS = "SELECT COUNT(Id) AS max FROM Content WHERE id LIKE '%?%' OR tittle LIKE '%?%' OR brief LIKE '%?%' OR content LIKE '%?%' OR createdate LIKE '%?%' OR updatetime LIKE '%?%' OR authorid LIKE '%?%'";
+    //OR authorid LIKE '%' ? '%'
+    private static final String SEARCH_TOTAL_NUMBER_CONTENTS = "SELECT COUNT(Id) AS max FROM weblhk.content WHERE id LIKE '%' ? '%' OR title LIKE '%' ? '%' OR brief LIKE '%' ? '%' OR content LIKE '%' ? '%' OR createdate LIKE '%' ? '%'OR updatetime LIKE '%' ? '%' ";
 
 
     protected Connection getConnection(){
@@ -113,6 +114,7 @@ public class ViewContentDAO {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+
         return viewcontent;
     }
     public boolean updateContent(ViewContent viewContent) throws SQLException {
@@ -129,50 +131,53 @@ public class ViewContentDAO {
         return rowUpdated;
     }
 
-//    public List<ViewContent> searchContents(String search, String command)  {
-//        List<ViewContent> content = new ArrayList<>();
-//        //Step 1: Connection
-//
-//        try(Connection connection = getConnection(); ){
-//            PreparedStatement prepareStatement ;
-//            prepareStatement = connection.prepareStatement(SEARCH_TOTAL_NUMBER_CONTENTS);
-//
-//
-//            ResultSet rs1 = prepareStatement.executeQuery();
-//            int maxRow = 0;
-//            if (rs1.next()) { maxRow = rs1.getInt("max"); }
-//
-//            //check max page min page
-//            if(Objects.equals(command, "Next")){
-//                if(IdGlobal.PageLIMIT < (maxRow/10)*10){
-//                    IdGlobal.PageLIMIT+=10;
-//                }
-//            }else if(Objects.equals(command, "Previous")){
-//                if(IdGlobal.PageLIMIT > 0){
-//                    IdGlobal.PageLIMIT-=10;
-//                }
-//            }
-//
-//            String SELECT_SOME_CONTENTS = "SELECT * FROM Content LIMIT " + IdGlobal.PageLIMIT + ", 10"  + "WHERE id LIKE '%?%' OR tittle LIKE '%?%' OR brief LIKE '%?%' OR content LIKE '%?%' OR createdate LIKE '%?%' OR updatetime LIKE '%?%' OR authorid LIKE '%?%'";
-//            prepareStatement = connection.prepareStatement(SELECT_SOME_CONTENTS);
-//            prepareStatement.setString(1, search);
-//            prepareStatement.setString(2, search);
-//            prepareStatement.setString(3, search);
-//            prepareStatement.setString(4, search);
-//            prepareStatement.setString(5, search);
-//            prepareStatement.setString(6, search);
-//            prepareStatement.setString(7, search);
-//            ResultSet rs2 = prepareStatement.executeQuery();
-//            while (rs2.next()){
-//                int id = rs2.getInt("Id");
-//                String title = rs2.getString("Title");
-//                String brief = rs2.getString("Brief");
-//                String createdDate = rs2.getString("CreateDate");
-//                content.add(new ViewContent(id, title, brief, createdDate));
-//            }
-//        }catch (SQLException e){
-//            e.printStackTrace();
-//        }
-//        return content;
-//    }
+    public List<ViewContent> searchContents(String search, String command)  {
+        List<ViewContent> content = new ArrayList<>();
+        //Step 1: Connection
+        IdGlobal.searchValue = search;
+        try(Connection connection = getConnection(); ){
+            PreparedStatement prepareStatement ;
+            prepareStatement = connection.prepareStatement(SEARCH_TOTAL_NUMBER_CONTENTS);
+            prepareStatement.setString(1, search);
+            prepareStatement.setString(2, search);
+            prepareStatement.setString(3, search);
+            prepareStatement.setString(4, search);
+            prepareStatement.setString(5, search);
+            prepareStatement.setString(6, search);
+            ResultSet rs1 = prepareStatement.executeQuery();
+            int maxRow = 0;
+            if (rs1.next()) { maxRow = rs1.getInt("max"); }
+
+            //check max page min page
+            if(Objects.equals(command, "Next")){
+                if(IdGlobal.PageLIMIT < (maxRow/10)*10){
+                    IdGlobal.PageLIMIT+=10;
+                }
+            }else if(Objects.equals(command, "Previous")){
+                if(IdGlobal.PageLIMIT > 0){
+                    IdGlobal.PageLIMIT-=10;
+                }
+            }
+
+            String SELECT_SOME_CONTENTS = "SELECT * FROM weblhk.content WHERE id LIKE '%' ? '%' OR title LIKE '%' ? '%' OR brief LIKE '%' ? '%' OR content LIKE '%' ? '%' OR createdate LIKE '%' ? '%'OR updatetime LIKE '%' ? '%'  LIMIT " + IdGlobal.PageLIMIT + ", 10";
+            prepareStatement = connection.prepareStatement(SELECT_SOME_CONTENTS);
+            prepareStatement.setString(1, search);
+            prepareStatement.setString(2, search);
+            prepareStatement.setString(3, search);
+            prepareStatement.setString(4, search);
+            prepareStatement.setString(5, search);
+            prepareStatement.setString(6, search);
+            ResultSet rs2 = prepareStatement.executeQuery();
+            while (rs2.next()){
+                int id = rs2.getInt("Id");
+                String title = rs2.getString("Title");
+                String brief = rs2.getString("Brief");
+                String createdDate = rs2.getString("CreateDate");
+                content.add(new ViewContent(id, title, brief, createdDate));
+            }
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+        return content;
+    }
 }

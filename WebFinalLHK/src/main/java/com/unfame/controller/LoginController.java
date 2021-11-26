@@ -142,7 +142,7 @@ public class LoginController extends HttpServlet {
 	    }
 	    
 	    IdGlobal.UserId = -1;
-	        
+		IdGlobal.searchValue = "";
 	    RequestDispatcher dispatcher = request.getRequestDispatcher("/login");
 		dispatcher.forward(request, response);
 	}

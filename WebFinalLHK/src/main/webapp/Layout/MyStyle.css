@@ -1,3 +1,9 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 /* -------------------- Login - 2Du -------------------- */
 #login-form{
     width: 32vw;
@@ -264,10 +270,7 @@ html {
 }
 
 .btn {
-    margin-left: 5px;
     padding: 5px 5px 5px 5px;
-    background: #FFFFFF;
-    border: 1px solid #CCCCCC;
     border-radius: 4px;
     height: 35px;
     width: 110px;
@@ -615,7 +618,11 @@ header{
     text-indent: 10px;
     width: 180px;
 }
-
+.sidebar .sidebar-container .form-search .btn {
+    position: relative;
+    width: 40px;
+    height: 40px;
+}
 .sidebar .sidebar-container .form-search .search-btn {
     /* background-color: #ccc; */
     border-top: 2px solid #CCCCCC;
@@ -625,9 +632,20 @@ header{
     border-bottom-right-radius: 4px;
     height: 40px;
     width: 40px;
-    padding-right: 18px;
+    background: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
 }
-
+.sidebar .sidebar-container .form-search .icon-search {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 10;
+    padding: 0;
+}
 .sidebar .form-search .search-btn:hover {
 
 }

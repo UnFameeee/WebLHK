@@ -106,6 +106,16 @@
         <url-pattern>/showEdit</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>ViewContentControllerSearch</servlet-name>
+        <servlet-class>com.unfame.controller.ViewContentController</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>ViewContentControllerSearch</servlet-name>
+        <url-pattern>/search</url-pattern>
+    </servlet-mapping>
+
     <!-- Add Content -->
     <servlet>
         <servlet-name>ViewContentControllerUpdate</servlet-name>

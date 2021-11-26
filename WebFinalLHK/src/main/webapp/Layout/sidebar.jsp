@@ -1,11 +1,15 @@
+<%@ page import="com.unfame.global.IdGlobal" %>
 <body>
 <div class="sidebar">
     <div class="sidebar-container">
-<%--<%=request.getContextPath()%>/search--%>
-        <form action="" method="post">
+        <form action="<%=request.getContextPath()%>/search" method="post">
             <div class="form-search">
-                <input type="text" placeholder="Search..." class="search" name="search">
-                <a href="#" class="search-btn"><span><i class="fas fa-search"></i></span></a>
+                <input type="text" placeholder="Search..." class="search-input" name="search" value="<%=IdGlobal.searchValue%>">
+                <div class="btn">
+                    <input type="submit" value="" class="search-btn">
+                    <i class="icon-search fas fa-search"></i>
+                </div>
+
             </div>
         </form>
 
@@ -20,4 +24,11 @@
 
     </div>
 </div>
+<script type="text/javascript">
+    const searchBtn = document.querySelector('.search-btn');
+    const searchIconBtn = document.querySelector('.icon-search');
+    searchIconBtn.onclick = function (e) {
+        searchBtn.click();
+    }
+</script>
 </body>
