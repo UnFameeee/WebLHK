@@ -15,6 +15,7 @@ public class RegisterAccountDAO {
 	 String password = "root";
 	 
 	 private static final String INSERT_ACCOUNT_SQL = "insert into Member(Username, Password, Email) values (?,?,?)";
+	
 	 private static final String CHECK_EXIST_ACC = "select * from Member where Email = ?";
 	 
 	 protected Connection getConnection(){
@@ -72,6 +73,7 @@ public class RegisterAccountDAO {
 			Connection con = getConnection();
 			
 			PreparedStatement ppstm = con.prepareStatement(CHECK_EXIST_ACC);
+			
 			ppstm.setString(1, acc.getEmail());
 			ppstm.executeQuery();
 			
