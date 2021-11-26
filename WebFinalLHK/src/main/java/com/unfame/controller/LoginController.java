@@ -145,6 +145,7 @@ public class LoginController extends HttpServlet {
 	    
 	    IdGlobal.UserId = -1;
 		IdGlobal.searchValue = "";
+		IdGlobal.Role = "";
 	    RequestDispatcher dispatcher = request.getRequestDispatcher("/login");
 		dispatcher.forward(request, response);
 	}
