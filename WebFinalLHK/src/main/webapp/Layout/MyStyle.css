@@ -708,7 +708,7 @@ header{
     border: 1px solid #DDDDDD;
     border-collapse: collapse;
     width: 100%;
-    max-height: 650px;
+    /*max-height: 650px;*/
 }
 
 #View-content-list tr:nth-child(odd) td {
@@ -726,17 +726,10 @@ header{
 
 }
 
-#View-content-list tbody{
-    height: 100px;
-}
-
 #View-content-list tbody td{
     border: 1px solid #DDDDDD;
-    /*padding-left: 1%;*/
-    /*padding-right: 1%;*/
-    padding: 5px 1% 5px 1%;
+    padding: 10px 1% 10px 1%;
     word-wrap: break-word;
-    height: 60px;
 }
 
 #View-content-list tbody td .view-content-btn-container{
@@ -782,7 +775,7 @@ header{
     width: 200px;
 }
 .view-content-list-container #View-content-list th.brief {
-    width: 960px;
+    width: 850px;
 }
 .view-content-list-container #View-content-list th.created-date {
     width: 140px;
@@ -790,15 +783,18 @@ header{
 .view-content-list-container #View-content-list th.actions {
     width: 165px;
 }
+.view-content-list-container #View-content-list th.username {
+    width: 110px;
+}
 
 .view-content-list-container #View-content-list td.id {
-    max-width: 45px;
+    max-width: 70px;
 }
 .view-content-list-container #View-content-list td.title {
     max-width: 200px;
 }
 .view-content-list-container #View-content-list td.brief {
-    max-width: 960px;
+    max-width: 850px;
 }
 .view-content-list-container #View-content-list td.created-date {
     max-width: 140px;
@@ -806,7 +802,9 @@ header{
 .view-content-list-container #View-content-list td.actions {
     max-width: 165px;
 }
-
+.view-content-list-container #View-content-list td.username {
+    max-width: 110px;
+}
 
 .view-content-list-container .btn-field{
     margin-top: 10px;

@@ -1,8 +1,9 @@
 <%@ page import="com.unfame.model.ViewContent" %>
 <%@ page import="java.util.List" %>
 <%@ page import="com.unfame.global.IdGlobal" %>
+<%@ page import="java.util.Objects" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ page pageEncoding="UTF-8" contentType="text/html; charset=UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 
 <html>
     <body>
@@ -24,6 +25,9 @@
                         <th class="id">#</th>
                         <th class="title">Title</th>
                         <th class="brief">Brief</th>
+                        <% if(Objects.equals(IdGlobal.Role, "Admin")){ %>
+                        <th class="username">Username</th>
+                        <% } %>
                         <th class="created-date">Created Date</th>
                         <th class="actions">Actions</th>
                     </thead>
@@ -34,7 +38,9 @@
                         <td class="id"><%= listContent.get(i).getId() %></td>
                         <td class="title"><%= listContent.get(i).getTitle() %></td>
                         <td class="brief"><%= listContent.get(i).getBrief() %></td>
-<%--                        <td><%= listContent.get(i).getCreatedDate() %></td>--%>
+                        <% if(Objects.equals(IdGlobal.Role, "Admin")){ %>
+                        <td class="username"><%= listContent.get(i).getUsername() %></td>
+                        <% } %>
                         <td class="created-date"><%= listContent.get(i).getDate(listContent.get(i).getCreatedDate()) %> <br> <%= listContent.get(i).getTime(listContent.get(i).getCreatedDate()) %></td>
                         <td class="actions">
                             <div class="view-content-btn-container">

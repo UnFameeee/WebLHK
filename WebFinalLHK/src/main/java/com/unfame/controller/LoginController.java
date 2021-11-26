@@ -92,8 +92,7 @@ public class LoginController extends HttpServlet {
 		Account account = new Account(pass, email);
 		
 		String remember = request.getParameter("remember_me");
-		
-		
+
 		if (loginDAO.checkAccount(account)) {
 			//Tạo cookie
 			if(remember != null) {

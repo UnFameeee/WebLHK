@@ -158,13 +158,17 @@
         <url-pattern>/showEditProfile</url-pattern>
     </servlet-mapping>
 
-    <!--CharsetFilter start -->
     <filter>
-        <filter-name>CharacterSetFilter</filter-name>
+        <filter-name>CharsetFilter</filter-name>
         <filter-class>com.unfame.config.CharsetFilter</filter-class>
+        <init-param>
+            <param-name>requestEncoding</param-name>
+            <param-value>UTF-8</param-value>
+        </init-param>
     </filter>
+
     <filter-mapping>
-        <filter-name>CharacterSetFilter</filter-name>
+        <filter-name>CharsetFilter</filter-name>
         <url-pattern>/*</url-pattern>
     </filter-mapping>
 </web-app>

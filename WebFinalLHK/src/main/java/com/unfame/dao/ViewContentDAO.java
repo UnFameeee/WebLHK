@@ -2,7 +2,6 @@ package com.unfame.dao;
 import com.unfame.global.IdGlobal;
 import com.unfame.model.ViewContent;
 
-
 import java.sql.*;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -20,8 +19,8 @@ public class ViewContentDAO {
 
 //    private static final String INSERT_CONTENT_SQL = "INSERT INTO Content" + " (Title, Brief, Content, CreateDate, UpdateTime, AuthorId) VALUES" + " (?, ? ,? ,? ,? ,? ,?);";
     private static final String DELETE_CONTENTS_SQL = "DELETE FROM Content WHERE Id = ?";
-    private static final String SELECT_ALL_CONTENTS = "SELECT * FROM Content";
-    private static final String SELECT_TOTAL_NUMBER_CONTENTS = "SELECT COUNT(Id) AS max FROM Content";
+//    private static final String SELECT_ALL_CONTENTS = "SELECT * FROM Content";
+
     private static final String SELECT_CONTENT_BY_ID = "SELECT Title, Brief, Content, CreateDate, UpdateTime, AuthorId FROM Content WHERE Id = ?";
     private static final String UPDATE_CONTENT_SQL = "UPDATE Content set Title = ?,Brief= ?, Content =? , UpdateTime =? where id = ?;";
 //    private static final String SEARCH_TOTAL_NUMBER_CONTENTS = "SELECT COUNT(Id) AS max FROM Content WHERE id LIKE '%?%' OR tittle LIKE '%?%' OR brief LIKE '%?%' OR content LIKE '%?%' OR createdate LIKE '%?%' OR updatetime LIKE '%?%' OR authorid LIKE '%?%'";
@@ -46,17 +45,25 @@ public class ViewContentDAO {
         List<ViewContent> content = new ArrayList<>();
         //Step 1: Connection
 
+        //If the role is admin (show All) / member (show Member)
+        String SELECT_TOTAL_NUMBER_CONTENTS;
+        if(Objects.equals(IdGlobal.Role, "Admin")){
+            SELECT_TOTAL_NUMBER_CONTENTS = "SELECT COUNT(Id) AS max FROM Content";
+        }
+        else{
+            SELECT_TOTAL_NUMBER_CONTENTS = "SELECT COUNT(Id) AS max FROM Content WHERE AuthorId = " + IdGlobal.UserId;
+        }
+
         try(Connection connection = getConnection(); ){
             PreparedStatement prepareStatement ;
             prepareStatement = connection.prepareStatement(SELECT_TOTAL_NUMBER_CONTENTS);
-            System.out.println(prepareStatement);
             ResultSet rs1 = prepareStatement.executeQuery();
             int maxRow = 0;
             if (rs1.next()) { maxRow = rs1.getInt("max"); }
 
             //check max page min page
             if(Objects.equals(command, "Next")){
-                if(IdGlobal.PageLIMIT < (maxRow/10)*10){
+                if((IdGlobal.PageLIMIT < (maxRow/10)*10) && (maxRow % 10 != 0)){
                     IdGlobal.PageLIMIT+=10;
                 }
             }else if(Objects.equals(command, "Previous")){
@@ -65,16 +72,37 @@ public class ViewContentDAO {
                 }
             }
 
-            String SELECT_SOME_CONTENTS = "SELECT * FROM Content LIMIT " + IdGlobal.PageLIMIT + ", 10";
+            String SELECT_SOME_CONTENTS;
+            if(Objects.equals(IdGlobal.Role, "Admin")){
+                SELECT_SOME_CONTENTS = "SELECT Content.Id, Content.Title, Content.Brief, Content.Content, Member.Username, Content.CreateDate " +
+                                        "FROM Content, Member  WHERE Content.AuthorId = Member.Id LIMIT " + IdGlobal.PageLIMIT + ", 10";
+            }
+            else{
+                SELECT_SOME_CONTENTS = "SELECT * FROM Content WHERE AuthorId = " + IdGlobal.UserId + " LIMIT " + IdGlobal.PageLIMIT + ", 10";
+            }
+
+            System.out.println(SELECT_SOME_CONTENTS);
             prepareStatement = connection.prepareStatement(SELECT_SOME_CONTENTS);
             ResultSet rs2 = prepareStatement.executeQuery();
-            while (rs2.next()){
-                int id = rs2.getInt("Id");
-                String title = rs2.getString("Title");
-                String brief = rs2.getString("Brief");
-                String createdDate = rs2.getString("CreateDate");
-                content.add(new ViewContent(id, title, brief, createdDate));
+            if(Objects.equals(IdGlobal.Role, "Admin")){
+                while (rs2.next()){
+                    int id = rs2.getInt("Id");
+                    String title = rs2.getString("Title");
+                    String brief = rs2.getString("Brief");
+                    String username = rs2.getString("Username");
+                    String createdDate = rs2.getString("CreateDate");
+                    content.add(new ViewContent(id, title, brief, username, createdDate));
+                }
+            }else{
+                while (rs2.next()){
+                    int id = rs2.getInt("Id");
+                    String title = rs2.getString("Title");
+                    String brief = rs2.getString("Brief");
+                    String createdDate = rs2.getString("CreateDate");
+                    content.add(new ViewContent(id, title, brief, createdDate));
+                }
             }
+
         }catch (SQLException e){
             e.printStackTrace();
         }
@@ -97,7 +125,7 @@ public class ViewContentDAO {
         // Step 1: Establishing a Connection
         try (Connection connection = getConnection();
              // Step 2:Create a statement using connection object
-             PreparedStatement preparedStatement = connection.prepareStatement(SELECT_CONTENT_BY_ID);) {
+            PreparedStatement preparedStatement = connection.prepareStatement(SELECT_CONTENT_BY_ID);) {
             preparedStatement.setInt(1, id);
             System.out.println(preparedStatement);
             // Step 3: Execute the query or update query
