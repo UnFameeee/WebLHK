@@ -24,8 +24,10 @@ public class ViewContentDAO {
     private static final String SELECT_CONTENT_BY_ID = "SELECT Title, Brief, Content, CreateDate, UpdateTime, AuthorId FROM Content WHERE Id = ?";
     private static final String UPDATE_CONTENT_SQL = "UPDATE Content set Title = ?,Brief= ?, Content =? , UpdateTime =? where id = ?;";
     //OR authorid LIKE '%' ? '%'
-    private static final String SEARCH_TOTAL_NUMBER_CONTENTS = "SELECT COUNT(Id) AS max FROM weblhk.content WHERE id LIKE '%' ? '%' OR title LIKE '%' ? '%' OR brief LIKE '%' ? '%' OR content LIKE '%' ? '%' OR createdate LIKE '%' ? '%'OR updatetime LIKE '%' ? '%' ";
-
+    private static final String SEARCH_TOTAL_NUMBER_CONTENTS_ADMIN = "SELECT COUNT(Id) AS max FROM weblhk.content WHERE id LIKE '%' ? '%' OR title LIKE '%' ? '%' OR brief LIKE '%' ? '%' OR content LIKE '%' ? '%' OR createdate LIKE '%' ? '%'";
+    private static final String SEARCH_TOTAL_NUMBER_CONTENTS_MEMBER = "SELECT COUNT(Id) AS max FROM weblhk.content WHERE id LIKE '%' ? '%' AND AuthorId = " + IdGlobal.UserId + " OR title LIKE '%' ? '%' AND AuthorId = " + IdGlobal.UserId + " OR brief LIKE '%' ? '%' AND AuthorId = " + IdGlobal.UserId + " OR content LIKE '%' ? '%' AND AuthorId = " + IdGlobal.UserId + " OR createdate LIKE '%' ? '%'AND AuthorId = " + IdGlobal.UserId;
+    private static final String SEARCH_CONTENTS_ADMIN = "SELECT Content.Id, Content.Title, Content.Brief, Content.Content, Member.Username, Content.CreateDate FROM Content, Member  WHERE Content.AuthorId = Member.Id AND Content.id LIKE '%' ? '%' OR Content.AuthorId = Member.Id AND title LIKE '%' ? '%' OR Content.AuthorId = Member.Id AND brief LIKE '%' ? '%' OR Content.AuthorId = Member.Id AND content LIKE '%' ? '%' OR Content.AuthorId = Member.Id AND createdate LIKE '%' ? '%'LIMIT ? , 10";
+    private static final String SEARCH_CONTENTS_MEMBER = "SELECT * FROM weblhk.content WHERE id LIKE '%' ? '%' AND AuthorId = " + IdGlobal.UserId + " OR title LIKE '%' ? '%' AND AuthorId = " + IdGlobal.UserId + " OR brief LIKE '%' ? '%' AND AuthorId = " + IdGlobal.UserId + " OR content LIKE '%' ? '%' AND AuthorId = " + IdGlobal.UserId + " OR createdate LIKE '%' ? '%'AND AuthorId = " + IdGlobal.UserId + " LIMIT ? , 10";;
 
     protected Connection getConnection(){
         Connection connection = null;
@@ -161,17 +163,23 @@ public class ViewContentDAO {
 
     public List<ViewContent> searchContents(String search, String command)  {
         List<ViewContent> content = new ArrayList<>();
-        //Step 1: Connection
         IdGlobal.searchValue = search;
+
         try(Connection connection = getConnection(); ){
             PreparedStatement prepareStatement ;
-            prepareStatement = connection.prepareStatement(SEARCH_TOTAL_NUMBER_CONTENTS);
+
+            if(Objects.equals(IdGlobal.Role, "Admin")){
+                prepareStatement = connection.prepareStatement(SEARCH_TOTAL_NUMBER_CONTENTS_ADMIN);
+            }
+            else{
+                prepareStatement = connection.prepareStatement(SEARCH_TOTAL_NUMBER_CONTENTS_MEMBER);
+            }
+
             prepareStatement.setString(1, search);
             prepareStatement.setString(2, search);
             prepareStatement.setString(3, search);
             prepareStatement.setString(4, search);
             prepareStatement.setString(5, search);
-            prepareStatement.setString(6, search);
             ResultSet rs1 = prepareStatement.executeQuery();
             int maxRow = 0;
             if (rs1.next()) { maxRow = rs1.getInt("max"); }
@@ -187,21 +195,37 @@ public class ViewContentDAO {
                 }
             }
 
-            String SELECT_SOME_CONTENTS = "SELECT * FROM weblhk.content WHERE id LIKE '%' ? '%' OR title LIKE '%' ? '%' OR brief LIKE '%' ? '%' OR content LIKE '%' ? '%' OR createdate LIKE '%' ? '%'OR updatetime LIKE '%' ? '%'  LIMIT " + IdGlobal.PageLIMIT + ", 10";
-            prepareStatement = connection.prepareStatement(SELECT_SOME_CONTENTS);
+           if(Objects.equals(IdGlobal.Role, "Admin")){
+                prepareStatement = connection.prepareStatement(SEARCH_CONTENTS_ADMIN);
+            }
+            else{
+                prepareStatement = connection.prepareStatement(SEARCH_CONTENTS_MEMBER);
+            }
             prepareStatement.setString(1, search);
             prepareStatement.setString(2, search);
             prepareStatement.setString(3, search);
             prepareStatement.setString(4, search);
             prepareStatement.setString(5, search);
-            prepareStatement.setString(6, search);
+            prepareStatement.setInt(6, IdGlobal.PageLIMIT);
             ResultSet rs2 = prepareStatement.executeQuery();
-            while (rs2.next()){
-                int id = rs2.getInt("Id");
-                String title = rs2.getString("Title");
-                String brief = rs2.getString("Brief");
-                String createdDate = rs2.getString("CreateDate");
-                content.add(new ViewContent(id, title, brief, createdDate));
+
+            if(Objects.equals(IdGlobal.Role, "Admin")){
+                while (rs2.next()){
+                    int id = rs2.getInt("Id");
+                    String title = rs2.getString("Title");
+                    String brief = rs2.getString("Brief");
+                    String username = rs2.getString("Username");
+                    String createdDate = rs2.getString("CreateDate");
+                    content.add(new ViewContent(id, title, brief, username, createdDate));
+                }
+            }else{
+                while (rs2.next()){
+                    int id = rs2.getInt("Id");
+                    String title = rs2.getString("Title");
+                    String brief = rs2.getString("Brief");
+                    String createdDate = rs2.getString("CreateDate");
+                    content.add(new ViewContent(id, title, brief, createdDate));
+                }
             }
         }catch (SQLException e){
             e.printStackTrace();

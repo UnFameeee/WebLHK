@@ -46,7 +46,7 @@ public class LoginDAO {
 				  ResultSet rs = statement.executeQuery();
 				  check = rs.next();
 				  IdGlobal.UserId = rs.getInt("Id");
-				  
+				  IdGlobal.Role = rs.getString("Role");
 			 }
 			 catch (Exception e) {
 				 e.printStackTrace();
