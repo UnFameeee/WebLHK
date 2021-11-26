@@ -75,6 +75,7 @@ public class RegisterAccountDAO {
 			PreparedStatement ppstm = con.prepareStatement(CHECK_EXIST_ACC);
 			
 			ppstm.setString(1, acc.getEmail());
+			ppstm.setString(2, acc.getUsername());	
 			ppstm.executeQuery();
 			
 			ResultSet rs = ppstm.executeQuery();	
