@@ -1,5 +1,6 @@
 package com.unfame.dao;
 
+import com.unfame.global.IdGlobal;
 import com.unfame.model.AddContent;
 
 import java.sql.*;
@@ -13,6 +14,7 @@ public class AddContentDAO {
     String database = "WebLHK?useSSL=false";
     String userid = "root";
     String password = "root";
+
 
     private static final String INSERT_CONTENT_SQL = "INSERT INTO Content" + " ( Title, Brief, Content, CreateDate, AuthorId) VALUES" + " (?, ?, ?, ?, ?);";
     //private static final String INSERT_CONTENT_SQL = "INSERT INTO Content" + " (Title, Brief, Content, CreateDate, UpdateTime, AuthorId) VALUES" + " (?, ? ,? ,? ,? ,?);";
@@ -42,7 +44,7 @@ public class AddContentDAO {
             preparedStatement.setString(2, content.getBrief());
             preparedStatement.setString(3, content.getContent());
             preparedStatement.setString(4, content.getCreatedDate());
-            preparedStatement.setInt(5, 1);
+            preparedStatement.setInt(5,  IdGlobal.UserId);
 //            preparedStatement.setString(5, content.getUpdateTime());
 //            preparedStatement.setString(6, content.getAuthorId());
             System.out.println(preparedStatement);
