@@ -161,9 +161,8 @@ public class ViewContentDAO {
         return rowUpdated;
     }
 
-    public List<ViewContent> searchContents(String search, String command)  {
+    public List<ViewContent> searchContents(String command)  {
         List<ViewContent> content = new ArrayList<>();
-        IdGlobal.searchValue = search;
 
         try(Connection connection = getConnection(); ){
             PreparedStatement prepareStatement ;
@@ -175,11 +174,11 @@ public class ViewContentDAO {
                 prepareStatement = connection.prepareStatement(SEARCH_TOTAL_NUMBER_CONTENTS_MEMBER);
             }
 
-            prepareStatement.setString(1, search);
-            prepareStatement.setString(2, search);
-            prepareStatement.setString(3, search);
-            prepareStatement.setString(4, search);
-            prepareStatement.setString(5, search);
+            prepareStatement.setString(1,  IdGlobal.searchValue);
+            prepareStatement.setString(2,  IdGlobal.searchValue);
+            prepareStatement.setString(3,  IdGlobal.searchValue);
+            prepareStatement.setString(4,  IdGlobal.searchValue);
+            prepareStatement.setString(5,  IdGlobal.searchValue);
             ResultSet rs1 = prepareStatement.executeQuery();
             int maxRow = 0;
             if (rs1.next()) { maxRow = rs1.getInt("max"); }
@@ -201,11 +200,11 @@ public class ViewContentDAO {
             else{
                 prepareStatement = connection.prepareStatement(SEARCH_CONTENTS_MEMBER);
             }
-            prepareStatement.setString(1, search);
-            prepareStatement.setString(2, search);
-            prepareStatement.setString(3, search);
-            prepareStatement.setString(4, search);
-            prepareStatement.setString(5, search);
+            prepareStatement.setString(1,  IdGlobal.searchValue);
+            prepareStatement.setString(2,  IdGlobal.searchValue);
+            prepareStatement.setString(3,  IdGlobal.searchValue);
+            prepareStatement.setString(4,  IdGlobal.searchValue);
+            prepareStatement.setString(5,  IdGlobal.searchValue);
             prepareStatement.setInt(6, IdGlobal.PageLIMIT);
             ResultSet rs2 = prepareStatement.executeQuery();
 

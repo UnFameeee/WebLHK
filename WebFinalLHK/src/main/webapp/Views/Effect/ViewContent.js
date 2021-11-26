@@ -9,8 +9,8 @@ window.addEventListener('load', function(){
 })
 
 // function ()
-
-console.log(X + "ben trang js");
+//
+// console.log(X + "ben trang js");
 
 function showPopup(){
     const timeLimit = 5;
