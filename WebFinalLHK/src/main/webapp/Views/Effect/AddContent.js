@@ -3,12 +3,15 @@ const titleValue =document.querySelector('.title').value;
 const contentValue =document.querySelector('.content').innerHTML;
 const resetBtn = document.querySelector('#reset-btn');
 
-resetBtn.addEventListener("click",(e)=>{
-    e.preventDefault();
-      document.querySelector('.brief').value=briefValue;
-      document.querySelector('.title').value=titleValue;
-      document.querySelector('.content').value=contentValue;
-})
+if(resetBtn !== null){
+    resetBtn.addEventListener("click",(e)=>{
+        e.preventDefault();
+        document.querySelector('.brief').value=briefValue;
+        document.querySelector('.title').value=titleValue;
+        document.querySelector('.content').value=contentValue;
+    })
+}
+
 function Validator(options)
     {
         // lưu lại các rules của selector
