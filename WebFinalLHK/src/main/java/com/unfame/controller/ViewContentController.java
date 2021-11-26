@@ -74,6 +74,7 @@ public class ViewContentController extends HttpServlet {
     private void listContent (HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, SQLException {
         String command = "";
         IdGlobal.searchValue = "";
+        IdGlobal.searchForm = 0;
         if(request.getParameter("next") != null)
         {
             command = request.getParameter("next");
@@ -120,6 +121,7 @@ public class ViewContentController extends HttpServlet {
 
     private void searchContent (HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, SQLException {
         String command = "";
+        IdGlobal.searchForm = 1;
         if(request.getParameter("next") != null)
         {
             command = request.getParameter("next");
@@ -127,9 +129,9 @@ public class ViewContentController extends HttpServlet {
         else if (request.getParameter("previous") != null){
             command = request.getParameter("previous");
         }
-
-        List<ViewContent> listContent = viewContentDAO.searchContents(request.getParameter("search"), command);
-
+        if (request.getParameter("search") != null)
+            IdGlobal.searchValue = request.getParameter("search");
+        List<ViewContent> listContent = viewContentDAO.searchContents(command);
         request.setAttribute("ListContent", listContent);
         RequestDispatcher dispatcher = request.getRequestDispatcher("View_Content.tiles");
 

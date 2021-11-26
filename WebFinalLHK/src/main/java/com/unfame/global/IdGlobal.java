@@ -7,4 +7,5 @@ public class IdGlobal {
     public static boolean maxPage = false;
     public static boolean minPage = false;
     public static String searchValue = "";
+    public static int searchForm = 0;
 }

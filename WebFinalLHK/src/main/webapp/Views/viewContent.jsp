@@ -50,6 +50,7 @@
                                 <form action="<%=request.getContextPath()%>/delete?Id=<%=listContent.get(i).getId()%>" method="post">
                                     <input type="submit" class="view-content-btn-delete" value="Delete">
                                 </form>
+
                             </div>
                         </td>
                     </tr>
@@ -57,13 +58,24 @@
                     </tbody>
                 </table>
                 <div class="btn-field">
-                    <form action="<%=request.getContextPath()%>/view?<% request.getParameter("previous"); %>">
-                        <input type="submit" name="previous" value="Previous" id="previous">
-                    </form>
+                    <% if(IdGlobal.searchForm == 0){ %>
+                        <form action="<%=request.getContextPath()%>/view?<% request.getParameter("previous"); %>">
+                            <input type="submit" name="previous" value="Previous" id="previous">
+                        </form>
+                            <a><%= (IdGlobal.PageLIMIT/10 + 1) %></a>
+                        <form action="<%=request.getContextPath()%>/view?<% request.getParameter("next"); %>">
+                            <input type="submit" name="next" value="Next" id="next">
+                        </form>
+                    <% }%>
+                    <%if(IdGlobal.searchForm == 1) {%>
+                        <form action="<%=request.getContextPath()%>/search?<% request.getParameter("previous"); %>">
+                            <input type="submit" name="previous" value="Previous" id="previous">
+                        </form>
                         <a><%= (IdGlobal.PageLIMIT/10 + 1) %></a>
-                    <form action="<%=request.getContextPath()%>/view?<% request.getParameter("next"); %>">
-                        <input type="submit" name="next" value="Next" id="next">
-                    </form>
+                        <form action="<%=request.getContextPath()%>/search?<% request.getParameter("next"); %>">
+                            <input type="submit" name="next" value="Next" id="next">
+                        </form>
+                    <% }%>
                 </div>
             </div>
         </div>

@@ -51,6 +51,7 @@ public class EditProfileController extends HttpServlet {
         EditProfile profile = editProfileDAO.getProfileById(IdGlobal.UserId);
         request.setAttribute("profile", profile);
         IdGlobal.searchValue = "";
+        IdGlobal.searchForm = 0;
         RequestDispatcher dispatcher = request.getRequestDispatcher("Edit_Profile.tiles");
         dispatcher.forward(request,response);
     }
