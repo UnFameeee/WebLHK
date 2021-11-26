@@ -14,7 +14,7 @@ public class RegisterAccountDAO {
 	 String userid = "root";
 	 String password = "root";
 	 
-	 private static final String INSERT_ACCOUNT_SQL = "insert into Member(Username, Password, Email) values (?,?,?)";
+	 private static final String INSERT_ACCOUNT_SQL = "insert into Member(Username, Password, Email, CreatedDate) values (?,?,?,now())";
 	
 	 private static final String CHECK_EXIST_ACC = "select * from Member where Email = ? or Username = ?";
 	 
