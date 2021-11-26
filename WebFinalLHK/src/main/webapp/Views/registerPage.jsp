@@ -1,4 +1,12 @@
 <body>
+	<%
+		if(request.getAttribute("Message")==null)
+			request.setAttribute("Message", "");
+	%>
+	<div class="register-alert">
+    	<span class="alert-message"><%=request.getAttribute("Message")%></span>
+    </div>
+    
     <form id="register-form" method="post" action="<%=request.getContextPath()%>/registerAccount">
         <div class="register-container">
 
@@ -38,8 +46,8 @@
                 <input id="register-button" type="submit" value="Register">
             </div>
 
-            <a href="<%=request.getContextPath()%>/login">
-                <span class="link-login" style="color: blue;">Click here to Login</span>
+            <a class="login-register" href="<%=request.getContextPath()%>/login">
+                <span style="color: blue;">Click here to Login</span>
             </a>
         </div>
     </form>

@@ -1,14 +1,17 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <body>
-    <form id="login-form" action="<%=request.getContextPath()%>/loginAccount" method="post">
+	<%
+		if(request.getAttribute("Message")==null)
+			request.setAttribute("Message", "");
+	%>
+	<div class="login-alert">
+    	<span class="alert-message"><%=request.getAttribute("Message")%></span>
+    </div>
+	
+    <form id="login-form" action="<%=request.getContextPath()%>/loginAccount" method="post">   		
         <div class="login-container">
-
-			<%
-				//System.out.println(request.getAttribute("Message"));
-				
-			%>
-			<span><%=request.getAttribute("Message")%></span>
+					
             <div class="login-header">
                 <label>Please Sign In</label>
             </div>
@@ -36,8 +39,8 @@
                 <input id="login-button" name="submit" type="submit" value="Login">
             </div>
 
-            <a href="<%=request.getContextPath()%>/register">
-                <span class="link-register" style="color: blue;">Click here to Register</span>
+            <a class="login-register" href="<%=request.getContextPath()%>/register">
+                <span style="color: blue;">Click here to Register</span>
             </a>
 			
         </div>
