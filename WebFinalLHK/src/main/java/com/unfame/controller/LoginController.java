@@ -141,11 +141,8 @@ public class LoginController extends HttpServlet {
 			dispatcher.forward(request, response);
 		}
 		else {
-			
-			
-			
-			
-			System.out.println("Wrong");
+			request.setAttribute("Message", "Username or Email is already existed!!!");
+			request.getRequestDispatcher("/register").forward(request, response);
 		}
 	}
 	
