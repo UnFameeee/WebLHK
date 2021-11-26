@@ -9,6 +9,7 @@ Drop table Content;
 
 CREATE TABLE Member(
 	Id int PRIMARY KEY AUTO_INCREMENT,
+    Role nvarchar(50),
     Firstname nvarchar(50),
     Lastname nvarchar(50),
     Username nvarchar(50),

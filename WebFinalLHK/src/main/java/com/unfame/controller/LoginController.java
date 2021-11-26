@@ -28,18 +28,11 @@ public class LoginController extends HttpServlet {
 
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.setCharacterEncoding("UTF-8");
-		response.setCharacterEncoding("UTF-8");
 		this.doGet(request, response);
 	}
 
 	@Override
-
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-		request.setCharacterEncoding("UTF-8");
-		response.setCharacterEncoding("UTF-8");
-
 		String action = request.getServletPath();
 
 		switch (action) {
@@ -110,10 +103,6 @@ public class LoginController extends HttpServlet {
 			}
             
 			RequestDispatcher dispatcher = request.getRequestDispatcher("/view");
-
-			request.setCharacterEncoding("UTF-8");
-			response.setCharacterEncoding("UTF-8");
-
 			dispatcher.forward(request, response);
 		} 
 		else {
@@ -133,10 +122,6 @@ public class LoginController extends HttpServlet {
 		//check email
 		if(!registerDAO.checkEmailExist(account)) {
 			registerDAO.insertUser(account);
-
-			request.setCharacterEncoding("UTF-8");
-			response.setCharacterEncoding("UTF-8");
-
 			RequestDispatcher dispatcher = request.getRequestDispatcher("/login");
 			dispatcher.forward(request, response);
 		}

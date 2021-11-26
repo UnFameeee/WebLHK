@@ -20,19 +20,11 @@ public class AddContentController extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-        request.setCharacterEncoding("UTF-8");
-        response.setCharacterEncoding("UTF-8");
-
         this.doGet(request,response);
     }
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-        request.setCharacterEncoding("UTF-8");
-        response.setCharacterEncoding("UTF-8");
-
         String action = request.getServletPath();
 
         switch (action) {
@@ -58,7 +50,6 @@ public class AddContentController extends HttpServlet {
     }
 
     private void addContent(HttpServletRequest request, HttpServletResponse response ) throws ServletException, IOException, SQLException{
-
         String title =request.getParameter("title");
         String brief =request.getParameter("brief");
         String content =request.getParameter("content");
@@ -70,18 +61,10 @@ public class AddContentController extends HttpServlet {
         addContentDAO.insertContent(addContent);
 
         RequestDispatcher dispatcher = request.getRequestDispatcher("Add_Content.tiles");
-
-        request.setCharacterEncoding("UTF-8");
-        response.setCharacterEncoding("UTF-8");
-
         dispatcher.forward(request,response);
     }
 
     private void showAddContent (HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, SQLException {
-
-        request.setCharacterEncoding("UTF-8");
-        response.setCharacterEncoding("UTF-8");
-
         response.sendRedirect("Add_Content.tiles");
     }
 }

@@ -90,20 +90,12 @@ public class ViewContentController extends HttpServlet {
 
         request.setAttribute("ListContent", listContent);
         RequestDispatcher dispatcher = request.getRequestDispatcher("View_Content.tiles");
-
-        request.setCharacterEncoding("UTF-8");
-        response.setCharacterEncoding("UTF-8");
-
         dispatcher.forward(request,response);
     }
 
     private void deleteContent (HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, SQLException {
         int Id = Integer.parseInt((request.getParameter("Id")));
         viewContentDAO.deleteContent(Id);
-
-        request.setCharacterEncoding("UTF-8");
-        response.setCharacterEncoding("UTF-8");
-
         response.sendRedirect("view");
     }
 
@@ -113,10 +105,6 @@ public class ViewContentController extends HttpServlet {
         request.setAttribute("content",existingContent);
         request.setAttribute("Id",Id);
         RequestDispatcher dispatcher=request.getRequestDispatcher("Add_Content.tiles");
-
-        request.setCharacterEncoding("UTF-8");
-        response.setCharacterEncoding("UTF-8");
-
         dispatcher.forward(request,response);
     }
     private void updateContent(HttpServletRequest request, HttpServletResponse response)
@@ -130,10 +118,6 @@ public class ViewContentController extends HttpServlet {
         String updateTime = new SimpleDateFormat("dd:MM:yyyy_HH:mm:ss").format(Calendar.getInstance().getTime());
         ViewContent existingContent = new ViewContent(title, brief, content, id,updateTime);
         viewContentDAO.updateContent(existingContent);
-
-        request.setCharacterEncoding("UTF-8");
-        response.setCharacterEncoding("UTF-8");
-
         response.sendRedirect("view");
     }
 

@@ -1,9 +1,12 @@
 <%@ page import="java.util.List" %>
 <%@ page import="com.unfame.model.ViewContent" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page pageEncoding="UTF-8" contentType="text/html; charset=UTF-8"%>
+
 <%
     ViewContent existingContent = (ViewContent)request.getAttribute("content");
 %>
+
 <body>
 <div class="edit-content">
     <form  class="form-content" id="editContent-form"  action="<%=request.getContextPath()%>/update?Id=<%=existingContent.getId()%>" method="post" >
