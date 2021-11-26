@@ -1,5 +1,6 @@
 <%@ page import="com.unfame.model.ViewContent" %>
 <%@ page import="java.util.List" %>
+<%@ page import="com.unfame.global.IdGlobal" %>
 <%@ taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
