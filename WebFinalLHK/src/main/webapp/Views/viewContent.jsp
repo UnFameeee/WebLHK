@@ -57,7 +57,7 @@
                     </tbody>
                 </table>
                 <div class="btn-field">
-                    <form action="<%=request.getContextPath()%>/view?<% request.getParameter("previous"); %>">
+                    <form action="<%=request.getContextPath()%>/view?<% request.getParameter("previous");%>">
                         <input type="submit" name="previous" value="Previous" id="previous">
                     </form>
                         <a><%= (IdGlobal.PageLIMIT/10 + 1) %></a>
