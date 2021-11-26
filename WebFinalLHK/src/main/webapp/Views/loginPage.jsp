@@ -1,15 +1,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 
-<body>
-	<%
-		if(request.getAttribute("Message")==null)
-			request.setAttribute("Message", "");
-	%>
-	<div class="login-alert">
-    	<span class="alert-message"><%=request.getAttribute("Message")%></span>
-    </div>
-	
+<body>	
     <form id="login-form" action="<%=request.getContextPath()%>/loginAccount" method="post">   		
         <div class="login-container">
 					
@@ -47,7 +39,7 @@
         </div>
     </form>
 </body>
-
+	 
 <script type="text/javascript" src="${pageContext.request.contextPath}/Views/Effect/Login_Register.js"> </script>
 <script>
     Validator({
@@ -60,4 +52,5 @@
             Validator.needLength('#password', 8, 30),
         ]
     })
+    <%=request.getAttribute("Message")%>    
 </script>

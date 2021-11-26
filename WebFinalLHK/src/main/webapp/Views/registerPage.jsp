@@ -1,14 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 
 <body>
-	<%
-		if(request.getAttribute("Message")==null)
-			request.setAttribute("Message", "");
-	%>
-	<div class="register-alert">
-    	<span class="alert-message"><%=request.getAttribute("Message")%></span>
-    </div>
-    
+	    
     <form id="register-form" method="post" action="<%=request.getContextPath()%>/registerAccount">
         <div class="register-container">
 
@@ -73,4 +66,5 @@
             })
         ]
     })
+    <%=request.getAttribute("Message")%> 
 </script>

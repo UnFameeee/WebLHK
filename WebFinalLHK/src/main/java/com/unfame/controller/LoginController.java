@@ -1,6 +1,7 @@
 package com.unfame.controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.sql.SQLException;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -104,9 +105,10 @@ public class LoginController extends HttpServlet {
 			RequestDispatcher dispatcher = request.getRequestDispatcher("/view");
 			dispatcher.forward(request, response);
 		} 
-		else {
-			request.setAttribute("Message", "Wrong Email or password!!!");
-			request.getRequestDispatcher("/login").forward(request, response);
+		else {				
+			
+			request.setAttribute("Message", "alert('Email or password incorrect!!!');");
+			request.getRequestDispatcher("/login").forward(request, response);	
 		}
 
 	}
@@ -125,7 +127,8 @@ public class LoginController extends HttpServlet {
 			dispatcher.forward(request, response);
 		}
 		else {
-			request.setAttribute("Message", "Username or Email is already existed!!!");
+			
+			request.setAttribute("Message", "alert('Username or email is already existed!!!');");
 			request.getRequestDispatcher("/register").forward(request, response);
 		}
 	}

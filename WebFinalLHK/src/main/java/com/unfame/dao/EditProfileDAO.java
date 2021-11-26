@@ -16,7 +16,7 @@ public class EditProfileDAO {
 
     private static final String GET_ID_BY_EMAIL = "SELECT Id from Member where Email = ?";
     private static final String SELECT_PROFILE_BY_ID = "SELECT Firstname, Lastname, Email, Phone, Description FROM Member WHERE Id = ?";
-    private static final String UPDATE_PROFILE_BY_ID = "UPDATE Member SET Firstname = ?, Lastname = ?, Phone = ?, Description = ? WHERE Id = ?";
+    private static final String UPDATE_PROFILE_BY_ID = "UPDATE Member SET Firstname = ?, Lastname = ?, Phone = ?, Description = ?, UpdateTime = now() WHERE Id = ?";
 
     public EditProfileDAO(){}
 

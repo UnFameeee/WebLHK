@@ -9,20 +9,9 @@
     width: 32vw;
     height: 57vh;
     margin: 0 auto;
+    margin-top: 20vh;
     border: 2px solid #CCCCCC;
     border-radius: 4px;
-}
-
-.login-alert {
-    margin-top: 20vh;
-    margin-bottom: 12px;
-    text-align: center;
-}
-
-.alert-message {    
-   color: red;
-   font-weight: 500;
-   font-size: 18px;
 }
 
 .login-container{ 
@@ -96,14 +85,9 @@
     width: 35vw;
     height: 70vh;
     margin: 0 auto;
+    margin-top: 15vh;
     border: 2px solid #CCCCCC;
     border-radius: 4px;
-}
-
-.register-alert {
-    margin-top: 15vh;
-    margin-bottom: 12px;
-    text-align: center;
 }
 
 .register-container{ 
