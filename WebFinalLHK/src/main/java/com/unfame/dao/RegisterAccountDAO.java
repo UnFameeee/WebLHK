@@ -14,7 +14,7 @@ public class RegisterAccountDAO {
 	 String userid = "root";
 	 String password = "root";
 	 
-	 private static final String INSERT_ACCOUNT_SQL = "insert into Member(Username, Password, Email, CreatedDate) values (?,?,?,now())";
+	 private static final String INSERT_ACCOUNT_SQL = "insert into Member(Role, Username, Password, Email, CreatedDate) values (?,?,?,?,now())";
 	
 	 private static final String CHECK_EXIST_ACC = "select * from Member where Email = ? or Username = ?";
 	 
@@ -38,9 +38,10 @@ public class RegisterAccountDAO {
 		
 			Connection con = getConnection();
 			PreparedStatement ppstm = con.prepareStatement(INSERT_ACCOUNT_SQL);
-			ppstm.setString(1, acc.getUsername());
-			ppstm.setString(2, acc.getPassword());
-			ppstm.setString(3, acc.getEmail());
+			ppstm.setString(1, "Member");
+			ppstm.setString(2, acc.getUsername());
+			ppstm.setString(3, acc.getPassword());
+			ppstm.setString(4, acc.getEmail());
 			ppstm.executeUpdate();
 		} 
 		catch (Exception e) {				
