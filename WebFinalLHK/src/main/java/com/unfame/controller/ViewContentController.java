@@ -63,6 +63,13 @@ public class ViewContentController extends HttpServlet {
                     e.printStackTrace();
                 }
                 break;
+//            case "/search":
+//                try {
+//                    searchContent(request,response);
+//                } catch (SQLException e) {
+//                    e.printStackTrace();
+//                }
+//                break;
             default:
                 break;
         }
@@ -129,4 +136,25 @@ public class ViewContentController extends HttpServlet {
 
         response.sendRedirect("view");
     }
+
+//    private void searchContent (HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, SQLException {
+//        String command = "";
+//        if(request.getParameter("next") != null)
+//        {
+//            command = request.getParameter("next");
+//        }
+//        else if (request.getParameter("previous") != null){
+//            command = request.getParameter("previous");
+//        }
+//
+//        List<ViewContent> listContent = viewContentDAO.searchContents(request.getParameter("search"), command);
+//
+//        request.setAttribute("ListContent", listContent);
+//        RequestDispatcher dispatcher = request.getRequestDispatcher("View_Content.tiles");
+//
+//        request.setCharacterEncoding("UTF-8");
+//        response.setCharacterEncoding("UTF-8");
+//
+//        dispatcher.forward(request,response);
+//    }
 }

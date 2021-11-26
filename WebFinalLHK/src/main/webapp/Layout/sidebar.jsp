@@ -1,10 +1,10 @@
 <body>
 <div class="sidebar">
     <div class="sidebar-container">
-
+<%--<%=request.getContextPath()%>/search--%>
         <form action="" method="post">
             <div class="form-search">
-                <input type="text" placeholder="Search..." class="search-input" name="search-input">
+                <input type="text" placeholder="Search..." class="search" name="search">
                 <a href="#" class="search-btn"><span><i class="fas fa-search"></i></span></a>
             </div>
         </form>
