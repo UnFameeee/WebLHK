@@ -1,4 +1,5 @@
 <%@ page import="com.unfame.model.EditProfile" %>
+<%@ page import="com.unfame.global.IdGlobal" %>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 
 <%
@@ -41,6 +42,7 @@
                 <input type="submit" value="Submit button" class="btn submit-btn">
                 <input type="button" value="Reset button" class="btn reset-btn">
             </form>
+            <span class="success-message"><%=IdGlobal.alertSuccess%></span>
         </div>
     </div>
     <script type="text/javascript" src="${pageContext.request.contextPath}/Views/Effect/EditProfile.js"></script>

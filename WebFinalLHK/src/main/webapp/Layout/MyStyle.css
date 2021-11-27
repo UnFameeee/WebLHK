@@ -848,3 +848,8 @@ header{
     color: whitesmoke;
     background: #1de11d;
 }
+.success-message{
+    color:  #1de11d;
+    font-size: 18px;
+    margin: 16px;
+}

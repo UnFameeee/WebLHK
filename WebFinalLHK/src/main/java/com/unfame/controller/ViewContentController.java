@@ -74,8 +74,7 @@ public class ViewContentController extends HttpServlet {
 
     private void listContent (HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, SQLException {
         String command = "";
-        IdGlobal.searchValue = "";
-        IdGlobal.searchForm = 0;
+        IdGlobal.Reset();
         if(request.getParameter("next") != null)
         {
             command = request.getParameter("next");
@@ -122,7 +121,9 @@ public class ViewContentController extends HttpServlet {
 
     private void searchContent (HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, SQLException {
         String command = "";
-        IdGlobal.searchForm = 1;
+        IdGlobal.Reset();
+        IdGlobal.PageLIMIT = 0;
+        IdGlobal.searchForm = true;
         if(request.getParameter("next") != null)
         {
             command = request.getParameter("next");
