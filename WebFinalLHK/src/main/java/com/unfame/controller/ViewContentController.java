@@ -10,6 +10,7 @@ import javax.servlet.annotation.*;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
@@ -129,9 +130,14 @@ public class ViewContentController extends HttpServlet {
         else if (request.getParameter("previous") != null){
             command = request.getParameter("previous");
         }
-        if (request.getParameter("search") != null) {
+        if (request.getParameter("search") != null && request.getParameter("search") != "") {
             IdGlobal.searchValue = request.getParameter("search");
             List<ViewContent> listContent = viewContentDAO.searchContents(command);
+            request.setAttribute("ListContent", listContent);
+        }
+        else {
+            IdGlobal.searchValue = "";
+            List<ViewContent> listContent = new ArrayList<>();
             request.setAttribute("ListContent", listContent);
         }
         RequestDispatcher dispatcher = request.getRequestDispatcher("View_Content.tiles");
