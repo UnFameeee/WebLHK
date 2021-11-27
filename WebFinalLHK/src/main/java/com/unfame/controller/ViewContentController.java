@@ -102,6 +102,7 @@ public class ViewContentController extends HttpServlet {
         else{
             int Id = Integer.parseInt((request.getParameter("Id")));
             viewContentDAO.deleteContent(Id);
+            IdGlobal.alertSuccess = "Delete Success";
             response.sendRedirect("view");
         }
     }
