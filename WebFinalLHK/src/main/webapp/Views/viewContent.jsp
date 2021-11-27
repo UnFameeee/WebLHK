@@ -60,11 +60,11 @@
                 <div class="btn-field">
                     <% if(IdGlobal.searchForm == 0){ %>
                         <form action="<%=request.getContextPath()%>/view?<% request.getParameter("previous"); %>">
-                            <input type="submit" name="previous" value="Previous" id="previous">
+                            <input type="submit" name="previous" value="Previous">
                         </form>
                             <a><%= (IdGlobal.PageLIMIT/10 + 1) %></a>
                         <form action="<%=request.getContextPath()%>/view?<% request.getParameter("next"); %>">
-                            <input type="submit" name="next" value="Next" id="next">
+                            <input type="submit" name="next" value="Next">
                         </form>
                     <% }%>
                     <%if(IdGlobal.searchForm == 1) {%>
