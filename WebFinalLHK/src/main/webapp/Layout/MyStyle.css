@@ -131,6 +131,11 @@
     font-size: 22px;
     font-weight: 600;
 }
+#register-button:hover{
+    background: #1de11d;
+    cursor: pointer;
+}
+
 
 
 /* -------------------- Edit Profile - Wibu -------------------- */
@@ -607,6 +612,13 @@ header{
     width: 40px;
     height: 40px;
 }
+
+.sidebar .sidebar-container .form-search .btn:hover {
+    background: #c4c4c4;
+    cursor: pointer;
+}
+
+
 .sidebar .sidebar-container .form-search .search-btn {
     /* background-color: #ccc; */
     border-top: 2px solid #CCCCCC;
@@ -631,9 +643,6 @@ header{
     transform: translate(-50%, -50%);
     z-index: 10;
     padding: 0;
-}
-.sidebar .form-search .search-btn:hover {
-
 }
 
 .sidebar .form-search .search-btn i{
