@@ -76,8 +76,8 @@ public class ViewContentController extends HttpServlet {
         }
         else{
             String command = "";
-            IdGlobal.searchValue = "";
-            IdGlobal.searchForm = 0;
+//            IdGlobal.searchValue = "";
+            IdGlobal.Reset();
             if(request.getParameter("next") != null)
             {
                 command = request.getParameter("next");
