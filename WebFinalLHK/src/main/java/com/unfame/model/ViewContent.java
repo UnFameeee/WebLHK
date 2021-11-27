@@ -138,7 +138,7 @@ public class ViewContent {
 
     public String getTime(String time){
         String result = "";
-        for(int i = 12; i < time.length(); ++i) { result += time.charAt(i); }
+        for(int i = 11; i < time.length(); ++i) { result += time.charAt(i); }
         return result;
     }
 }

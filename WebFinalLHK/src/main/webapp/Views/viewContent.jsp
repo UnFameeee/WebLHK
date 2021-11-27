@@ -18,7 +18,7 @@
             <div class="view-content-list-title">
                 <p>View Content List</p>
             </div>
-
+            <span class="success-message"><%=IdGlobal.alertSuccess%></span>
             <div class="view-content-list-container">
                 <table id="View-content-list" class="table" border="1">
                     <thead>
