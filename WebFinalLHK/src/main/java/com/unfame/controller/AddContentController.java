@@ -65,7 +65,7 @@ public class AddContentController extends HttpServlet {
 
     private void showAddContent (HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, SQLException {
         IdGlobal.searchValue = "";
-        IdGlobal.searchForm = 0;
+        IdGlobal.Reset();
         response.sendRedirect("Add_Content.tiles");
     }
 }

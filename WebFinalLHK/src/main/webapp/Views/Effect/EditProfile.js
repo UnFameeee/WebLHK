@@ -1,4 +1,5 @@
 const btnReset = document.querySelector('.reset-btn');
+const btnSubmit = document.querySelector('.submit-btn');
 const firstname = document.querySelector('#profile-first-name');
 const firstnameValue = firstname.value;
 const lastname = document.querySelector('#profile-last-name');

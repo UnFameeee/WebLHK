@@ -130,7 +130,9 @@ public class ViewContentController extends HttpServlet {
 
     private void searchContent (HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, SQLException {
         String command = "";
-        IdGlobal.searchForm = 1;
+        IdGlobal.Reset();
+        IdGlobal.PageLIMIT = 0;
+        IdGlobal.searchForm = true;
         if(request.getParameter("next") != null)
         {
             command = request.getParameter("next");
