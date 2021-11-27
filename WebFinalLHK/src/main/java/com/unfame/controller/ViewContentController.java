@@ -121,7 +121,7 @@ public class ViewContentController extends HttpServlet {
         String title = request.getParameter("title");
         String brief = request.getParameter("brief");
         String content = request.getParameter("content");
-        String updateTime = new SimpleDateFormat("dd:MM:yyyy_HH:mm:ss").format(Calendar.getInstance().getTime());
+        String updateTime = new SimpleDateFormat("dd/MM/yyyy_HH:mm:ss").format(Calendar.getInstance().getTime());
         ViewContent existingContent = new ViewContent(title, brief, content, id,updateTime);
         viewContentDAO.updateContent(existingContent);
         response.sendRedirect("view");
@@ -143,10 +143,6 @@ public class ViewContentController extends HttpServlet {
             request.setAttribute("ListContent", listContent);
         }
         RequestDispatcher dispatcher = request.getRequestDispatcher("View_Content.tiles");
-
-        request.setCharacterEncoding("UTF-8");
-        response.setCharacterEncoding("UTF-8");
-
         dispatcher.forward(request,response);
     }
 }
