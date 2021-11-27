@@ -44,13 +44,6 @@ public class LoginController extends HttpServlet {
 					e.printStackTrace();
 				}
 				break;
-			case "/login":
-				try {
-					showLogin(request, response);
-				} catch (SQLException e) {
-					e.printStackTrace();
-				}
-				break;
 			case "/registerAccount":
 				try {
 					registerAccount(request, response);
@@ -72,6 +65,11 @@ public class LoginController extends HttpServlet {
 					e.printStackTrace();
 				}
 			default:
+				try {
+					showLogin(request, response);
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
 				break;
 		}
 	}
@@ -101,12 +99,10 @@ public class LoginController extends HttpServlet {
 	            c.setMaxAge(3600);
 	            response.addCookie(c);
 			}
-            
-			RequestDispatcher dispatcher = request.getRequestDispatcher("/view");
-			dispatcher.forward(request, response);
+
+			response.sendRedirect(request.getContextPath() + "/view");
 		} 
-		else {				
-			
+		else {
 			request.setAttribute("Message", "alert('Email or password incorrect!!!');");
 			request.getRequestDispatcher("/login").forward(request, response);	
 		}
@@ -123,11 +119,9 @@ public class LoginController extends HttpServlet {
 		//check email
 		if(!registerDAO.checkEmailExist(account)) {
 			registerDAO.insertUser(account);
-			RequestDispatcher dispatcher = request.getRequestDispatcher("/login");
-			dispatcher.forward(request, response);
+			response.sendRedirect(request.getContextPath() + "/login");
 		}
 		else {
-			
 			request.setAttribute("Message", "alert('Username or email is already existed!!!');");
 			request.getRequestDispatcher("/register").forward(request, response);
 		}
@@ -147,7 +141,7 @@ public class LoginController extends HttpServlet {
 		IdGlobal.Role = "";
 		IdGlobal.Reset();
 
-	    RequestDispatcher dispatcher = request.getRequestDispatcher("/login");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/login");
 		dispatcher.forward(request, response);
 	}
 }

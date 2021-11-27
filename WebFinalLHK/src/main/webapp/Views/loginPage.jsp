@@ -1,6 +1,12 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
+<%--<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>--%>
+<%--<%@ taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles" %>--%>
+<%--<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>--%>
 
+<%--<html>--%>
+<%--<head>--%>
+<%--    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/Layout/MyStyle.css">--%>
+<%--    <title><tiles:getAsString name="title" /></title>--%>
+<%--</head>--%>
 <body>	
     <form id="login-form" action="<%=request.getContextPath()%>/loginAccount" method="post">   		
         <div class="login-container">
@@ -54,3 +60,4 @@
     })
     <%=request.getAttribute("Message")%>    
 </script>
+<%--</html>--%>

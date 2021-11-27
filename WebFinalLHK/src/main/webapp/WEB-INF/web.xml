@@ -103,7 +103,7 @@
 
     <servlet-mapping>
         <servlet-name>ViewContentControllerEdit</servlet-name>
-        <url-pattern>/showEdit</url-pattern>
+        <url-pattern>/content</url-pattern>
     </servlet-mapping>
 
     <servlet>
@@ -144,7 +144,7 @@
 
     <servlet-mapping>
         <servlet-name>AddContentControllerShow</servlet-name>
-        <url-pattern>/showAdd</url-pattern>
+        <url-pattern>/addContent</url-pattern>
     </servlet-mapping>
 
     <!-- Edit Profile -->
@@ -165,7 +165,7 @@
 
     <servlet-mapping>
         <servlet-name>EditProfileControllerShow</servlet-name>
-        <url-pattern>/showEditProfile</url-pattern>
+        <url-pattern>/profile</url-pattern>
     </servlet-mapping>
 
     <filter>

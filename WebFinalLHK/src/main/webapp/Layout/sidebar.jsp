@@ -18,7 +18,7 @@
                 <a href="<%=request.getContextPath()%>/view" class="sidebar-top"><i class="far fa-calendar-alt"></i><span> View contents</span></a>
             </form>
             <form action="" method="post">
-                <a href="<%=request.getContextPath()%>/showAdd" class="sidebar-bottom"><i class="far fa-edit"></i><span>Form content</span></a>
+                <a href="<%=request.getContextPath()%>/addContent" class="sidebar-bottom"><i class="far fa-edit"></i><span>Form content</span></a>
             </form>
         </div>
 

@@ -13,6 +13,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
+import java.util.Objects;
 
 
 @WebServlet("/ViewContent")
@@ -38,7 +39,7 @@ public class ViewContentController extends HttpServlet {
                     e.printStackTrace();
                 }
                 break;
-            case "/showEdit":
+            case "/content":
                 try {
                     showEditForm(request,response);
                 } catch (SQLException e) {
@@ -70,41 +71,24 @@ public class ViewContentController extends HttpServlet {
     }
 
     private void listContent (HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, SQLException {
-        if(IdGlobal.UserId == -1){
-            RequestDispatcher dispatcher = request.getRequestDispatcher("Login_Page.tiles");
-            dispatcher.forward(request,response);
-        }
-        else{
-            String command = "";
-//            IdGlobal.searchValue = "";
-            IdGlobal.Reset();
-            if(request.getParameter("next") != null)
-            {
-                command = request.getParameter("next");
-            }
-            else if (request.getParameter("previous") != null){
-                command = request.getParameter("previous");
-            }
+        String command = "";
+        IdGlobal.Reset();
+        if(request.getParameter("next") != null) { command = request.getParameter("next"); }
+        else if (request.getParameter("previous") != null){ command = request.getParameter("previous"); }
 
-            List<ViewContent> listContent = viewContentDAO.selectAllContents(command);
+        List<ViewContent> listContent = viewContentDAO.selectAllContents(command);
 
-            request.setAttribute("ListContent", listContent);
-            RequestDispatcher dispatcher = request.getRequestDispatcher("View_Content.tiles");
-            dispatcher.forward(request,response);
-        }
+        request.setAttribute("ListContent", listContent);
+        RequestDispatcher dispatcher = request.getRequestDispatcher("View_Content.tiles");
+        dispatcher.forward(request,response);
     }
 
+
     private void deleteContent (HttpServletRequest request, HttpServletResponse response) throws IOException, SQLException, ServletException {
-        if(IdGlobal.UserId == -1){
-            RequestDispatcher dispatcher = request.getRequestDispatcher("Login_Page.tiles");
-            dispatcher.forward(request,response);
-        }
-        else{
-            int Id = Integer.parseInt((request.getParameter("Id")));
-            viewContentDAO.deleteContent(Id);
-            IdGlobal.alertSuccess = "Delete Success";
-            response.sendRedirect("view");
-        }
+        int Id = Integer.parseInt((request.getParameter("Id")));
+        viewContentDAO.deleteContent(Id);
+        IdGlobal.alertSuccess = "Delete Success";
+        response.sendRedirect("view");
     }
 
 
@@ -117,8 +101,7 @@ public class ViewContentController extends HttpServlet {
         RequestDispatcher dispatcher=request.getRequestDispatcher("Add_Content.tiles");
         dispatcher.forward(request,response);
     }
-    private void updateContent(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, SQLException, IOException {
+    private void updateContent(HttpServletRequest request, HttpServletResponse response) throws ServletException, SQLException, IOException {
         int id = Integer.parseInt((request.getParameter("Id")));
         String title = request.getParameter("title");
         String brief = request.getParameter("brief");
@@ -126,7 +109,8 @@ public class ViewContentController extends HttpServlet {
         String updateTime = new SimpleDateFormat("dd/MM/yyyy_HH:mm:ss").format(Calendar.getInstance().getTime());
         ViewContent existingContent = new ViewContent(title, brief, content, id,updateTime);
         viewContentDAO.updateContent(existingContent);
-        response.sendRedirect("view");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/view");
+        dispatcher.forward(request,response);
     }
 
     private void searchContent (HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, SQLException {
@@ -141,7 +125,7 @@ public class ViewContentController extends HttpServlet {
         else if (request.getParameter("previous") != null){
             command = request.getParameter("previous");
         }
-        if (request.getParameter("search") != null && request.getParameter("search") != "") {
+        if (request.getParameter("search") != null && !Objects.equals(request.getParameter("search"), "")) {
             IdGlobal.searchValue = request.getParameter("search");
             List<ViewContent> listContent = viewContentDAO.searchContents(command);
             request.setAttribute("ListContent", listContent);

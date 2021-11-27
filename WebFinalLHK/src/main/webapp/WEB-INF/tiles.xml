@@ -9,12 +9,17 @@
         <put-attribute name="body" value="" />
     </definition>
 
-    <definition name="Login_Page" extends="defaultLayout">
+    <definition name="defaultLogin" template="/Layout/defaultLogin.jsp">
+        <put-attribute name="title" value="" />
+        <put-attribute name="body" value="" />
+    </definition>
+
+    <definition name="Login_Page" extends="defaultLogin">
         <put-attribute name="title" value="Login Page" />
         <put-attribute name="body" value="/Views/loginPage.jsp" />
     </definition>
 
-    <definition name="Register_Page" extends="defaultLayout">
+    <definition name="Register_Page" extends="defaultLogin">
         <put-attribute name="title" value="Register Page" />
         <put-attribute name="body" value="/Views/registerPage.jsp" />
     </definition>

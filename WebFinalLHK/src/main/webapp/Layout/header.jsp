@@ -8,7 +8,7 @@
                 <i class="fas fa-user"></i><i class="fas fa-caret-down"></i>
             </a>
             <ul class="subnav">
-                <li class="subnav-top"><a href="<%=request.getContextPath()%>/showEditProfile"><i class="fas fa-user"></i> User Profile</a></li>
+                <li class="subnav-top"><a href="<%=request.getContextPath()%>/profile"><i class="fas fa-user"></i> User Profile</a></li>
                 <li class="subnav-bottom"><a href="<%=request.getContextPath()%>/logoutAccount"><i class="fas fa-sign-out-alt"></i> Log out</a></li>
             </ul>
         </div>

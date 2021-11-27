@@ -29,13 +29,6 @@ public class AddContentController extends HttpServlet {
         String action = request.getServletPath();
 
         switch (action) {
-            case "/showAdd":
-                try {
-                    showAddContent(request, response);
-                } catch (SQLException e) {
-                    e.printStackTrace();
-                }
-                break;
             case "/add":
                 try {
                     addContent(request, response);
@@ -44,8 +37,12 @@ public class AddContentController extends HttpServlet {
                 }
                 break;
             default:
+                try {
+                    showAddContent(request, response);
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
                 break;
-
         }
 
     }
@@ -67,5 +64,7 @@ public class AddContentController extends HttpServlet {
         IdGlobal.searchValue = "";
         IdGlobal.Reset();
         response.sendRedirect("Add_Content.tiles");
+//        RequestDispatcher dispatcher = request.getRequestDispatcher("Add_Content.tiles");
+//        dispatcher.forward(request,response);
     }
 }

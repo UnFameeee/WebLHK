@@ -44,7 +44,7 @@
                         <td class="created-date"><%= listContent.get(i).getDate(listContent.get(i).getCreatedDate()) %> <br> <%= listContent.get(i).getTime(listContent.get(i).getCreatedDate()) %></td>
                         <td class="actions">
                             <div class="view-content-btn-container">
-                                <form action="<%=request.getContextPath()%>/showEdit?Id=<%=listContent.get(i).getId()%>" method="post">
+                                <form action="<%=request.getContextPath()%>/content?Id=<%=listContent.get(i).getId()%>" method="post">
                                     <input type="submit" class="view-content-btn-edit" value="Edit">
                                 </form>
                                 <form action="<%=request.getContextPath()%>/delete?Id=<%=listContent.get(i).getId()%>" method="post">

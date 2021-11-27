@@ -1,7 +1,12 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
+<%--<%@ taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles" %>--%>
+<%--<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>--%>
 
+<%--<html>--%>
+<%--<head>--%>
+<%--    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/Layout/MyStyle.css">--%>
+<%--    <title><tiles:getAsString name="title" /></title>--%>
+<%--</head>--%>
 <body>
-	    
     <form id="register-form" method="post" action="<%=request.getContextPath()%>/registerAccount">
         <div class="register-container">
 
@@ -68,3 +73,4 @@
     })
     <%=request.getAttribute("Message")%> 
 </script>
+<%--</html>--%>
