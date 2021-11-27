@@ -17,13 +17,14 @@ public class ViewContentDAO {
     String userid = "root";
     String password = "root";
 
-//    private static final String INSERT_CONTENT_SQL = "INSERT INTO Content" + " (Title, Brief, Content, CreateDate, UpdateTime, AuthorId) VALUES" + " (?, ? ,? ,? ,? ,? ,?);";
     private static final String DELETE_CONTENTS_SQL = "DELETE FROM Content WHERE Id = ?";
-//    private static final String SELECT_ALL_CONTENTS = "SELECT * FROM Content";
 
     private static final String SELECT_CONTENT_BY_ID = "SELECT Title, Brief, Content, CreateDate, UpdateTime, AuthorId FROM Content WHERE Id = ?";
     private static final String UPDATE_CONTENT_SQL = "UPDATE Content set Title = ?,Brief= ?, Content =? , UpdateTime =? where id = ?;";
-    //OR authorid LIKE '%' ? '%'
+
+    private static final String SELECT_COUNT_TOTAL_CONTENTS_ADMIN = "SELECT COUNT(Id) AS max FROM Content";
+    private static final String SELECT_COUNT_TOTAL_CONTENTS_MEMBER = "SELECT COUNT(Id) AS max FROM Content WHERE AuthorId = " + IdGlobal.UserId;
+
     private static final String SEARCH_TOTAL_NUMBER_CONTENTS_ADMIN = "SELECT COUNT(Id) AS max FROM weblhk.content WHERE id LIKE '%' ? '%' OR title LIKE '%' ? '%' OR brief LIKE '%' ? '%' OR content LIKE '%' ? '%' OR createdate LIKE '%' ? '%'";
     private static final String SEARCH_TOTAL_NUMBER_CONTENTS_MEMBER = "SELECT COUNT(Id) AS max FROM weblhk.content WHERE id LIKE '%' ? '%' AND AuthorId = " + IdGlobal.UserId + " OR title LIKE '%' ? '%' AND AuthorId = " + IdGlobal.UserId + " OR brief LIKE '%' ? '%' AND AuthorId = " + IdGlobal.UserId + " OR content LIKE '%' ? '%' AND AuthorId = " + IdGlobal.UserId + " OR createdate LIKE '%' ? '%'AND AuthorId = " + IdGlobal.UserId;
     private static final String SEARCH_CONTENTS_ADMIN = "SELECT Content.Id, Content.Title, Content.Brief, Content.Content, Member.Username, Content.CreateDate FROM Content, Member  WHERE Content.AuthorId = Member.Id AND Content.id LIKE '%' ? '%' OR Content.AuthorId = Member.Id AND title LIKE '%' ? '%' OR Content.AuthorId = Member.Id AND brief LIKE '%' ? '%' OR Content.AuthorId = Member.Id AND content LIKE '%' ? '%' OR Content.AuthorId = Member.Id AND createdate LIKE '%' ? '%'LIMIT ? , 10";
@@ -43,26 +44,21 @@ public class ViewContentDAO {
 
     public ViewContentDAO() {}
 
-    //Select all Content
+    //Select Content (Admin/Member)
     public List<ViewContent> selectAllContents(String command)  {
         List<ViewContent> content = new ArrayList<>();
+        PreparedStatement prepareStatement;
         //Step 1: Connection
 
-        //If the role is admin (show All) / member (show Member)
-        String SELECT_TOTAL_NUMBER_CONTENTS;
-        if(Objects.equals(IdGlobal.Role, "Admin")){
-            SELECT_TOTAL_NUMBER_CONTENTS = "SELECT COUNT(Id) AS max FROM Content";
-        }
-        else{
-            SELECT_TOTAL_NUMBER_CONTENTS = "SELECT COUNT(Id) AS max FROM Content WHERE AuthorId = " + IdGlobal.UserId;
-        }
-
         try(Connection connection = getConnection(); ){
-            PreparedStatement prepareStatement ;
-            prepareStatement = connection.prepareStatement(SELECT_TOTAL_NUMBER_CONTENTS);
+            //If the role is admin (show All) / member (show Member)
+            if(Objects.equals(IdGlobal.Role, "Admin")){ prepareStatement = connection.prepareStatement(SELECT_COUNT_TOTAL_CONTENTS_ADMIN); }
+            else{ prepareStatement = connection.prepareStatement(SELECT_COUNT_TOTAL_CONTENTS_MEMBER); }
+
             ResultSet rs1 = prepareStatement.executeQuery();
             int maxRow = 0;
-            if (rs1.next()) { maxRow = rs1.getInt("max"); }
+            if (rs1.next()){ maxRow = rs1.getInt("max"); }
+
 
             //check max page min page
             if(Objects.equals(command, "Next")){
@@ -75,20 +71,14 @@ public class ViewContentDAO {
                 }
             }
 
-            String SELECT_SOME_CONTENTS;
-            if(Objects.equals(IdGlobal.Role, "Admin")){
-                SELECT_SOME_CONTENTS = "SELECT Content.Id, Content.Title, Content.Brief, Content.Content, Member.Username, Content.CreateDate " +
-                                        "FROM Content, Member  WHERE Content.AuthorId = Member.Id LIMIT " + IdGlobal.PageLIMIT + ", 10";
-            }
-            else{
-                SELECT_SOME_CONTENTS = "SELECT * FROM Content WHERE AuthorId = " + IdGlobal.UserId + " LIMIT " + IdGlobal.PageLIMIT + ", 10";
-            }
 
-            System.out.println(SELECT_SOME_CONTENTS);
-            prepareStatement = connection.prepareStatement(SELECT_SOME_CONTENTS);
-            ResultSet rs2 = prepareStatement.executeQuery();
+            String SELECT_SOME_CONTENTS_MEMBER = "SELECT * FROM Content WHERE AuthorId = " + IdGlobal.UserId + " LIMIT " + IdGlobal.PageLIMIT + ", 10";
+            String SELECT_SOME_CONTENTS_ADMIN = "SELECT Content.Id, Content.Title, Content.Brief, Content.Content, Member.Username, Content.CreateDate FROM Content, Member  WHERE Content.AuthorId = Member.Id LIMIT " + IdGlobal.PageLIMIT + ", 10";
+            ResultSet rs2;
             if(Objects.equals(IdGlobal.Role, "Admin")){
-                while (rs2.next()){
+                prepareStatement = connection.prepareStatement(SELECT_SOME_CONTENTS_ADMIN);
+                rs2 = prepareStatement.executeQuery();
+                while (rs2.next()) {
                     int id = rs2.getInt("Id");
                     String title = rs2.getString("Title");
                     String brief = rs2.getString("Brief");
@@ -97,6 +87,8 @@ public class ViewContentDAO {
                     content.add(new ViewContent(id, title, brief, username, createdDate));
                 }
             }else{
+                prepareStatement = connection.prepareStatement(SELECT_SOME_CONTENTS_MEMBER);
+                rs2 = prepareStatement.executeQuery();
                 while (rs2.next()){
                     int id = rs2.getInt("Id");
                     String title = rs2.getString("Title");
@@ -111,27 +103,23 @@ public class ViewContentDAO {
         }
         return content;
     }
-    //Select Content By ID
 
     //Delete Content
-    public boolean deleteContent(int id) throws SQLException {
-        boolean rowDeleted;
+    public void deleteContent(int id) throws SQLException {
         try(Connection connection = getConnection(); PreparedStatement statement = connection.prepareStatement(DELETE_CONTENTS_SQL);) {
             statement.setInt(1, id);
-            rowDeleted = statement.executeUpdate() > 0;
+            statement.executeUpdate();
+        }catch (SQLException e){
+            e.printStackTrace();
         }
-        return rowDeleted;
     }
 
     public ViewContent selectContent(int id){
         ViewContent viewcontent = null;
-        // Step 1: Establishing a Connection
         try (Connection connection = getConnection();
-             // Step 2:Create a statement using connection object
             PreparedStatement preparedStatement = connection.prepareStatement(SELECT_CONTENT_BY_ID);) {
             preparedStatement.setInt(1, id);
             System.out.println(preparedStatement);
-            // Step 3: Execute the query or update query
             ResultSet rs = preparedStatement.executeQuery();
 
             // Step 4: Process the ResultSet object.
@@ -147,18 +135,17 @@ public class ViewContentDAO {
 
         return viewcontent;
     }
-    public boolean updateContent(ViewContent viewContent) throws SQLException {
-        boolean rowUpdated;
+    public void updateContent(ViewContent viewContent) throws SQLException {
         try (Connection connection = getConnection(); PreparedStatement statement = connection.prepareStatement(UPDATE_CONTENT_SQL);) {
             statement.setString(1, viewContent.getTitle());
             statement.setString(2, viewContent.getBrief());
             statement.setString(3, viewContent.getContent());
             statement.setString(4, viewContent.getUpdateTime());
             statement.setInt(5, viewContent.getId());
-
-            rowUpdated = statement.executeUpdate() > 0;
+            statement.executeUpdate();
+        }catch (SQLException e){
+            e.printStackTrace();
         }
-        return rowUpdated;
     }
 
     public List<ViewContent> searchContents(String command)  {
