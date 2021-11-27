@@ -26,13 +26,6 @@ public class EditProfileController extends HttpServlet {
         String action = request.getServletPath();
 
         switch (action){
-            case "/showEditProfile":
-                try {
-                    getProfile(request, response);
-                } catch (SQLException e) {
-                    e.printStackTrace();
-                }
-                break;
             case "/editProfile":
                 try {
                     updateProfile(request, response);
@@ -41,15 +34,19 @@ public class EditProfileController extends HttpServlet {
                 }
                 break;
             default:
+                try {
+                    getProfile(request, response);
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
                 break;
         }
     }
 
     private void getProfile(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, SQLException {
-//        int id = Integer.parseInt(request.getParameter("IdUser"));
-
         EditProfile profile = editProfileDAO.getProfileById(IdGlobal.UserId);
         request.setAttribute("profile", profile);
+
         IdGlobal.searchValue = "";
         IdGlobal.searchForm = false;
 
@@ -67,6 +64,6 @@ public class EditProfileController extends HttpServlet {
         IdGlobal.alertSuccess = "Edit Success";
         EditProfile profile = new EditProfile(id, firstname, lastname, email, phone, description);
         editProfileDAO.updateProfile(profile);
-        response.sendRedirect("showEditProfile");
+        response.sendRedirect("profile");
     }
 }
