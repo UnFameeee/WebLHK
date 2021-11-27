@@ -129,10 +129,11 @@ public class ViewContentController extends HttpServlet {
         else if (request.getParameter("previous") != null){
             command = request.getParameter("previous");
         }
-        if (request.getParameter("search") != null)
+        if (request.getParameter("search") != null) {
             IdGlobal.searchValue = request.getParameter("search");
-        List<ViewContent> listContent = viewContentDAO.searchContents(command);
-        request.setAttribute("ListContent", listContent);
+            List<ViewContent> listContent = viewContentDAO.searchContents(command);
+            request.setAttribute("ListContent", listContent);
+        }
         RequestDispatcher dispatcher = request.getRequestDispatcher("View_Content.tiles");
 
         request.setCharacterEncoding("UTF-8");
