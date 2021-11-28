@@ -2,9 +2,8 @@ package com.unfame.dao;
 
 import java.sql.*;
 import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
 
+import com.unfame.config.Encode;
 import com.unfame.model.Account;
 
 public class RegisterAccountDAO {
@@ -14,13 +13,16 @@ public class RegisterAccountDAO {
 	 private static final String CHECK_EXIST_ACC = "select * from Member where Email = ? or Username = ?";	  
 	 
 	 public void insertUser(Account acc) {
+		
+		String pass = Encode.getMd5(acc.getPassword());
+		
 		try {
 		
 			Connection con = DAL.getConnection();
 			PreparedStatement ppstm = con.prepareStatement(INSERT_ACCOUNT_SQL);
 			ppstm.setString(1, "Member");
 			ppstm.setString(2, acc.getUsername());
-			ppstm.setString(3, acc.getPassword());
+			ppstm.setString(3, pass);
 			ppstm.setString(4, acc.getEmail());
 			ppstm.executeUpdate();
 		} 

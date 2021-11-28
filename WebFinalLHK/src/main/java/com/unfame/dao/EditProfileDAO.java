@@ -4,8 +4,6 @@ import com.unfame.model.EditProfile;
 
 import java.sql.*;
 import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
 
 public class EditProfileDAO {
 
@@ -56,6 +54,9 @@ public class EditProfileDAO {
             statement.setInt(5, profile.getId());
             updateCheck = statement.executeUpdate() > 0;
         }
+        catch (SQLException e){
+	        e.printStackTrace();
+	    }    	
         return updateCheck;
     }
     
