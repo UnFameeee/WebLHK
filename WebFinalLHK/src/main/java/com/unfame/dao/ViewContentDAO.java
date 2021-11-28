@@ -10,11 +10,10 @@ import java.util.Objects;
 
 public class ViewContentDAO {
 
-    private static final String DELETE_CONTENTS_SQL = "DELETE FROM Content WHERE Id = ?";
-
     private static final String SELECT_CONTENT_BY_ID = "SELECT Title, Brief, Content, CreateDate, UpdateTime, AuthorId FROM Content WHERE Id = ?";
     private static final String UPDATE_CONTENT_SQL = "UPDATE Content set Title = ?,Brief= ?, Content =? , UpdateTime =? where id = ?;";
 
+    private static final String DELETE_CONTENTS_SQL = "DELETE FROM Content WHERE Id = ?";
     private static final String SELECT_COUNT_TOTAL_CONTENTS_ADMIN = "SELECT COUNT(Id) AS max FROM Content";
     private static final String SELECT_COUNT_TOTAL_CONTENTS_MEMBER = "SELECT COUNT(Id) AS max FROM Content WHERE AuthorId = " + IdGlobal.UserId;
 
@@ -50,6 +49,11 @@ public class ViewContentDAO {
                 if(IdGlobal.PageLIMIT > 0){
                     IdGlobal.PageLIMIT-=10;
                 }
+            }else if(Objects.equals(command, "Delete") && (maxRow % 10 == 0)){
+                if(IdGlobal.PageLIMIT > 0){
+                    IdGlobal.PageLIMIT-=10;
+                }
+                return content;
             }
 
 

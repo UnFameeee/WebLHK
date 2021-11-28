@@ -9,7 +9,6 @@ import com.unfame.model.Account;
 public class RegisterAccountDAO {
 	 
 	 private static final String INSERT_ACCOUNT_SQL = "insert into Member(Role, Username, Password, Email, CreatedDate) values (?,?,?,?,now())";
-	
 	 private static final String CHECK_EXIST_ACC = "select * from Member where Email = ? or Username = ?";	  
 	 
 	 public void insertUser(Account acc) {

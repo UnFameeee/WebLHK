@@ -87,8 +87,10 @@ public class ViewContentController extends HttpServlet {
     private void deleteContent (HttpServletRequest request, HttpServletResponse response) throws IOException, SQLException, ServletException {
         int Id = Integer.parseInt((request.getParameter("Id")));
         viewContentDAO.deleteContent(Id);
-        IdGlobal.alertSuccess = "Delete Success";
-        response.sendRedirect("view");
+        viewContentDAO.selectAllContents("Delete");
+//        response.sendRedirect("view");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/view");
+        dispatcher.forward(request,response);
     }
 
 

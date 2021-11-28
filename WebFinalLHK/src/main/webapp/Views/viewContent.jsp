@@ -18,7 +18,6 @@
             <div class="view-content-list-title">
                 <p>View Content List</p>
             </div>
-            <span class="success-message"><%=IdGlobal.alertSuccess%></span>
             <div class="view-content-list-container">
                 <table id="View-content-list" class="table" border="1">
                     <thead>
@@ -50,7 +49,6 @@
                                 <form action="<%=request.getContextPath()%>/delete?Id=<%=listContent.get(i).getId()%>" method="post">
                                     <input type="submit" class="view-content-btn-delete" value="Delete">
                                 </form>
-
                             </div>
                         </td>
                     </tr>
