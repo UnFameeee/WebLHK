@@ -11,11 +11,6 @@ import java.util.List;
 import java.util.Objects;
 
 public class ViewContentDAO {
-    String driver = "com.mysql.jdbc.Driver";
-    String connectionUrl = "jdbc:mysql://localhost:3306/";
-    String database = "WebLHK?useSSL=false";
-    String userid = "root";
-    String password = "root";
 
     private static final String DELETE_CONTENTS_SQL = "DELETE FROM Content WHERE Id = ?";
 
@@ -29,19 +24,7 @@ public class ViewContentDAO {
     private static final String SEARCH_TOTAL_NUMBER_CONTENTS_MEMBER = "SELECT COUNT(Id) AS max FROM weblhk.content WHERE id LIKE '%' ? '%' AND AuthorId = " + IdGlobal.UserId + " OR title LIKE '%' ? '%' AND AuthorId = " + IdGlobal.UserId + " OR brief LIKE '%' ? '%' AND AuthorId = " + IdGlobal.UserId + " OR content LIKE '%' ? '%' AND AuthorId = " + IdGlobal.UserId + " OR createdate LIKE '%' ? '%'AND AuthorId = " + IdGlobal.UserId;
     private static final String SEARCH_CONTENTS_ADMIN = "SELECT Content.Id, Content.Title, Content.Brief, Content.Content, Member.Username, Content.CreateDate FROM Content, Member  WHERE Content.AuthorId = Member.Id AND Content.id LIKE '%' ? '%' OR Content.AuthorId = Member.Id AND title LIKE '%' ? '%' OR Content.AuthorId = Member.Id AND brief LIKE '%' ? '%' OR Content.AuthorId = Member.Id AND content LIKE '%' ? '%' OR Content.AuthorId = Member.Id AND createdate LIKE '%' ? '%'LIMIT ? , 10";
     private static final String SEARCH_CONTENTS_MEMBER = "SELECT * FROM weblhk.content WHERE id LIKE '%' ? '%' AND AuthorId = " + IdGlobal.UserId + " OR title LIKE '%' ? '%' AND AuthorId = " + IdGlobal.UserId + " OR brief LIKE '%' ? '%' AND AuthorId = " + IdGlobal.UserId + " OR content LIKE '%' ? '%' AND AuthorId = " + IdGlobal.UserId + " OR createdate LIKE '%' ? '%'AND AuthorId = " + IdGlobal.UserId + " LIMIT ? , 10";;
-
-    protected Connection getConnection(){
-        Connection connection = null;
-        try{
-            Class.forName(driver);
-            connection = DriverManager.getConnection(connectionUrl + database, userid, password);
-
-        } catch (ClassNotFoundException | SQLException e){
-            e.printStackTrace();
-        }
-        return connection;
-    }
-
+    
     public ViewContentDAO() {}
 
     //Select Content (Admin/Member)
@@ -50,7 +33,7 @@ public class ViewContentDAO {
         PreparedStatement prepareStatement;
         //Step 1: Connection
 
-        try(Connection connection = getConnection(); ){
+        try(Connection connection = DAL.getConnection(); ){
             //If the role is admin (show All) / member (show Member)
             if(Objects.equals(IdGlobal.Role, "Admin")){ prepareStatement = connection.prepareStatement(SELECT_COUNT_TOTAL_CONTENTS_ADMIN); }
             else{ prepareStatement = connection.prepareStatement(SELECT_COUNT_TOTAL_CONTENTS_MEMBER); }
@@ -106,7 +89,7 @@ public class ViewContentDAO {
 
     //Delete Content
     public void deleteContent(int id) throws SQLException {
-        try(Connection connection = getConnection(); PreparedStatement statement = connection.prepareStatement(DELETE_CONTENTS_SQL);) {
+        try(Connection connection = DAL.getConnection(); PreparedStatement statement = connection.prepareStatement(DELETE_CONTENTS_SQL);) {
             statement.setInt(1, id);
             statement.executeUpdate();
         }catch (SQLException e){
@@ -116,7 +99,7 @@ public class ViewContentDAO {
 
     public ViewContent selectContent(int id){
         ViewContent viewcontent = null;
-        try (Connection connection = getConnection();
+        try (Connection connection = DAL.getConnection();
             PreparedStatement preparedStatement = connection.prepareStatement(SELECT_CONTENT_BY_ID);) {
             preparedStatement.setInt(1, id);
             System.out.println(preparedStatement);
@@ -136,7 +119,7 @@ public class ViewContentDAO {
         return viewcontent;
     }
     public void updateContent(ViewContent viewContent) throws SQLException {
-        try (Connection connection = getConnection(); PreparedStatement statement = connection.prepareStatement(UPDATE_CONTENT_SQL);) {
+        try (Connection connection = DAL.getConnection(); PreparedStatement statement = connection.prepareStatement(UPDATE_CONTENT_SQL);) {
             statement.setString(1, viewContent.getTitle());
             statement.setString(2, viewContent.getBrief());
             statement.setString(3, viewContent.getContent());
@@ -151,7 +134,7 @@ public class ViewContentDAO {
     public List<ViewContent> searchContents(String command)  {
         List<ViewContent> content = new ArrayList<>();
 
-        try(Connection connection = getConnection(); ){
+        try(Connection connection = DAL.getConnection(); ){
             PreparedStatement prepareStatement ;
 
             if(Objects.equals(IdGlobal.Role, "Admin")){

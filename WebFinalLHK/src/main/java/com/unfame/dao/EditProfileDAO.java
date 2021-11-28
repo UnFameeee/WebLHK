@@ -8,29 +8,12 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class EditProfileDAO {
-    String driver = "com.mysql.jdbc.Driver";
-    String connectionUrl = "jdbc:mysql://localhost:3306/";
-    String database = "WebLHK?useSSL=false";
-    String userid = "root";
-    String password = "root";
 
     private static final String GET_ID_BY_EMAIL = "SELECT Id from Member where Email = ?";
     private static final String SELECT_PROFILE_BY_ID = "SELECT Firstname, Lastname, Email, Phone, Description FROM Member WHERE Id = ?";
     private static final String UPDATE_PROFILE_BY_ID = "UPDATE Member SET Firstname = ?, Lastname = ?, Phone = ?, Description = ?, UpdateTime = now() WHERE Id = ?";
 
     public EditProfileDAO(){}
-
-    protected Connection getConnection(){
-        Connection connection = null;
-        try{
-            Class.forName(driver);
-            connection = DriverManager.getConnection(connectionUrl + database, userid, password);
-
-        } catch (ClassNotFoundException | SQLException e){
-            e.printStackTrace();
-        }
-        return connection;
-    }
 
     private String CheckNullAndSet(String par) {
         if (par == null)
@@ -41,7 +24,7 @@ public class EditProfileDAO {
     //Select profile by id
     public EditProfile getProfileById(int id)  {
         EditProfile profile = new EditProfile();
-        try(Connection connection = getConnection(); PreparedStatement prepareStatement = connection.prepareStatement(SELECT_PROFILE_BY_ID);){
+        try(Connection connection = DAL.getConnection(); PreparedStatement prepareStatement = connection.prepareStatement(SELECT_PROFILE_BY_ID);){
             prepareStatement.setString(1, String.valueOf(id));
             ResultSet rs = prepareStatement.executeQuery();
 
@@ -65,7 +48,7 @@ public class EditProfileDAO {
     //Update profile by id
     public boolean updateProfile(EditProfile profile) throws SQLException {
         boolean updateCheck = false;
-        try(Connection connection = getConnection(); PreparedStatement statement = connection.prepareStatement(UPDATE_PROFILE_BY_ID);) {
+        try(Connection connection = DAL.getConnection(); PreparedStatement statement = connection.prepareStatement(UPDATE_PROFILE_BY_ID);) {
             statement.setString(1, profile.getFirstName());
             statement.setString(2, profile.getLastName());
             statement.setString(3, profile.getPhoneNumber());
@@ -81,7 +64,7 @@ public class EditProfileDAO {
     	EditProfile profile = new EditProfile();
     	
     	try {
-    		Connection connection = getConnection(); 
+    		Connection connection = DAL.getConnection(); 
         	PreparedStatement prepareStatement = connection.prepareStatement(GET_ID_BY_EMAIL);
         	prepareStatement.setString(1, email);
         	ResultSet rs = prepareStatement.executeQuery();
