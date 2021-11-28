@@ -31,5 +31,3 @@ CREATE TABLE Content(
 );
 
 DELETE FROM `weblhk`.`member` WHERE (`Id` = '1');
-INSERT INTO Member VALUES(1, 'Admin', 'Nguyen', 'Admin', 'Admin',  'password', 123456789, 'email@gmail.com', 'description', 'date', 'time');
-INSERT INTO Member VALUES(2, 'Member','Nguyen2', 'lmao2', 'user2',  'pass2', 123456782, 'email2', 'descrip2', 'date2', 'time2');

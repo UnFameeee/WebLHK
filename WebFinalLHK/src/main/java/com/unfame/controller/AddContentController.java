@@ -52,7 +52,6 @@ public class AddContentController extends HttpServlet {
         String brief =request.getParameter("brief");
         String content =request.getParameter("content");
         String createDate = new SimpleDateFormat("dd/MM/yyyy_HH:mm:ss").format(Calendar.getInstance().getTime());
-        System.out.println(createDate);
         AddContent addContent = new AddContent(title,brief,content,createDate);
         AddContentDAO addContentDAO = new AddContentDAO();
         addContentDAO.insertContent(addContent);
