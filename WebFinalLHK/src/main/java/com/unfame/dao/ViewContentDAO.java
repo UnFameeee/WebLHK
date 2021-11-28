@@ -128,7 +128,6 @@ public class ViewContentDAO {
             e.printStackTrace();
         }
     }
-
     public List<ViewContent> searchContents(String command)  {
         List<ViewContent> content = new ArrayList<>();
 
