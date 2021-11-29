@@ -75,7 +75,7 @@
 
                         <c:if test ="${submitMessage !=null}">
                         <div class="submitMessage">
-                            <span ><%=submitMessage%></span>
+                            <span class="submitMessageInnerText" ><%=submitMessage%></span>
                         </div>
                         </c:if>
                     </div>
