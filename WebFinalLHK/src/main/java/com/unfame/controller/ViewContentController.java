@@ -112,6 +112,9 @@ public class ViewContentController extends HttpServlet {
         ViewContent existingContent = new ViewContent(title, brief, content, id,updateTime);
         viewContentDAO.updateContent(existingContent);
         RequestDispatcher dispatcher = request.getRequestDispatcher("/view");
+//        String submitMessage="submit success";
+//        request.setAttribute("submitMessage",submitMessage);
+//        RequestDispatcher dispatcher=request.getRequestDispatcher("Add_Content.tiles");
         dispatcher.forward(request,response);
     }
 

@@ -1,16 +1,35 @@
 const briefValue =document.querySelector('.brief').innerHTML;
 const titleValue =document.querySelector('.title').value;
 const contentValue =document.querySelector('.content').innerHTML;
+
+const brief=document.querySelector('.brief');
+const title =document.querySelector('.title');
+const content =document.querySelector('.content');
+
 const resetBtn = document.querySelector('#reset-btn');
 
-if(resetBtn !== null){
-    resetBtn.addEventListener("click",(e)=>{
-        e.preventDefault();
-        document.querySelector('.brief').value=briefValue;
-        document.querySelector('.title').value=titleValue;
-        document.querySelector('.content').value=contentValue;
+title.addEventListener("click",function (){
+    document.querySelector(".submitMessage").remove();
+})
+brief.addEventListener("click",function (){
+    document.querySelector(".submitMessage").remove();
+})
+content.addEventListener("click",function (){
+    document.querySelector(".submitMessage").remove();
+})
+
+function ResetForm(options) {
+    const formElement = document.querySelector(options.form);
+    const inputElements = formElement.querySelectorAll('input[type=text]');
+    inputElements.forEach(inputElement => {
+        const errorElement = inputElement.parentElement.querySelector(options.errorSelector[0]);
+        errorElement.innerHTML = '';
+        inputElement.classList.remove('invalid-input');
+        inputElement.parentElement.classList.remove('invalid-message');
     })
+
 }
+
 
 function Validator(options)
     {
@@ -82,28 +101,8 @@ function Validator(options)
 
         if(!isFormValid){
             e.preventDefault();
-            // if(typeof options.onSubmit === 'function')
-            // {
-            //     var enableInputs=formElement.querySelectorAll('[name]:not([disable])')
-            //     var formValues = Array.from(enableInputs).reduce(function(values,input){
-            //         return (values[input.name]=input.value) && values;
-            //     },{});
-            //     console.log(formValues)
-            //
-            //     options.onSubmit(formValues);
-            // }
-
-            // options.rules.forEach(function(rule){
-            // var inputElement=formElement.querySelector(rule.selector);
-            // inputElement.classList.remove('valid-input');
-            // });
-            // displayDetails();
 
         }
-        // else{
-        //
-        // }
-
     }
 
         // Xử lý lập qua mỗi rule và xử lý (lắng nghe sự kiện blur, input, ...)
@@ -217,5 +216,18 @@ function Validator(options)
     Validator.maxLength('#input_content',1000),
     ]
     ,
-    //   onSubmit:function(data){ console.log(data); }
 });
+
+if(resetBtn !== null){
+    resetBtn.addEventListener("click",(e)=>{
+        e.preventDefault();
+        document.querySelector('.brief').value=briefValue;
+        document.querySelector('.title').value=titleValue;
+        document.querySelector('.content').value=contentValue;
+        ResetForm({
+            form:['#addContent-form','#editContent-form'],
+            errorSelector:['.form-message','.warning-Message'],
+        })
+    })
+
+}

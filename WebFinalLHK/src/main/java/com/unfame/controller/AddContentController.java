@@ -55,6 +55,10 @@ public class AddContentController extends HttpServlet {
         AddContent addContent = new AddContent(title,brief,content,createDate);
         AddContentDAO addContentDAO = new AddContentDAO();
         addContentDAO.insertContent(addContent);
+
+        String submitMessage="submit success";
+        request.setAttribute("submitMessage",submitMessage);
+
         RequestDispatcher dispatcher = request.getRequestDispatcher("Add_Content.tiles");
         dispatcher.forward(request,response);
     }

@@ -6,6 +6,8 @@
 <%
     ViewContent existingContent = (ViewContent)request.getAttribute("content");
     request.setAttribute("eContent",existingContent);
+
+    String submitMessage = (String) request.getAttribute("submitMessage");
 %>
 
 <body>
@@ -69,6 +71,12 @@
                         </c:if>
                         <c:if test ="${eContent ==null}">
                             <input type="reset" value="Reset Button">
+                        </c:if>
+
+                        <c:if test ="${submitMessage !=null}">
+                        <div class="submitMessage">
+                            <span ><%=submitMessage%></span>
+                        </div>
                         </c:if>
                     </div>
                 </div>
