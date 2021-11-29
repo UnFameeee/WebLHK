@@ -5,18 +5,36 @@ const contentValue =document.querySelector('.content').innerHTML;
 const brief=document.querySelector('.brief');
 const title =document.querySelector('.title');
 const content =document.querySelector('.content');
-
+let submitMessage = document.querySelector(".submitMessage");
 const resetBtn = document.querySelector('#reset-btn');
 
-title.addEventListener("click",function (){
-    document.querySelector(".submitMessage").remove();
-})
-brief.addEventListener("click",function (){
-    document.querySelector(".submitMessage").remove();
-})
-content.addEventListener("click",function (){
-    document.querySelector(".submitMessage").remove();
-})
+
+
+    title.addEventListener("click",function (){
+        submitMessage = document.querySelector(".submitMessage");
+        if(submitMessage !== null){
+            document.querySelector(".submitMessage").remove();
+        }
+    })
+
+
+    brief.addEventListener("click",function (){
+        submitMessage = document.querySelector(".submitMessage");
+        if(submitMessage !== null){
+            document.querySelector(".submitMessage").remove();
+        }
+    })
+
+    content.addEventListener("click",function (){
+        submitMessage = document.querySelector(".submitMessage");
+        if(submitMessage !== null){
+            document.querySelector(".submitMessage").remove();
+        }
+    })
+
+
+
+
 
 function ResetForm(options) {
     const formElement = document.querySelector(options.form);
@@ -220,6 +238,10 @@ function Validator(options)
 
 if(resetBtn !== null){
     resetBtn.addEventListener("click",(e)=>{
+        submitMessage = document.querySelector(".submitMessage");
+        if(submitMessage !== null){
+            document.querySelector(".submitMessage").remove();
+        }
         e.preventDefault();
         document.querySelector('.brief').value=briefValue;
         document.querySelector('.title').value=titleValue;
