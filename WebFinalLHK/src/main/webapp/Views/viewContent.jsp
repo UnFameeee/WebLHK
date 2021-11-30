@@ -82,5 +82,8 @@
         <!-- Content end -->
 
         <script type="text/javascript" src="${pageContext.request.contextPath}/Views/Effect/ViewContent.js"></script>
+        <script>
+            <%=request.getAttribute("Message")%>
+        </script>
     </body>
 </html>

@@ -90,6 +90,7 @@ public class ViewContentController extends HttpServlet {
         viewContentDAO.selectAllContents("Delete");
 //        response.sendRedirect("view");
         RequestDispatcher dispatcher = request.getRequestDispatcher("/view");
+        request.setAttribute("Message", "alert('Delete successfully');");
         dispatcher.forward(request,response);
     }
 
