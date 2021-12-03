@@ -29,11 +29,11 @@
                     <div class="input-field">
                         <label for="">Title<br></label>
                         <c:if test ="${eContent !=null}">
-                        <input type="text" class="title" name="title" id="input_title" placeholder="Enter the title"
+                        <input type="text" class="title data-field" name="title" id="input_title" placeholder="Enter the title"
                                value="<%= existingContent.getTitle()%>">
                         </c:if>
                         <c:if test ="${eContent ==null}">
-                        <input type="text" class="title" name="title" id="input_title" placeholder="Enter the title" >
+                        <input type="text" class="title data-field" name="title" id="input_title" placeholder="Enter the title" >
                         </c:if>
                         <div class="invalid-Message">
                             <span class="form-message"></span>
@@ -42,10 +42,10 @@
                     <div class="input-field">
                         <label for="">Brief<br></label>
                         <c:if test ="${eContent !=null}">
-                             <textarea id ="input_brief" class="brief" name="brief" rows="4" cols="50"> <%= existingContent.getBrief()%></textarea>
+                             <textarea id ="input_brief" class="brief data-field" name="brief" rows="4" cols="50"> <%= existingContent.getBrief()%></textarea>
                         </c:if>
                         <c:if test ="${eContent ==null}">
-                        <textarea id ="input_brief" class="brief" name="brief" rows="4" cols="50" > </textarea>
+                        <textarea id ="input_brief" class="brief data-field" name="brief" rows="4" cols="50" > </textarea>
                         </c:if>
                         <div class="invalid-Message">
                             <span class="form-message"></span>
@@ -54,11 +54,11 @@
                     <div class="input-field">
                         <label for="">Content<br></label>
                         <c:if test ="${eContent !=null}">
-                            <textarea id="input_content" class="content" name="content" rows="4" cols="50"
+                            <textarea id="input_content" class="content data-field" name="content" rows="4" cols="50"
                             > <%= existingContent.getContent()%></textarea>
                         </c:if>
                         <c:if test ="${eContent ==null}">
-                        <textarea id="input_content" class="content" name="content" rows="4" cols="50" > </textarea>
+                        <textarea id="input_content" class="content data-field" name="content" rows="4" cols="50" > </textarea>
                         </c:if>
                         <div class="invalid-Message">
                             <span class="form-message"></span>
