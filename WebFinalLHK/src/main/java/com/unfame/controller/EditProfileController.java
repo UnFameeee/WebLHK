@@ -61,9 +61,11 @@ public class EditProfileController extends HttpServlet {
         String email = request.getParameter("Email");
         String phone = request.getParameter("Phone");
         String description = request.getParameter("Description");
-        IdGlobal.alertSuccess = "Edit Success";
         EditProfile profile = new EditProfile(id, firstname, lastname, email, phone, description);
-        editProfileDAO.updateProfile(profile);
+        if (editProfileDAO.updateProfile(profile))
+            IdGlobal.alertSuccess = "Edit Success";
+        else
+            IdGlobal.alertSuccess = "Edit Fail";
         response.sendRedirect("profile");
     }
 }
