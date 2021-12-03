@@ -136,7 +136,8 @@ public class LoginController extends HttpServlet {
 	    		response.addCookie(c);
 	    	}    			
 	    }
-	    
+
+		IdGlobal.PageNumber = 0;
 	    IdGlobal.UserId = -1;
 		IdGlobal.Role = "";
 		IdGlobal.Reset();
