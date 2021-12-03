@@ -20,7 +20,6 @@
 
     <%
         if(IdGlobal.UserId == -1){
-//            response.sendRedirect("Login_Page.tiles");
             response.sendRedirect( request.getContextPath() + "/view");
         }
     %>
