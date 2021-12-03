@@ -15,8 +15,8 @@ public class ViewContentDAO {
 
     private static final String DELETE_CONTENTS_SQL = "DELETE FROM Content WHERE Id = ?";
     private static final String SELECT_COUNT_TOTAL_CONTENTS_ADMIN = "SELECT COUNT(Id) AS max FROM Content";
-    private static final String SELECT_COUNT_TOTAL_CONTENTS_MEMBER = "SELECT COUNT(Id) AS max FROM Content WHERE AuthorId = " + IdGlobal.UserId;
-    private static final String SELECT_SOME_CONTENTS_MEMBER = "SELECT * FROM Content WHERE AuthorId = " + IdGlobal.UserId + " LIMIT ?, ?";
+    private static final String SELECT_COUNT_TOTAL_CONTENTS_MEMBER = "SELECT COUNT(Id) AS max FROM Content WHERE AuthorId = ?";
+    private static final String SELECT_SOME_CONTENTS_MEMBER = "SELECT * FROM Content WHERE AuthorId = ? LIMIT ?, ?";
     private static final String SELECT_SOME_CONTENTS_ADMIN = "SELECT Content.Id, Content.Title, Content.Brief, Content.Content, Member.Username, Content.CreateDate FROM Content, Member  WHERE Content.AuthorId = Member.Id LIMIT ?, ?";
 
     private static final String SEARCH_TOTAL_NUMBER_CONTENTS_ADMIN = "SELECT COUNT(Id) AS max FROM weblhk.content WHERE id LIKE '%' ? '%' OR title LIKE '%' ? '%' OR brief LIKE '%' ? '%' OR content LIKE '%' ? '%' OR createdate LIKE '%' ? '%'";
@@ -34,8 +34,13 @@ public class ViewContentDAO {
 
         try(Connection connection = DAL.getConnection(); ){
             //If the role is admin (show All) / member (show Member)
-            if(Objects.equals(IdGlobal.Role, "Admin")){ prepareStatement = connection.prepareStatement(SELECT_COUNT_TOTAL_CONTENTS_ADMIN); }
-            else{ prepareStatement = connection.prepareStatement(SELECT_COUNT_TOTAL_CONTENTS_MEMBER); }
+            if(Objects.equals(IdGlobal.Role, "Admin")){
+                prepareStatement = connection.prepareStatement(SELECT_COUNT_TOTAL_CONTENTS_ADMIN);
+            }
+            else {
+                prepareStatement = connection.prepareStatement(SELECT_COUNT_TOTAL_CONTENTS_MEMBER);
+                prepareStatement.setInt(1, IdGlobal.UserId);
+            }
 
             ResultSet rs1 = prepareStatement.executeQuery();
             int maxRow = 0;
@@ -63,7 +68,7 @@ public class ViewContentDAO {
                 }else if(Objects.equals(command, "Previous")){
                     //VD: tổng 22 - hiện đang ở trang 3: 0 2 -> trang 2: 2 10 -> trang 1: 12 10
                     //VD: tổng 20 - hiện đang ở trang 2: 0 10 -> trang 1: 10 10
-                    if(IdGlobal.PageEnd < maxRow){
+                    if(IdGlobal.PageStart < maxRow - 10){
                         IdGlobal.PageEnd = 10;
                         //Nếu đang = 0 thì phải lấy phần content bị lẻ trước
                         if(IdGlobal.PageStart == 0 && maxRow % 10 != 0){
@@ -112,8 +117,9 @@ public class ViewContentDAO {
                 }
             }else{
                 prepareStatement = connection.prepareStatement(SELECT_SOME_CONTENTS_MEMBER);
-                prepareStatement.setInt(1, IdGlobal.PageStart);
-                prepareStatement.setInt(2, IdGlobal.PageEnd);
+                prepareStatement.setInt(1, IdGlobal.UserId);
+                prepareStatement.setInt(2, IdGlobal.PageStart);
+                prepareStatement.setInt(3, IdGlobal.PageEnd);
                 rs2 = prepareStatement.executeQuery();
                 while (rs2.next()){
                     int id = rs2.getInt("Id");
