@@ -60,7 +60,7 @@
                         <form action="<%=request.getContextPath()%>/view?<% request.getParameter("previous"); %>">
                             <input type="submit" name="previous" value="Previous">
                         </form>
-                            <a><%= (IdGlobal.PageLIMIT/10 + 1) %></a>
+                            <a><%= IdGlobal.PageNumber %></a>
                         <form action="<%=request.getContextPath()%>/view?<% request.getParameter("next"); %>">
                             <input type="submit" name="next" value="Next">
                         </form>
@@ -70,7 +70,7 @@
                             <input type="hidden" class="search-input" name="search" value="<%=IdGlobal.searchValue%>">
                             <input type="submit" name="previous" value="Previous" id="search-previous">
                         </form>
-                          <a><%= (IdGlobal.PageLIMIT/10 + 1) %></a>
+                          <a><%= IdGlobal.PageNumber %></a>
                         <form action="<%=request.getContextPath()%>/search?<% request.getParameter("next"); %>">
                             <input type="hidden" class="search-input" name="search" value="<%=IdGlobal.searchValue%>">
                             <input type="submit" name="next" value="Next" id="search-next">

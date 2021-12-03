@@ -67,7 +67,5 @@ public class AddContentController extends HttpServlet {
         IdGlobal.searchValue = "";
         IdGlobal.Reset();
         response.sendRedirect("Add_Content.tiles");
-//        RequestDispatcher dispatcher = request.getRequestDispatcher("Add_Content.tiles");
-//        dispatcher.forward(request,response);
     }
 }
