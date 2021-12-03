@@ -16,6 +16,8 @@ public class ViewContentDAO {
     private static final String DELETE_CONTENTS_SQL = "DELETE FROM Content WHERE Id = ?";
     private static final String SELECT_COUNT_TOTAL_CONTENTS_ADMIN = "SELECT COUNT(Id) AS max FROM Content";
     private static final String SELECT_COUNT_TOTAL_CONTENTS_MEMBER = "SELECT COUNT(Id) AS max FROM Content WHERE AuthorId = " + IdGlobal.UserId;
+    private static final String SELECT_SOME_CONTENTS_MEMBER = "SELECT * FROM Content WHERE AuthorId = " + IdGlobal.UserId + " LIMIT ?, ?";
+    private static final String SELECT_SOME_CONTENTS_ADMIN = "SELECT Content.Id, Content.Title, Content.Brief, Content.Content, Member.Username, Content.CreateDate FROM Content, Member  WHERE Content.AuthorId = Member.Id LIMIT ?, ?";
 
     private static final String SEARCH_TOTAL_NUMBER_CONTENTS_ADMIN = "SELECT COUNT(Id) AS max FROM weblhk.content WHERE id LIKE '%' ? '%' OR title LIKE '%' ? '%' OR brief LIKE '%' ? '%' OR content LIKE '%' ? '%' OR createdate LIKE '%' ? '%'";
     private static final String SEARCH_TOTAL_NUMBER_CONTENTS_MEMBER = "SELECT COUNT(Id) AS max FROM weblhk.content WHERE id LIKE '%' ? '%' AND AuthorId = " + IdGlobal.UserId + " OR title LIKE '%' ? '%' AND AuthorId = " + IdGlobal.UserId + " OR brief LIKE '%' ? '%' AND AuthorId = " + IdGlobal.UserId + " OR content LIKE '%' ? '%' AND AuthorId = " + IdGlobal.UserId + " OR createdate LIKE '%' ? '%'AND AuthorId = " + IdGlobal.UserId;
@@ -39,29 +41,51 @@ public class ViewContentDAO {
             int maxRow = 0;
             if (rs1.next()){ maxRow = rs1.getInt("max"); }
 
-
             //check max page min page
-            if(Objects.equals(command, "Next")){
-                if((IdGlobal.PageLIMIT < (maxRow/10)*10) && (maxRow % 10 != 0)){
-                    IdGlobal.PageLIMIT+=10;
+            //Nếu content < 10
+            if(maxRow <= 10) {
+                IdGlobal.PageStart = 0;
+                IdGlobal.PageEnd = 10;
+            }else{
+                if(Objects.equals(command, "Next")){
+                    if(IdGlobal.PageStart > 0){
+                        IdGlobal.PageEnd -= 10;
+                        IdGlobal.PageStart -= 10;
+                        //Nếu PageStart bị âm thì gán về 0
+                        if(IdGlobal.PageStart < 0){
+                            IdGlobal.PageStart = 0;
+                        }
+                        IdGlobal.PageNumber++;
+                    }
+                }else if(Objects.equals(command, "Previous")){
+                    if(IdGlobal.PageEnd < maxRow){
+                        IdGlobal.PageEnd += 10;
+                        //Nếu đang = 0 thì phải lấy phần content bị lẻ trước
+                        if(IdGlobal.PageStart == 0 && maxRow % 10 != 0){
+                            IdGlobal.PageStart = maxRow % 10;
+                        }else{
+                            IdGlobal.PageStart += 10;
+                        }
+                        IdGlobal.PageNumber--;
+                    }
+                }else if(Objects.equals(command, "Delete")){
+                    //Sẽ chuyển trang trong 1 trường hợp xóa duy nhất là Start = 0 và End = 1 (vì lúc này lẻ 1 content, xóa đi sẽ không lẻ nữa)
+                    IdGlobal.PageEnd=10;
+                    IdGlobal.PageNumber--;
                 }
-            }else if(Objects.equals(command, "Previous")){
-                if(IdGlobal.PageLIMIT > 0){
-                    IdGlobal.PageLIMIT-=10;
+                //Nếu content > 10 (mặc định)
+                else{
+                    IdGlobal.PageEnd = maxRow;
+                    IdGlobal.PageStart = maxRow - 10;
+                    IdGlobal.PageNumber = 1;
                 }
-            }else if(Objects.equals(command, "Delete") && (maxRow % 10 == 0)){
-                if(IdGlobal.PageLIMIT > 0){
-                    IdGlobal.PageLIMIT-=10;
-                }
-                return content;
             }
 
-
-            String SELECT_SOME_CONTENTS_MEMBER = "SELECT * FROM Content WHERE AuthorId = " + IdGlobal.UserId + " LIMIT " + IdGlobal.PageLIMIT + ", 10";
-            String SELECT_SOME_CONTENTS_ADMIN = "SELECT Content.Id, Content.Title, Content.Brief, Content.Content, Member.Username, Content.CreateDate FROM Content, Member  WHERE Content.AuthorId = Member.Id LIMIT " + IdGlobal.PageLIMIT + ", 10";
             ResultSet rs2;
             if(Objects.equals(IdGlobal.Role, "Admin")){
                 prepareStatement = connection.prepareStatement(SELECT_SOME_CONTENTS_ADMIN);
+                prepareStatement.setInt(1, IdGlobal.PageStart);
+                prepareStatement.setInt(2, IdGlobal.PageEnd);
                 rs2 = prepareStatement.executeQuery();
                 while (rs2.next()) {
                     int id = rs2.getInt("Id");
@@ -73,6 +97,8 @@ public class ViewContentDAO {
                 }
             }else{
                 prepareStatement = connection.prepareStatement(SELECT_SOME_CONTENTS_MEMBER);
+                prepareStatement.setInt(1, IdGlobal.PageStart);
+                prepareStatement.setInt(2, IdGlobal.PageEnd);
                 rs2 = prepareStatement.executeQuery();
                 while (rs2.next()){
                     int id = rs2.getInt("Id");
@@ -155,15 +181,20 @@ public class ViewContentDAO {
             if (rs1.next()) { maxRow = rs1.getInt("max"); }
 
             //check max page min page
-            if(Objects.equals(command, "Next")){
-                if(IdGlobal.PageLIMIT < (maxRow/10)*10){
-                    IdGlobal.PageLIMIT+=10;
-                }
-            }else if(Objects.equals(command, "Previous")){
-                if(IdGlobal.PageLIMIT > 0){
-                    IdGlobal.PageLIMIT-=10;
-                }
-            }
+//            if(Objects.equals(command, "Next")){
+//                if((IdGlobal.PageLIMIT < (maxRow/10)*10) && (maxRow % 10 != 0)){
+//                    IdGlobal.PageLIMIT+=10;
+//                }
+//            }else if(Objects.equals(command, "Previous")){
+//                if(IdGlobal.PageLIMIT > 0){
+//                    IdGlobal.PageLIMIT-=10;
+//                }
+//            }else if(Objects.equals(command, "Delete") && (maxRow % 10 == 0)){
+//                if(IdGlobal.PageLIMIT > 0){
+//                    IdGlobal.PageLIMIT-=10;
+//                }
+//                return content;
+//            }
 
            if(Objects.equals(IdGlobal.Role, "Admin")){
                 prepareStatement = connection.prepareStatement(SEARCH_CONTENTS_ADMIN);
@@ -176,7 +207,7 @@ public class ViewContentDAO {
             prepareStatement.setString(3,  IdGlobal.searchValue);
             prepareStatement.setString(4,  IdGlobal.searchValue);
             prepareStatement.setString(5,  IdGlobal.searchValue);
-            prepareStatement.setInt(6, IdGlobal.PageLIMIT);
+            prepareStatement.setInt(6, IdGlobal.PageStart);
             ResultSet rs2 = prepareStatement.executeQuery();
 
             if(Objects.equals(IdGlobal.Role, "Admin")){

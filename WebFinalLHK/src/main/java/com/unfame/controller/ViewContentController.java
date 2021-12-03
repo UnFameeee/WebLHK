@@ -72,9 +72,9 @@ public class ViewContentController extends HttpServlet {
 
     private void listContent (HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, SQLException {
         String command = "";
-        IdGlobal.Reset();
         if(request.getParameter("next") != null) { command = request.getParameter("next"); }
         else if (request.getParameter("previous") != null){ command = request.getParameter("previous"); }
+        else if (request.getAttribute("cmd") != null){ command = request.getAttribute("cmd").toString(); }
 
         List<ViewContent> listContent = viewContentDAO.selectAllContents(command);
 
@@ -87,8 +87,7 @@ public class ViewContentController extends HttpServlet {
     private void deleteContent (HttpServletRequest request, HttpServletResponse response) throws IOException, SQLException, ServletException {
         int Id = Integer.parseInt((request.getParameter("Id")));
         viewContentDAO.deleteContent(Id);
-        viewContentDAO.selectAllContents("Delete");
-//        response.sendRedirect("view");
+        request.setAttribute("cmd", "Delete");
         RequestDispatcher dispatcher = request.getRequestDispatcher("/view");
         request.setAttribute("Message", "alert('Delete successfully');");
         dispatcher.forward(request,response);
@@ -113,16 +112,13 @@ public class ViewContentController extends HttpServlet {
         ViewContent existingContent = new ViewContent(title, brief, content, id,updateTime);
         viewContentDAO.updateContent(existingContent);
         RequestDispatcher dispatcher = request.getRequestDispatcher("/view");
-//        String submitMessage="submit success";
-//        request.setAttribute("submitMessage",submitMessage);
-//        RequestDispatcher dispatcher=request.getRequestDispatcher("Add_Content.tiles");
         dispatcher.forward(request,response);
     }
 
     private void searchContent (HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, SQLException {
         String command = "";
         IdGlobal.Reset();
-        IdGlobal.PageLIMIT = 0;
+//        IdGlobal.PageLIMIT = 0;
         IdGlobal.searchForm = true;
         if(request.getParameter("next") != null)
         {

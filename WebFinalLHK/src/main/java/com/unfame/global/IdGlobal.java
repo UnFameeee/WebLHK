@@ -5,10 +5,9 @@ public class IdGlobal {
     public static String Role = "";
 
 
-    public static int PageLIMIT = 0;
-    public static boolean maxPage = false;
-    public static boolean minPage = false;
-
+    public static int PageStart = 0;
+    public static int PageEnd = 0;
+    public static int PageNumber = 1;
 
     public static String searchValue = "";
     public static String alertSuccess = "";
