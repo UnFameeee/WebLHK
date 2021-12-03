@@ -137,7 +137,7 @@ public class LoginController extends HttpServlet {
 	    	}    			
 	    }
 
-		IdGlobal.PageNumber = 0;
+		IdGlobal.PageNumber = 1;
 	    IdGlobal.UserId = -1;
 		IdGlobal.Role = "";
 		IdGlobal.Reset();
