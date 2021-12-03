@@ -47,7 +47,7 @@ public class ViewContentDAO {
             if (rs1.next()){ maxRow = rs1.getInt("max"); }
 
             //check max page min page
-            //Nếu content < 10 - MẶC ĐỊNH PageEnd = 10, sẽ có 1 số trường hợp đặt biệt khi những content bị lẻ thì PageEnd != 10
+            //Nếu content <= 10 - MẶC ĐỊNH PageEnd = 10, sẽ có 1 số trường hợp đặt biệt khi những content bị lẻ thì PageEnd != 10
             if(maxRow <= 10) {
                 IdGlobal.PageStart = 0;
                 IdGlobal.PageEnd = 10;
