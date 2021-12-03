@@ -1,16 +1,10 @@
 const viewContent = document.querySelector(".view-content");
 const loading = document.querySelector("#loading");
 
-
-
 window.addEventListener('load', function(){
         console.log("Load complete");
         showPopup();
 })
-
-// function ()
-//
-// console.log(X + "ben trang js");
 
 function showPopup(){
     const timeLimit = 5;
