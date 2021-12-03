@@ -77,7 +77,7 @@ public class ViewContentController extends HttpServlet {
         else if (request.getAttribute("cmd") != null){ command = request.getAttribute("cmd").toString(); }
 
         List<ViewContent> listContent = viewContentDAO.selectAllContents(command);
-
+        IdGlobal.Reset();
         request.setAttribute("ListContent", listContent);
         RequestDispatcher dispatcher = request.getRequestDispatcher("View_Content.tiles");
         dispatcher.forward(request,response);

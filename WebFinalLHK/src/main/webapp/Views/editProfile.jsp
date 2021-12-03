@@ -46,4 +46,13 @@
         </div>
     </div>
     <script type="text/javascript" src="${pageContext.request.contextPath}/Views/Effect/EditProfile.js"></script>
+    <script>
+        const inputProfiles = document.querySelectorAll('.profile-input');
+        inputProfiles.forEach(inputProfile => {
+
+            inputProfile.onclick = () => {
+                successMessageProfile.innerHTML = "";
+            }
+        })
+    </script>
 </body>
