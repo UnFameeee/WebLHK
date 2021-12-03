@@ -42,24 +42,29 @@ public class ViewContentDAO {
             if (rs1.next()){ maxRow = rs1.getInt("max"); }
 
             //check max page min page
-            //Nếu content < 10
+            //Nếu content < 10 - MẶC ĐỊNH PageEnd = 10, sẽ có 1 số trường hợp đặt biệt khi những content bị lẻ thì PageEnd != 10
             if(maxRow <= 10) {
                 IdGlobal.PageStart = 0;
                 IdGlobal.PageEnd = 10;
             }else{
                 if(Objects.equals(command, "Next")){
+                    //VD: tổng 22 - hiện đang ở trang 1: 12 10 -> trang 2: 2 10 -> trang 3: 0 2
+                    //VD: tổng 20 - hiện đang ở trang 1: 10 10 -> trang 2: 0 10
                     if(IdGlobal.PageStart > 0){
-                        IdGlobal.PageEnd -= 10;
+                        IdGlobal.PageEnd = 10;
                         IdGlobal.PageStart -= 10;
                         //Nếu PageStart bị âm thì gán về 0
                         if(IdGlobal.PageStart < 0){
                             IdGlobal.PageStart = 0;
+                            IdGlobal.PageEnd = maxRow % 10;
                         }
                         IdGlobal.PageNumber++;
                     }
                 }else if(Objects.equals(command, "Previous")){
+                    //VD: tổng 22 - hiện đang ở trang 3: 0 2 -> trang 2: 2 10 -> trang 1: 12 10
+                    //VD: tổng 20 - hiện đang ở trang 2: 0 10 -> trang 1: 10 10
                     if(IdGlobal.PageEnd < maxRow){
-                        IdGlobal.PageEnd += 10;
+                        IdGlobal.PageEnd = 10;
                         //Nếu đang = 0 thì phải lấy phần content bị lẻ trước
                         if(IdGlobal.PageStart == 0 && maxRow % 10 != 0){
                             IdGlobal.PageStart = maxRow % 10;
@@ -69,13 +74,23 @@ public class ViewContentDAO {
                         IdGlobal.PageNumber--;
                     }
                 }else if(Objects.equals(command, "Delete")){
-                    //Sẽ chuyển trang trong 1 trường hợp xóa duy nhất là Start = 0 và End = 1 (vì lúc này lẻ 1 content, xóa đi sẽ không lẻ nữa)
-                    IdGlobal.PageEnd=10;
-                    IdGlobal.PageNumber--;
+                    //Sẽ chuyển trang trong 1 trường hợp xóa là Start = 0 và End = 1 (vì lúc này lẻ 1 content, xóa đi sẽ không lẻ nữa)
+                    if( IdGlobal.PageStart == 0 && IdGlobal.PageEnd == 1 ){
+                        IdGlobal.PageEnd=10;
+                        IdGlobal.PageNumber--;
+                    }
+                    //1 trường hợp xóa là Start = 0 và End != 1 (vì lúc này lẻ hơn 1 content, xóa đi thì số lẻ sẽ giảm đi)
+                    else if(IdGlobal.PageStart == 0){
+                        IdGlobal.PageEnd--;
+                    }
+                    //Trường hợp khi vẫn chưa ở trang cuối cùng, giảm phần lẻ ở PageStart
+                    else{
+                        IdGlobal.PageStart--;
+                    }
                 }
-                //Nếu content > 10 (mặc định)
+                //Nếu content > 10 (mặc định lấy những content ở cuối - mới nhất)
                 else{
-                    IdGlobal.PageEnd = maxRow;
+                    IdGlobal.PageEnd = 10;
                     IdGlobal.PageStart = maxRow - 10;
                     IdGlobal.PageNumber = 1;
                 }
