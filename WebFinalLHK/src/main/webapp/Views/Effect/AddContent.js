@@ -38,8 +38,9 @@ const resetBtn = document.querySelector('#reset-btn');
 
 function ResetForm(options) {
     const formElement = document.querySelector(options.form);
-    const inputElements = formElement.querySelectorAll('input[type=text]');
+    const inputElements = formElement.querySelectorAll('.data-field');
     inputElements.forEach(inputElement => {
+        console.log("Heelo")
         const errorElement = inputElement.parentElement.querySelector(options.errorSelector[0]);
         errorElement.innerHTML = '';
         inputElement.classList.remove('invalid-input');
