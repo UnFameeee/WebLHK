@@ -8,6 +8,18 @@ const phone = document.querySelector('#profile-phone');
 const phoneValue = phone.value;
 const description = document.querySelector('#profile-description');
 const descriptionValue = description.value;
+const successMessageProfile = document.querySelector('.success-message');
+
+
+btnSubmit.onclick = (e) => {
+    const errorMessages = document.querySelectorAll('.error-message');
+    console.log(errorMessages);
+    errorMessages.forEach(errorMessage => {
+        if (errorMessage.innerText != "") {
+            e.preventDefault();
+        }
+    })
+};
 
 function ResetForm(options) {
     const formElement = document.querySelector(options.form);
@@ -152,4 +164,5 @@ btnReset.onclick = (e) => {
         form: '.form-profile',
         errorMessage: '.error-message',
     })
+    successMessageProfile.innerHTML="";
 };
