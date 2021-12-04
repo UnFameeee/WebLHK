@@ -51,6 +51,7 @@ public class ViewContentDAO {
             if(maxRow <= 10) {
                 IdGlobal.PageStart = 0;
                 IdGlobal.PageEnd = 10;
+                IdGlobal.PageNumber = 1;
             }else{
                 if(Objects.equals(command, "Next")){
                     //VD: tổng 22 - hiện đang ở trang 1: 12 10 -> trang 2: 2 10 -> trang 3: 0 2
@@ -206,6 +207,7 @@ public class ViewContentDAO {
             if(maxRow <= 10) {
                 IdGlobal.PageStart = 0;
                 IdGlobal.PageEnd = 10;
+                IdGlobal.PageNumber = 1;
             }else{
                 if(Objects.equals(command, "Next")){
                     //VD: tổng 22 - hiện đang ở trang 1: 12 10 -> trang 2: 2 10 -> trang 3: 0 2
