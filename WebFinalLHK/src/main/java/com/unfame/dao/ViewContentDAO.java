@@ -258,17 +258,25 @@ public class ViewContentDAO {
 
            if(Objects.equals(IdGlobal.Role, "Admin")){
                 prepareStatement = connection.prepareStatement(SEARCH_CONTENTS_ADMIN);
+               prepareStatement.setString(1,  IdGlobal.searchValue);
+               prepareStatement.setString(2,  IdGlobal.searchValue);
+               prepareStatement.setString(3,  IdGlobal.searchValue);
+               prepareStatement.setString(4,  IdGlobal.searchValue);
+               prepareStatement.setString(5,  IdGlobal.searchValue);
+               prepareStatement.setString(6,  IdGlobal.searchValue);
+               prepareStatement.setInt(7, IdGlobal.PageStart);
+               prepareStatement.setInt(8, IdGlobal.PageEnd);
             }
             else{
                 prepareStatement = connection.prepareStatement(SEARCH_CONTENTS_MEMBER);
+               prepareStatement.setString(1,  IdGlobal.searchValue);
+               prepareStatement.setString(2,  IdGlobal.searchValue);
+               prepareStatement.setString(3,  IdGlobal.searchValue);
+               prepareStatement.setString(4,  IdGlobal.searchValue);
+               prepareStatement.setString(5,  IdGlobal.searchValue);
+               prepareStatement.setInt(6, IdGlobal.PageStart);
+               prepareStatement.setInt(7, IdGlobal.PageEnd);
             }
-            prepareStatement.setString(1,  IdGlobal.searchValue);
-            prepareStatement.setString(2,  IdGlobal.searchValue);
-            prepareStatement.setString(3,  IdGlobal.searchValue);
-            prepareStatement.setString(4,  IdGlobal.searchValue);
-            prepareStatement.setString(5,  IdGlobal.searchValue);
-            prepareStatement.setInt(6, IdGlobal.PageStart);
-            prepareStatement.setInt(7, IdGlobal.PageEnd);
             ResultSet rs2 = prepareStatement.executeQuery();
 
             if(Objects.equals(IdGlobal.Role, "Admin")){
